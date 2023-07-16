@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Family Doctor's Questionnaire Form</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			h1 {
+				margin: 0;
+			} 
+			nav {
+				background-color: #f2f2f2;
+   				padding: 0px;
+				text-align: left;
+			}
+    
+			nav ul {
+				display: list-item;
+				background-color: lightsteelblue;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+		    }
+    
+    		nav ul li {
+ 		    	display: inline-block;
+			}
+    
+			nav ul li a {
+      			color: #333;
+      			display: block;
+      			padding: 10px 20px;
+      			text-decoration: none;
+			}
+    
+			nav ul li a:hover {
+				background-color: lightblue;
+				color: black;
+			}
+    
+			section {
+				padding: 20px;
+			}
+    
+			.align-left {
+				text-align: left;
+			}
+    
+			.profile{
+				border-radius: 50%;
+			}
+    
+			footer {
+				background-color: #333;
+  			    color: #fff;
+ 				padding: 20px;
+				text-align: center;
+			}
+			
+            .sticky.navbar-fixed-top .header-right .btn {
+                margin-top: 10px
+            }
+			.header-right-fix {
+				right: 0;
+                bottom: -15px;
+                position: absolute
+            }
+
+		</style>
+		
+		<style>
+			.form-container {
+				display: none;
+			}
+		</style>
+		<script>
+			function toggleForm() {
+				var form = document.getElementById("myForm");
+				form.style.display = form.style.display === "none" ? "block" : "none";
+			}
+		</script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	</head>
+	<body>
+		<header>
+
+			<nav>
+				<ul>
+					<li><h1>Welcome to Nexcus Health Care</h1></li>
+					<li><a href="/home">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="#">Blogs</a></li>
+
+					<li>
+	                    <div class="header-right">
+	                        <div class="header-btn">
+<!--	                            <a href="/contact" class="btn" style="background-color: lightseagreen;">Get in touch</a>-->
+	                            <a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
+	                            
+	                        </div>
+	                    </div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+	<div class="container">
+		
+		<h3>	Family Doctor's Questionnaire Form 	</h3>
+		<hr>
+		
+		<button onclick="toggleForm()">Show Form</button>
+		<div id="myForm" class="form-container">
+		
+		<p class="h4 mb-4"> * Fill below details </p>
+		
+		<form action="#" th:action="@{/contact/add}"
+						 th:object="${contact}" method="POST">
+
+			<!-- Add hidden form field to handle the update -->
+			<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
+			<input type="hidden" th:field="*{id}">
+			
+			<input type="text" th:field="*{fname}"
+					class="form-control mb-4 w-25" placeholder="First name">			 
+			<input type="text" th:field="*{lname}"
+					class="form-control mb-4 w-25" placeholder="Last name">			 
+			<input type="text" th:field="*{email}"
+					class="form-control mb-4 w-25" placeholder="Email">
+			<input type="text" th:field="*{phone}"
+					class="form-control mb-4 w-25" placeholder="Phone">			 
+			<input type="text" th:field="*{message}"
+					class="form-control mb-4 w-25" placeholder="Message">			 
+			<input type="datetime-local" th:field="*{timestamp}"
+					class="form-control mb-4 w-25" placeholder="Time">
+
+
+			
+			<button type="submit" class="btn btn-info col-2">Save</button>			 
+		</form>
+		
+		<hr>
+		<a th:href="@{/home}">Goto to Home Page</a>
+	</div>
+		<div class="align-left">
+			<img src="https://www.enfuse-solutions.com/wp-content/uploads/2021/09/why-us-img.png" alt="Tech Image">
+
+		</div>
+		<section>
+			<h2>About Us</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo justo et leo interdum, sed scelerisque est cursus. Fusce vel volutpat nunc, ut cursus ex. Nulla ac congue ex, eu finibus nunc.</p>
+		</section>
+
+		<footer>
+			<p>&copy; 2023 Contact me. All rights reserved.</p>
+		</footer>
+	</body>
+</html>

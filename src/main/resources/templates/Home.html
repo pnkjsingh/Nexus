@@ -1,0 +1,123 @@
+	
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>My Home Page</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+			h1 {
+				margin: 0;
+			} 
+			nav {
+				background-color: #f2f2f2;
+   				padding: 0px;
+				text-align: left;
+			}
+    
+			nav ul {
+				display: list-item;
+				background-color: lightsteelblue;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+		    }
+    
+    		nav ul li {
+ 		    	display: inline-block;
+			}
+    
+			nav ul li a {
+      			color: #333;
+      			display: block;
+      			padding: 10px 20px;
+      			text-decoration: none;
+			}
+    
+			nav ul li a:hover {
+				background-color: lightblue;
+				color: black;
+			}
+    
+			section {
+				padding: 20px;
+			}
+    
+			.align-left {
+				text-align: left;
+			}
+    
+			.profile{
+				border-radius: 50%;
+			}
+    
+			footer {
+				background-color: #333;
+  			    color: #fff;
+ 				padding: 20px;
+				text-align: center;
+			}
+			
+            .sticky.navbar-fixed-top .header-right .btn {
+                margin-top: 10px
+            }
+			.header-right-fix {
+				right: 0;
+                bottom: -15px;
+                position: absolute
+            }
+
+		</style>
+	</head>
+	<body>
+		<header>
+
+			<nav>
+				<ul>
+					<li><h1>Welcome to Nexcus Health Care</h1></li>
+					<li><a href="/home">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="#">Blogs</a></li>
+					<li><a href="/showMyLoginPage">Login</a></li>
+
+					<li>
+	                    <div class="header-right">
+	                        <div class="header-btn">
+	                            <a href="/contact/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
+	                        </div>
+	                    </div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<div>
+<!--			<video preload="" autoplay="true" playsinline="" loop="" muted="" poster="721">-->
+<!--				<source src="https://www.enfuse-solutions.com/wp-content/uploads/2022/02/EnFuse-Solutions.mp4" type="video/mp4">-->
+<!--          		<source src="https://www.enfuse-solutions.com/wp-content/uploads/2022/02/EnFuse-Solutions.webm" type="video/webm">-->
+<!--          		<source src="https://www.enfuse-solutions.com/wp-content/uploads/2022/03/EnFuse-Solutions-new.ogg" type="video/ogg">-->
+<!--			</video>-->
+		</div>
+		<div class="align-left">
+<!--			<img src="https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg" alt="" height="300" width="1520"> 
+-->
+			<img src="" th:src="@{images/tech1.jfif}" alt="" height="300" width="1520">
+		</div>
+		<div class="align-left">
+			<img src="" class="profile" th:src="@{images/Krishna.jpg}">
+			<img src="https://www.enfuse-solutions.com/wp-content/uploads/2021/09/why-us-img.png" alt="Tech Image">
+
+		</div>
+		<section>
+			<h2>About Us</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo justo et leo interdum, sed scelerisque est cursus. Fusce vel volutpat nunc, ut cursus ex. Nulla ac congue ex, eu finibus nunc.</p>
+		</section>
+
+		<footer>
+			<p>&copy; 2023 My Home Page. All rights reserved.</p>
+		</footer>
+	</body>
+</html>
