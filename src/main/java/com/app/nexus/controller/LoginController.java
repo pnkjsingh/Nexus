@@ -11,7 +11,7 @@ public class LoginController {
 		return "home";
 	}
 	
-	@GetMapping("/services")
+	@GetMapping("/service")
 	public String servicesProvided() {
 		return "services";
 	}

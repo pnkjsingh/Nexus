@@ -68,6 +68,28 @@
                 bottom: -15px;
                 position: absolute
             }
+            
+            .row {
+					display: -ms-flexbox; /* IE10 */
+					display: flex;
+					-ms-flex-wrap: wrap; /* IE10 */
+					flex-wrap: wrap;
+					margin: 0 -16px;
+					
+				}
+				
+				
+				.col-50 {
+					-ms-flex: 50%; /* IE10 */
+					flex: 30%;
+					padding: 0 10px;
+				}
+				
+				
+				label {
+				  margin-bottom: 5px;
+				  display: block;
+				}
 
 		</style>
 		
@@ -117,43 +139,92 @@
 		
 		<p class="h4 mb-4"> * Fill below details </p>
 		
-		<form action="#" th:action="@{/contact/add}"
-						 th:object="${contact}" method="POST">
+			<form action="#" th:action="@{/familyDoctorPage/add}"
+						 th:object="${familydrquestionnare}" method="POST">
 
-			<!-- Add hidden form field to handle the update -->
-			<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
-			<input type="hidden" th:field="*{id}">
-			
-			<input type="text" th:field="*{fname}"
-					class="form-control mb-4 w-25" placeholder="First name">			 
-			<input type="text" th:field="*{lname}"
-					class="form-control mb-4 w-25" placeholder="Last name">			 
-			<input type="text" th:field="*{email}"
-					class="form-control mb-4 w-25" placeholder="Email">
-			<input type="text" th:field="*{phone}"
-					class="form-control mb-4 w-25" placeholder="Phone">			 
-			<input type="text" th:field="*{message}"
-					class="form-control mb-4 w-25" placeholder="Message">			 
-			<input type="datetime-local" th:field="*{timestamp}"
-					class="form-control mb-4 w-25" placeholder="Time">
-
-
-			
-			<button type="submit" class="btn btn-info col-2">Save</button>			 
-		</form>
+					<!-- Add hidden form field to handle the update -->
+					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
+	
+					<input type="hidden" th:field="*{id}">
 		
-		<hr>
-		<a th:href="@{/home}">Goto to Home Page</a>
-	</div>
+					<input type="text" th:field="*{claimNo}" class="form-control mb-4 w-25" placeholder="Claim Number">			 
+					<input type="text" th:field="*{insuredPersonName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name">			 
+					<input type="text" th:field="*{insuredCompanyName}"	class="form-control mb-4 w-25" placeholder="Insured Company Name">
+					
+					<div class="row">
+						<div class="col-50">
+							<label for="highBloodPressure">High blood Pressure</label>
+							<input type="text" value="" th:field="*{highBloodPressure}"	class="form-control mb-4 w-25" placeholder="High blood Pressure">			 
+						</div>
+						<div class="col-50">
+							<label for="hbpSince">High blood Pressure Since</label>
+							<input type="text" th:field="*{hbpSince}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Since" aria-colspan="30">
+						</div>
+						<div class="col-50">
+							<label for="hbpRx">High blood Pressure Rx</label>
+							<input type="text" th:field="*{hbpRx}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Rx">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-50">
+							<label for="diabetesMellitus">Diabetes Mellitus</label>
+							<input type="text" th:field="*{diabetesMellitus}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus">			 
+						</div>
+						<div class="col-50">
+							<label for="diabetesSince">Diabetes Mellitus Since</label>
+							<input type="text" th:field="*{diabetesSince}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Since">
+						</div>
+						<div class="col-50">
+							<label for="diabetesRx">Diabetes Mellitus Rx</label>
+							<input type="text" th:field="*{diabetesRx}"		class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Rx">
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-50">
+							<label for="respiratoryIllness">Respiratory-Illness</label>
+							<input type="text" th:field="*{respiratoryIllness}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness">
+						</div>
+						<div class="col-50">
+							<label for="riSince">Respiratory-Illness Since</label>
+							<input type="text" th:field="*{riSince}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Since">			 
+						</div>
+						<div class="col-50">
+							<label for="riRx">Respiratory-Illness Rx</label>
+							<input type="text" th:field="*{riRx}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Rx">
+						</div>
+					</div>
+
+					<label for="heartDisease">Heart Disease</label>					
+					<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">
+					
+					<div class="row">
+						<div class="col-50">
+							<label for="queDate">Family Dr. Questionnare Date</label>					
+							<input type="datetime-local" th:field="*{queDate}"	class="form-control mb-4 w-25" placeholder="Questionnare Date">
+						</div>
+						<div class="col-50">
+							<label for="doctorName">Family Doctor Name</label>					
+							<input type="text" th:field="*{doctorName}"	class="form-control mb-4 w-25" placeholder="Doctor Name">
+						</div>
+						<div class="col-50">
+							<label for="caseType">Case Type</label>					
+							<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
+						</div>
+					</div>
+					
+				<button type="submit" class="btn btn-info col-2">Save</button>			 
+			</form>
+			<hr>
+			<a th:href="@{/home}">Goto to Home Page</a>
+		</div>
 		<div class="align-left">
 			<img src="https://www.enfuse-solutions.com/wp-content/uploads/2021/09/why-us-img.png" alt="Tech Image">
-
 		</div>
 		<section>
 			<h2>About Us</h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo justo et leo interdum, sed scelerisque est cursus. Fusce vel volutpat nunc, ut cursus ex. Nulla ac congue ex, eu finibus nunc.</p>
 		</section>
-
 		<footer>
 			<p>&copy; 2023 Contact me. All rights reserved.</p>
 		</footer>

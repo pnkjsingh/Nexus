@@ -2,14 +2,17 @@ package com.app.nexus.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="family_doctor's_questionnaire")
+@Table(name="family_doctor")
 public class FamilyDoctorQuestionnior {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Id")
 	int id;
 
@@ -23,34 +26,36 @@ public class FamilyDoctorQuestionnior {
 	String insuredCompanyName;
 	
 	@Column(name="High_Blood_pressure")
-	String highBloodPressure;
+	boolean highBloodPressure;
 	@Column(name="HBP_Since")
 	String hbpSince;
 	@Column(name="HBP_Rx")
 	String hbpRx;
 	
 	@Column(name="Diabetes Mellitus")
-	String diabetesMellitus;
-	
+	boolean diabetesMellitus;
 	@Column(name="DM_Since")
 	String diabetesSince;
-	
 	@Column(name="DM_Rx")
 	String diabetesRx;
 	
 	@Column(name="Any_Respiratory_illness")
-	String respiratoryIllness;
-	
+	boolean respiratoryIllness;
 	@Column(name="RI_Since")
 	String riSince;
+	@Column(name="Ri_Rx")
+	String riRx;
 	
 	@Column(name="Chronic Heart Disease/Thyroid illness")
 	String heartDisease;
 	
 	@Column(name="Questionnaire_Date")
+	String queDate;
+	
+	@Column(name="Doctor_Name")
 	String doctorName;
 	
-	@Column(name="Case")
+	@Column(name="case_type")
 	String caseType;
 
 	public FamilyDoctorQuestionnior() {
@@ -59,11 +64,11 @@ public class FamilyDoctorQuestionnior {
 	}
 
 	public FamilyDoctorQuestionnior(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
-			String highBloodPressure, String hbpSince, String hbpRx, String diabetesMellitus, String diabetesSince,
-			String diabetesRx, String respiratoryIllness, String riSince, String heartDisease, String doctorName,
-			String caseType) {
+			boolean highBloodPressure, String hbpSince, String hbpRx, boolean diabetesMellitus, String diabetesSince,
+			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, String heartDisease,
+			String queDate, String doctorName, String caseType) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.claimNo = claimNo;
 		this.insuredPersonName = insuredPersonName;
 		this.insuredCompanyName = insuredCompanyName;
@@ -75,13 +80,19 @@ public class FamilyDoctorQuestionnior {
 		this.diabetesRx = diabetesRx;
 		this.respiratoryIllness = respiratoryIllness;
 		this.riSince = riSince;
+		this.riRx = riRx;
 		this.heartDisease = heartDisease;
+		this.queDate = queDate;
 		this.doctorName = doctorName;
 		this.caseType = caseType;
 	}
 
 	public int getId() {
 		return id;
+	}
+
+	public String getClaimNo() {
+		return claimNo;
 	}
 
 	public String getInsuredPersonName() {
@@ -92,7 +103,7 @@ public class FamilyDoctorQuestionnior {
 		return insuredCompanyName;
 	}
 
-	public String getHighBloodPressure() {
+	public boolean isHighBloodPressure() {
 		return highBloodPressure;
 	}
 
@@ -104,7 +115,7 @@ public class FamilyDoctorQuestionnior {
 		return hbpRx;
 	}
 
-	public String getDiabetesMellitus() {
+	public boolean isDiabetesMellitus() {
 		return diabetesMellitus;
 	}
 
@@ -116,7 +127,7 @@ public class FamilyDoctorQuestionnior {
 		return diabetesRx;
 	}
 
-	public String getRespiratoryIllness() {
+	public boolean isRespiratoryIllness() {
 		return respiratoryIllness;
 	}
 
@@ -124,8 +135,16 @@ public class FamilyDoctorQuestionnior {
 		return riSince;
 	}
 
+	public String getRiRx() {
+		return riRx;
+	}
+
 	public String getHeartDisease() {
 		return heartDisease;
+	}
+
+	public String getQueDate() {
+		return queDate;
 	}
 
 	public String getDoctorName() {
@@ -139,7 +158,7 @@ public class FamilyDoctorQuestionnior {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public void setClaimNo(String claimNo) {
 		this.claimNo = claimNo;
 	}
@@ -152,7 +171,7 @@ public class FamilyDoctorQuestionnior {
 		this.insuredCompanyName = insuredCompanyName;
 	}
 
-	public void setHighBloodPressure(String highBloodPressure) {
+	public void setHighBloodPressure(boolean highBloodPressure) {
 		this.highBloodPressure = highBloodPressure;
 	}
 
@@ -164,7 +183,7 @@ public class FamilyDoctorQuestionnior {
 		this.hbpRx = hbpRx;
 	}
 
-	public void setDiabetesMellitus(String diabetesMellitus) {
+	public void setDiabetesMellitus(boolean diabetesMellitus) {
 		this.diabetesMellitus = diabetesMellitus;
 	}
 
@@ -176,7 +195,7 @@ public class FamilyDoctorQuestionnior {
 		this.diabetesRx = diabetesRx;
 	}
 
-	public void setRespiratoryIllness(String respiratoryIllness) {
+	public void setRespiratoryIllness(boolean respiratoryIllness) {
 		this.respiratoryIllness = respiratoryIllness;
 	}
 
@@ -184,8 +203,16 @@ public class FamilyDoctorQuestionnior {
 		this.riSince = riSince;
 	}
 
+	public void setRiRx(String riRx) {
+		this.riRx = riRx;
+	}
+
 	public void setHeartDisease(String heartDisease) {
 		this.heartDisease = heartDisease;
+	}
+
+	public void setQueDate(String queDate) {
+		this.queDate = queDate;
 	}
 
 	public void setDoctorName(String doctorName) {
@@ -198,12 +225,12 @@ public class FamilyDoctorQuestionnior {
 
 	@Override
 	public String toString() {
-		return "Family_Doctor_Questionnior [id=" + id + "claimNo=" + claimNo + ", insuredPersonName=" + insuredPersonName
-				+ ", insuredCompanyName=" + insuredCompanyName + ", highBloodPressure=" + highBloodPressure
-				+ ", hbpSince=" + hbpSince + ", hbpRx=" + hbpRx + ", diabetesMellitus=" + diabetesMellitus
-				+ ", diabetesSince=" + diabetesSince + ", diabetesRx=" + diabetesRx + ", respiratoryIllness="
-				+ respiratoryIllness + ", riSince=" + riSince + ", heartDisease=" + heartDisease + ", doctorName="
-				+ doctorName + ", caseType=" + caseType + "]";
+		return "FamilyDoctorQuestionnior [id=" + id + ", claimNo=" + claimNo + ", insuredPersonName="
+				+ insuredPersonName + ", insuredCompanyName=" + insuredCompanyName + ", highBloodPressure="
+				+ highBloodPressure + ", hbpSince=" + hbpSince + ", hbpRx=" + hbpRx + ", diabetesMellitus="
+				+ diabetesMellitus + ", diabetesSince=" + diabetesSince + ", diabetesRx=" + diabetesRx
+				+ ", respiratoryIllness=" + respiratoryIllness + ", riSince=" + riSince + ", riRx=" + riRx
+				+ ", heartDisease=" + heartDisease + ", queDate=" + queDate + ", doctorName=" + doctorName
+				+ ", caseType=" + caseType + "]";
 	}
-	
 }
