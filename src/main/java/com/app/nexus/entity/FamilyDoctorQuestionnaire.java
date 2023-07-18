@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="family_doctor")
-public class FamilyDoctorQuestionnior {
+public class FamilyDoctorQuestionnaire {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,12 +58,12 @@ public class FamilyDoctorQuestionnior {
 	@Column(name="case_type")
 	String caseType;
 
-	public FamilyDoctorQuestionnior() {
+	public FamilyDoctorQuestionnaire() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public FamilyDoctorQuestionnior(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
+	public FamilyDoctorQuestionnaire(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
 			boolean highBloodPressure, String hbpSince, String hbpRx, boolean diabetesMellitus, String diabetesSince,
 			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, String heartDisease,
 			String queDate, String doctorName, String caseType) {

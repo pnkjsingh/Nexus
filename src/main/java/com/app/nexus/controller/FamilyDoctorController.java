@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.app.nexus.entity.FamilyDoctorQuestionnior;
+import com.app.nexus.entity.FamilyDoctorQuestionnaire;
 import com.app.nexus.services.FamilyDoctorServices;
 
 @Controller
@@ -26,16 +26,16 @@ public class FamilyDoctorController {
 	public String showFormForAdd(Model theModel) {
 		
 		//Create model attribute to bind form data
-		FamilyDoctorQuestionnior familyDoctorQuestionnior=new FamilyDoctorQuestionnior();
-		theModel.addAttribute("familydrquestionnare",familyDoctorQuestionnior);
-		return "dr_questionnare";
+		FamilyDoctorQuestionnaire familyDoctorQuestionnaire=new FamilyDoctorQuestionnaire();
+		theModel.addAttribute("familydrquestionnaire",familyDoctorQuestionnaire);
+		return "dr_questionnaire";
 	}
 	
 	@PostMapping("/add")
-	public String addContact(@ModelAttribute("familydrquestionnare") FamilyDoctorQuestionnior thefamilyDoctorQuestionnior) {
-		thefamilyDoctorQuestionnior.setId(0);
+	public String addContact(@ModelAttribute("familydrquestionnare") FamilyDoctorQuestionnaire thefamilyDoctorQuestionnaiore) {
+		thefamilyDoctorQuestionnaiore.setId(0);
 		//save the employee
-		familyDoctorServices.save(thefamilyDoctorQuestionnior);
+		familyDoctorServices.save(thefamilyDoctorQuestionnaiore);
 		
 		//use a redirect to prevent duplicate submissions
 		return "redirect:/familyDoctorPage/showFormForContact";
