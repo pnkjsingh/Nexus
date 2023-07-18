@@ -2,102 +2,8 @@
 <html  lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Family Doctor's Questionnaire Form</title>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
-			}
-			h1 {
-				margin: 0;
-			} 
-			nav {
-				background-color: #f2f2f2;
-   				padding: 0px;
-				text-align: left;
-			}
-    
-			nav ul {
-				display: list-item;
-				background-color: lightsteelblue;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-		    }
-    
-    		nav ul li {
- 		    	display: inline-block;
-			}
-    
-			nav ul li a {
-      			color: #333;
-      			display: block;
-      			padding: 10px 20px;
-      			text-decoration: none;
-			}
-    
-			nav ul li a:hover {
-				background-color: lightblue;
-				color: black;
-			}
-    
-			section {
-				padding: 20px;
-			}
-    
-			.align-left {
-				text-align: left;
-			}
-    
-			.profile{
-				border-radius: 50%;
-			}
-    
-			footer {
-				background-color: #333;
-  			    color: #fff;
- 				padding: 20px;
-				text-align: center;
-			}
-			
-            .sticky.navbar-fixed-top .header-right .btn {
-                margin-top: 10px
-            }
-			.header-right-fix {
-				right: 0;
-                bottom: -15px;
-                position: absolute
-            }
-            
-            .row {
-					display: -ms-flexbox; /* IE10 */
-					display: flex;
-					-ms-flex-wrap: wrap; /* IE10 */
-					flex-wrap: wrap;
-					margin: 0 -16px;
-					
-				}
-				
-				
-				.col-50 {
-					-ms-flex: 50%; /* IE10 */
-					flex: 30%;
-					padding: 0 10px;
-				}
-				
-				
-				label {
-				  margin-bottom: 5px;
-				  display: block;
-				}
+		<link rel="stylesheet" type="text/css" href="/css/styles.css">
 
-		</style>
-		
-		<style>
-			.form-container {
-				display: none;
-			}
-		</style>
 		<script>
 			function toggleForm() {
 				var form = document.getElementById("myForm");
@@ -225,17 +131,18 @@
 		<h5>Click on below button to Upload a Document</h5>
 <!--			<button onclick="toggleForm()">Upload Document</button>-->
 <!--			<div id="myForm" class="form-container">-->
-				<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" th:object="${#}">
-					<div class="col-50">
-						<label for="fileName">File Name</label>					
-						<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
+				<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
+<!--					<div class="row">
+						<div class="col-50">
+							<label for="fileName">File Name</label>					
+							<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
+						</div>
+						<div class="col-50">
+							<label for="caseType">File Type</label>					
+							<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
+						</div>
 					</div>
-					<div class="col-50">
-						<label for="caseType">File Type</label>					
-						<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
-					</div>
-				</div>
-					
+-->					
 					<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
 					<br><br>
 					<input type="submit" value="Upload">
