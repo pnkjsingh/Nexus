@@ -12,6 +12,6 @@ public interface FamilyDoctorServices {
 	
 	FamilyDoctorQuestionnaire findById(int id);
 	
-//	void deleteById(int id);	
+	void deleteById(int id);	
 
 }

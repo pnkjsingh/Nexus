@@ -13,6 +13,11 @@ CREATE TABLE nexus.documents (
 
 -----------------------------------------------------------------------------------------------
 ============================================================================
+ALTER TABLE `nexus`.`insured_questionnaire` 
+ADD COLUMN `any_liver_disease` TINYINT NULL AFTER `questionnaire_date`,
+ADD COLUMN `liver_disease_drug_name` VARCHAR(75) NULL AFTER `any_liver_disease`,
+ADD COLUMN `liver_disease_duration` DATE NULL AFTER `liver_disease_drug_name`,
+CHANGE COLUMN `dm_drug_name` `dm_drug_name` VARCHAR(75) NULL DEFAULT NULL AFTER `diabetes_mellitus`;
 
 -----------------------------------------------------------------------------------------------
 

@@ -75,13 +75,13 @@
 				}
 
 				.col-50 {
-					-ms-flex: 50%; /* IE10 */
+					-ms-flex: 40%; /* IE10 */
 					flex: 30%;
 					padding: 0 10px;
 				}
 								
 				label {
-				  margin-bottom: 5px;
+				  margin-bottom: 15px;
 				  display: block;
 				}
 				

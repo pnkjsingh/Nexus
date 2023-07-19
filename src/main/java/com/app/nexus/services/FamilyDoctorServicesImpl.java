@@ -43,4 +43,17 @@ public class FamilyDoctorServicesImpl implements FamilyDoctorServices {
 		}
 		return doctorQuestionnaiore;
 	}
+	@Override
+	public void deleteById(int id) {
+		// TODO Auto-generated method stub
+		Optional<FamilyDoctorQuestionnaire> result=familyDoctorRepository.findById(id);
+		if(result.isPresent()) {
+			familyDoctorRepository.deleteById(id);
+		}
+		else {
+			//Not found doctor Questionnaire detail of given doctor number
+			throw new RuntimeException("did not found given doctor Questionnaire id"+id);
+			
+		}
+	}
 }
