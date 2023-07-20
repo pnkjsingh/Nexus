@@ -65,16 +65,16 @@ public class InsuredQuestionnaire {
 	private String dmDuration;
 
 	@Column(name = "any_heart_disease")
-	private String anyHeartDisease;
+	private boolean anyHeartDisease;
 	@Column(name = "hd_drug_name")
-	private boolean hdDrugName;
+	private String hdDrugName;
 	@Column(name = "hd_duration")
 	private String hdDuration;
 
 	@Column(name = "any_liver_disease")
-	private String anyLiverDisease;
+	private boolean anyLiverDisease;
 	@Column(name = "liver_disease_drug_name")
-	private boolean liverDiseaseDrugName;
+	private String liverDiseaseDrugName;
 	@Column(name = "liver_disease_duration")
 	private String liverDiseaseDuration;
 
@@ -121,7 +121,7 @@ public class InsuredQuestionnaire {
 	private String diseaseDuration;
 
 	@Column(name = "job_details")
-	private boolean jobDetails;
+	private String jobDetails;
 	@Column(name = "alcohol_smoking_tobacco")
 	private String alcoholSmokingTobacco;
 	@Column(name = "description")
@@ -214,11 +214,11 @@ public class InsuredQuestionnaire {
 		return dmDuration;
 	}
 
-	public String getAnyHeartDisease() {
+	public boolean getAnyHeartDisease() {
 		return anyHeartDisease;
 	}
 
-	public boolean isHdDrugName() {
+	public String getHdDrugName() {
 		return hdDrugName;
 	}
 
@@ -226,11 +226,11 @@ public class InsuredQuestionnaire {
 		return hdDuration;
 	}
 
-	public String getAnyLiverDisease() {
+	public boolean getAnyLiverDisease() {
 		return anyLiverDisease;
 	}
 
-	public boolean isLiverDiseaseDrugName() {
+	public String getLiverDiseaseDrugName() {
 		return liverDiseaseDrugName;
 	}
 
@@ -238,7 +238,7 @@ public class InsuredQuestionnaire {
 		return liverDiseaseDuration;
 	}
 
-	public boolean isKidneyDisease() {
+	public boolean getKidneyDisease() {
 		return kidneyDisease;
 	}
 
@@ -250,7 +250,7 @@ public class InsuredQuestionnaire {
 		return kdDuration;
 	}
 
-	public boolean isNeurologicalDisease() {
+	public boolean getNeurologicalDisease() {
 		return neurologicalDisease;
 	}
 
@@ -262,7 +262,7 @@ public class InsuredQuestionnaire {
 		return neurologicalDiseaseDuration;
 	}
 
-	public boolean isCancer() {
+	public boolean getCancer() {
 		return cancer;
 	}
 
@@ -274,7 +274,7 @@ public class InsuredQuestionnaire {
 		return cancerDuration;
 	}
 
-	public boolean isRespiratoryIllness() {
+	public boolean getRespiratoryIllness() {
 		return respiratoryIllness;
 	}
 
@@ -286,7 +286,7 @@ public class InsuredQuestionnaire {
 		return respiratoryIllnessDuration;
 	}
 
-	public boolean isArthritis() {
+	public boolean getArthritis() {
 		return arthritis;
 	}
 
@@ -298,7 +298,7 @@ public class InsuredQuestionnaire {
 		return arthritisDuration;
 	}
 
-	public boolean isAnyMajorDisease() {
+	public boolean getAnyMajorDisease() {
 		return anyMajorDisease;
 	}
 
@@ -310,7 +310,7 @@ public class InsuredQuestionnaire {
 		return diseaseDuration;
 	}
 
-	public boolean isJobDetails() {
+	public String getJobDetails() {
 		return jobDetails;
 	}
 
@@ -410,11 +410,11 @@ public class InsuredQuestionnaire {
 		this.dmDuration = dmDuration;
 	}
 
-	public void setAnyHeartDisease(String anyHeartDisease) {
+	public void setAnyHeartDisease(boolean anyHeartDisease) {
 		this.anyHeartDisease = anyHeartDisease;
 	}
 
-	public void setHdDrugName(boolean hdDrugName) {
+	public void setHdDrugName(String hdDrugName) {
 		this.hdDrugName = hdDrugName;
 	}
 
@@ -422,11 +422,11 @@ public class InsuredQuestionnaire {
 		this.hdDuration = hdDuration;
 	}
 
-	public void setAnyLiverDisease(String anyLiverDisease) {
+	public void setAnyLiverDisease(boolean anyLiverDisease) {
 		this.anyLiverDisease = anyLiverDisease;
 	}
 
-	public void setLiverDiseaseDrugName(boolean liverDiseaseDrugName) {
+	public void setLiverDiseaseDrugName(String liverDiseaseDrugName) {
 		this.liverDiseaseDrugName = liverDiseaseDrugName;
 	}
 
@@ -506,7 +506,7 @@ public class InsuredQuestionnaire {
 		this.diseaseDuration = diseaseDuration;
 	}
 
-	public void setJobDetails(boolean jobDetails) {
+	public void setJobDetails(String jobDetails) {
 		this.jobDetails = jobDetails;
 	}
 
@@ -531,13 +531,13 @@ public class InsuredQuestionnaire {
 			String testsBeforeOrDuringHospitalization, String admissionDateTime, String dischargeDateTime,
 			float roomRentPerDay, String roomType, String identityProof, float estimatedHospitalBill,
 			boolean highBloodPressure, String hbpDrugName, String hbpDuration, boolean diabetesMellitus,
-			String dmDrugName, String dmDuration, String anyHeartDisease, boolean hdDrugName, String hdDuration,
-			String anyLiverDisease, boolean liverDiseaseDrugName, String liverDiseaseDuration, boolean kidneyDisease,
+			String dmDrugName, String dmDuration, boolean anyHeartDisease, String hdDrugName, String hdDuration,
+			boolean anyLiverDisease, String liverDiseaseDrugName, String liverDiseaseDuration, boolean kidneyDisease,
 			String kidneyDrugName, String kdDuration, boolean neurologicalDisease, String neurologicalDiseaseDrugName,
 			String neurologicalDiseaseDuration, boolean cancer, String cancerDrugName, String cancerDuration,
 			boolean respiratoryIllness, String respiratoryIllnessDrugName, String respiratoryIllnessDuration,
 			boolean arthritis, String arthritisDrugName, String arthritisDuration, boolean anyMajorDisease,
-			String diseaseDrugName, String diseaseDuration, boolean jobDetails, String alcoholSmokingTobacco,
+			String diseaseDrugName, String diseaseDuration, String jobDetails, String alcoholSmokingTobacco,
 			String description, String questionnaireDate) {
 		super();
 		this.id = id;

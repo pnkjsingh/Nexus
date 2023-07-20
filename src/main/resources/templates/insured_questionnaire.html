@@ -54,68 +54,74 @@
 					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
 	
 					<input type="hidden" th:field="*{id}">
-		
+
 					<div class="row">
 						<div class="col-50">
+							<label for="claimNumber">Claim Number</label>
 							<input type="text" th:field="*{claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number">
 						</div>
 						<div class="col-50">
+							<label for="insuredName">Insured Preson name</label>
 							<input type="text" th:field="*{insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name">			 
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
+							<label for="insuranceCompany">Insured Company Name</label>
 							<input type="text" th:field="*{insuranceCompany}"	class="form-control mb-4 w-25" placeholder="Insured Company Name">
 						</div>
 						<div class="col-50">
+							<label for="hospitalName">Hospital Name</label>
 							<input type="text" th:field="*{hospitalName}"	class="form-control mb-4 w-25" placeholder="Hospital Name">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
+							<label for="chiefComplained">Chief Complained</label>
 							<input type="text" th:field="*{chiefComplained}"	class="form-control mb-4 w-25" placeholder="Chief Complained">
 						</div>
 						<div class="col-50">
+							<label for="complaintsDuration">Complaints Duration</label>
 							<input type="text" th:field="*{complaintsDuration}"	class="form-control mb-4 w-25" placeholder="Complaints Duration">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
+							<label for="diagnosisAsPerDoctor">Diagnosis As Per Doctor</label>
 							<input type="text" th:field="*{diagnosisAsPerDoctor}"	class="form-control mb-4 w-25" placeholder="Diagnosis As Per Doctor">
 						</div>
 						<div class="col-50">
+							<label for="testsBeforeOrDuringHospitalization">Tests Before Or During Hospitalization</label>
 							<input type="text" th:field="*{testsBeforeOrDuringHospitalization}"	class="form-control mb-4 w-25" placeholder="Tests Before Or During Hospitalization">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<input type="text" th:field="*{admissionDateTime}"	class="form-control mb-4 w-25" placeholder="Exact Date Time of Admission">
+							<label for="admissionDateTime">Exact Date Time of Admission</label>
+							<input type="date" th:field="*{admissionDateTime}"	class="form-control mb-4 w-25" placeholder="Exact Date Time of Admission">
 						</div>
 						<div class="col-50">
-							<input type="text" th:field="*{dischargeDateTime}"	class="form-control mb-4 w-25" placeholder="Exact Discharge Date Time">
+							<label for="dischargeDateTime">Exact Discharge Date Time</label>
+							<input type="date" th:field="*{dischargeDateTime}"	class="form-control mb-4 w-25" placeholder="Exact Discharge Date Time">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
+							<label for="highBloodPressure">Room Rent Per Day</label>
 							<input type="text" th:field="*{roomRentPerDay}"	class="form-control mb-4 w-25" placeholder="Room Rent Per Day">
 						</div>
 						<div class="col-50">
+							<label for="highBloodPressure">Room Type</label>
 							<input type="text" th:field="*{roomType}"	class="form-control mb-4 w-25" placeholder="Room Type">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<input type="text" th:field="*{roomRentPerDay}"	class="form-control mb-4 w-25" placeholder="Room Rent Per Day">
-						</div>
-						<div class="col-50">
-							<input type="text" th:field="*{roomType}"	class="form-control mb-4 w-25" placeholder="Room Type">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
+							<label for="highBloodPressure">Identity Proof</label>
 							<input type="text" th:field="*{identityProof}"	class="form-control mb-4 w-25" placeholder="Identity Proof">
 						</div>
 						<div class="col-50">
+							<label for="highBloodPressure">Estimated Hospital Bill</label>
 							<input type="text" th:field="*{estimatedHospitalBill}"	class="form-control mb-4 w-25" placeholder="Estimated Hospital Bill">
 						</div>
 					</div>
@@ -127,6 +133,8 @@
 							<option value="true">TRUE</option>
 <!--							<input type="text" value="" th:field="*{highBloodPressure}"	class="form-control mb-4 w-25" placeholder="High blood Pressure">			 -->
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="hbpDrugName">High blood Pressure Drug Name</label>
 							<input type="text" th:field="*{hbpDrugName}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Drug Name" aria-colspan="30">
@@ -143,6 +151,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="dmDrugName">Diabetes Mellitus  Drug Name</label>
 							<input type="text" th:field="*{dmDrugName}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus  Drug Name">
@@ -160,6 +170,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="hdDrugName">Heart Disease Drug Name</label>
 							<input type="text" th:field="*{hdDrugName}"	class="form-control mb-4 w-25" placeholder="Heart Disease Drug Name">			 
@@ -176,6 +188,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="liverDiseaseDrugName">Liver Disease Drug Name</label>
 							<input type="text" th:field="*{liverDiseaseDrugName}"	class="form-control mb-4 w-25" placeholder="Liver Disease Drug Name">			 
@@ -192,6 +206,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="kidneyDrugName">Kidney Disease Drug Name</label>
 							<input type="text" th:field="*{kidneyDrugName}"	class="form-control mb-4 w-25" placeholder="Kidney Disease Drug Name">			 
@@ -208,6 +224,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="neurologicalDiseaseDrugName">Neurological Disease Drug Name</label>
 							<input type="text" th:field="*{neurologicalDiseaseDrugName}"	class="form-control mb-4 w-25" placeholder="Neurological Disease Drug Name">			 
@@ -224,13 +242,15 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="cancerDrugName">Cancer Drug Name</label>
 							<input type="text" th:field="*{cancerDrugName}"	class="form-control mb-4 w-25" placeholder="Cancer Drug Name">			 
 						</div>
 						<div class="col-50">
 							<label for="cancerDuration">Cancer Duration</label>
-							<input type="text" th:field="*{neurologicalDiseaseDuration}"	class="form-control mb-4 w-25" placeholder="Cancer Duration">
+							<input type="text" th:field="*{cancerDuration}"	class="form-control mb-4 w-25" placeholder="Cancer Duration">
 						</div>
 					</div>
 					<div class="row">
@@ -240,6 +260,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="respiratoryIllnessDrugName">Respiratory Illness Drug Name</label>
 							<input type="text" th:field="*{respiratoryIllnessDrugName}"	class="form-control mb-4 w-25" placeholder="Respiratory Illness Drug Name">			 
@@ -256,6 +278,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="arthritisDrugName">Arthritis Drug Name</label>
 							<input type="text" th:field="*{arthritisDrugName}"	class="form-control mb-4 w-25" placeholder="Arthritis Drug Name">			 
@@ -272,6 +296,8 @@
 							<option value="false">FALSE</option>		 
 							<option value="true">TRUE</option>
 						</div>
+					</div>
+					<div class="row">
 						<div class="col-50">
 							<label for="diseaseDrugName">Disease Drug Name</label>
 							<input type="text" th:field="*{diseaseDrugName}"	class="form-control mb-4 w-25" placeholder="Disease Drug Name">			 
@@ -284,13 +310,14 @@
 					
 					<div class="row">
 						<div class="col-50">
+							<label for="alcoholSmokingTobacco">Alcohol Smoking/Tobacco ?</label>
 							<input type="text" th:field="*{alcoholSmokingTobacco}"	class="form-control mb-4 w-25" placeholder="Alcohol Smoking/Tobacco ?">
 						</div>
 						<div class="col-50">
+							<label for="questionnaireDate">Questionnaire Date</label>
 							<input type="datetime-local" th:field="*{questionnaireDate}"	class="form-control mb-4 w-25" placeholder="Questionnaire Date">
 						</div>
 					</div>
-
 					
 					<div class="row">
 						<div class="col-50">
@@ -305,7 +332,6 @@
 					
 				<button type="submit" class="btn btn-info col-2">Save</button>			 
 			</form>
-
 			<hr>
 			<a th:href="@{/home}">Goto to Home Page</a>
 		</div>

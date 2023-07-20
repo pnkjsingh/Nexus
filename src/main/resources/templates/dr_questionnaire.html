@@ -57,56 +57,117 @@
 					<input type="text" th:field="*{insuredPersonName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name">			 
 					<input type="text" th:field="*{insuredCompanyName}"	class="form-control mb-4 w-25" placeholder="Insured Company Name">
 					
-					<div class="row">
-						<div class="col-50">
-							<label for="highBloodPressure">High blood Pressure</label>
-							<select id="highBloodPressure" name="highBloodPressure">
-							<option value="false">FALSE</option>
-							<option value="true">TRUE</option>
+					<table>
+						<tr>
+							<td>
+								<label for="highBloodPressure">High blood Pressure</label>
+								
+								<select id="highBloodPressure" name="highBloodPressure">
+								<option value="false">FALSE</option>
+								<option value="true">TRUE</option>							
+							</td>
+							<td>
+								<label for="hbpSince">High blood Pressure Since</label>
+								<input type="text" th:field="*{hbpSince}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Since" aria-colspan="30">
+							</td>
+							<td>
+								<label for="hbpRx">High blood Pressure Rx</label>
+								<input type="text" th:field="*{hbpRx}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Rx">								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="diabetesMellitus">Diabetes Mellitus</label>
+								<select id="diabetesMellitus" name="diabetesMellitus">
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<label for="diabetesSince">Diabetes Mellitus Since</label>
+								<input type="text" th:field="*{diabetesSince}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Since">
+							</td>
+							<td>
+								<label for="diabetesRx">Diabetes Mellitus Rx</label>
+								<input type="text" th:field="*{diabetesRx}"		class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Rx">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label for="respiratoryIllness">Respiratory-Illness</label>
+								<select id="respiratoryIllness" name="respiratoryIllness">
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<label for="riSince">Respiratory-Illness Since</label>
+								<input type="text" th:field="*{riSince}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Since">	 
+							</td>
+							<td>
+								<label for="riRx">Respiratory-Illness Rx</label>
+								<input type="text" th:field="*{riRx}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Rx">
+							</td>
+						</tr>
+						<tr>
+							<td>Row 3, Cell 1</td>
+							<td>Row 3, Cell 2</td>
+							<td>Row 3, Cell 3</td>
+						</tr>
+						<!-- Add more rows as needed -->
+				    </table>
+				    
+
+							
+
+<!--					<div class="row">-->
+<!--						<div class="col-50">-->
+<!--							<label for="highBloodPressure">High blood Pressure</label>-->
+<!--							<select id="highBloodPressure" name="highBloodPressure">-->
+<!--							<option value="false">FALSE</option>-->
+<!--							<option value="true">TRUE</option>-->
 <!--							<input type="text" value="" th:field="*{highBloodPressure}"	class="form-control mb-4 w-25" placeholder="High blood Pressure">			 -->
-						</div>
-						<div class="col-50">
-							<label for="hbpSince">High blood Pressure Since</label>
-							<input type="text" th:field="*{hbpSince}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Since" aria-colspan="30">
-						</div>
-						<div class="col-50">
-							<label for="hbpRx">High blood Pressure Rx</label>
-							<input type="text" th:field="*{hbpRx}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Rx">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="diabetesMellitus">Diabetes Mellitus</label>
-							<select id="diabetesMellitus" name="diabetesMellitus">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-						<div class="col-50">
-							<label for="diabetesSince">Diabetes Mellitus Since</label>
-							<input type="text" th:field="*{diabetesSince}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Since">
-						</div>
-						<div class="col-50">
-							<label for="diabetesRx">Diabetes Mellitus Rx</label>
-							<input type="text" th:field="*{diabetesRx}"		class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Rx">
-						</div>
-					</div>
+<!--						</div>-->
+<!--						<div class="col-50">-->
+<!--							<label for="hbpSince">High blood Pressure Since</label>-->
+<!--							<input type="text" th:field="*{hbpSince}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Since" aria-colspan="30">-->
+<!--						</div>-->
+<!--						<div class="col-50">-->
+<!--							<label for="hbpRx">High blood Pressure Rx</label>-->
+<!--							<input type="text" th:field="*{hbpRx}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Rx">-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="row">-->
+<!--						<div class="col-50">-->
+<!--							<label for="diabetesMellitus">Diabetes Mellitus</label>-->
+<!--							<select id="diabetesMellitus" name="diabetesMellitus">-->
+<!--							<option value="false">FALSE</option>		 -->
+<!--							<option value="true">TRUE</option>-->
+<!--						</div>-->
+<!--						<div class="col-50">-->
+<!--							<label for="diabetesSince">Diabetes Mellitus Since</label>-->
+<!--							<input type="text" th:field="*{diabetesSince}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Since">-->
+<!--						</div>-->
+<!--						<div class="col-50">-->
+<!--							<label for="diabetesRx">Diabetes Mellitus Rx</label>-->
+<!--							<input type="text" th:field="*{diabetesRx}"		class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Rx">-->
+<!--						</div>-->
+<!--					</div>-->
 					
-					<div class="row">
-						<div class="col-50">
-							<label for="respiratoryIllness">Respiratory-Illness</label>
-							<select id="respiratoryIllness" name="respiratoryIllness">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-						<div class="col-50">
-							<label for="riSince">Respiratory-Illness Since</label>
-							<input type="text" th:field="*{riSince}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Since">			 
-						</div>
-						<div class="col-50">
-							<label for="riRx">Respiratory-Illness Rx</label>
-							<input type="text" th:field="*{riRx}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Rx">
-						</div>
-					</div>
+<!--					<div class="row">-->
+<!--						<div class="col-50">-->
+<!--							<label for="respiratoryIllness">Respiratory-Illness</label>-->
+<!--							<select id="respiratoryIllness" name="respiratoryIllness">-->
+<!--							<option value="false">FALSE</option>		 -->
+<!--							<option value="true">TRUE</option>-->
+<!--						</div>-->
+<!--						<div class="col-50">-->
+<!--							<label for="riSince">Respiratory-Illness Since</label>-->
+<!--							<input type="text" th:field="*{riSince}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Since">			 -->
+<!--						</div>-->
+<!--						<div class="col-50">-->
+<!--							<label for="riRx">Respiratory-Illness Rx</label>-->
+<!--							<input type="text" th:field="*{riRx}"	class="form-control mb-4 w-25" placeholder="Respiratory-Illness Rx">-->
+<!--						</div>-->
+<!--					</div>-->
 
 					<label for="heartDisease">Heart Disease</label>					
 					<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">
