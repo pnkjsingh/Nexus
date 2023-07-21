@@ -1,6 +1,7 @@
 package com.app.nexus.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,25 +22,38 @@ public class TreatingDrQuestionnaireServiceImpl implements TreatingDrQuestionnai
 
 	@Override
 	public List<TreatingDrQuestionnaire> findAll() {
-		return null;
+		return drQuestionnaireRepository.findAll();
 	}
 
 	@Override
 	public TreatingDrQuestionnaire save(TreatingDrQuestionnaire drQuestionnaire) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return drQuestionnaireRepository.save(drQuestionnaire);
 	}
 
 	@Override
 	public TreatingDrQuestionnaire findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<TreatingDrQuestionnaire> result=drQuestionnaireRepository.findById(id);
+		TreatingDrQuestionnaire drQuestionnaire=null;
+		if(result.isPresent()) {
+			drQuestionnaire=result.get();
+		}
+		else {
+			throw new RuntimeException("Did not found given Doctor Questionnaire");
+		}
+		return drQuestionnaire;
 	}
 
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
-		
+		Optional<TreatingDrQuestionnaire> result=drQuestionnaireRepository.findById(id);
+		if(result.isPresent()) {
+			drQuestionnaireRepository.deleteById(id);
+		}
+		else {
+			throw new RuntimeException("Did not found given Doctor Questionnaire");
+		}
+
 	}
 
 }

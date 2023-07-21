@@ -12,7 +12,7 @@ import com.app.nexus.entity.FamilyDoctorQuestionnaire;
 import com.app.nexus.services.FamilyDoctorServices;
 
 @Controller
-@RequestMapping("/familyDoctorPage")
+@RequestMapping("/familyDoctor")
 public class FamilyDoctorController {
 	
 	private FamilyDoctorServices familyDoctorServices;
@@ -22,7 +22,7 @@ public class FamilyDoctorController {
 		familyDoctorServices=theFamilyDoctorController;
 	}
 	
-	@GetMapping("/showFormForContact")
+	@GetMapping("/show")
 	public String showFormForAdd(Model theModel) {
 		
 		//Create model attribute to bind form data
