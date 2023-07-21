@@ -47,7 +47,7 @@ public class FamilyDoctorQuestionnaire {
 	String riRx;
 	
 	@Column(name="Chronic Heart Disease/Thyroid illness")
-	String heartDisease;
+	boolean heartDisease;
 	
 	@Column(name="Questionnaire_Date")
 	String queDate;
@@ -65,7 +65,7 @@ public class FamilyDoctorQuestionnaire {
 
 	public FamilyDoctorQuestionnaire(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
 			boolean highBloodPressure, String hbpSince, String hbpRx, boolean diabetesMellitus, String diabetesSince,
-			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, String heartDisease,
+			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, boolean heartDisease,
 			String queDate, String doctorName, String caseType) {
 		super();
 		this.id = id;
@@ -139,7 +139,7 @@ public class FamilyDoctorQuestionnaire {
 		return riRx;
 	}
 
-	public String getHeartDisease() {
+	public boolean getHeartDisease() {
 		return heartDisease;
 	}
 
@@ -207,7 +207,7 @@ public class FamilyDoctorQuestionnaire {
 		this.riRx = riRx;
 	}
 
-	public void setHeartDisease(String heartDisease) {
+	public void setHeartDisease(boolean heartDisease) {
 		this.heartDisease = heartDisease;
 	}
 
