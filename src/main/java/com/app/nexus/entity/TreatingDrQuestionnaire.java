@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "treating_doctors_questionnaire")
@@ -16,11 +17,14 @@ public class TreatingDrQuestionnaire {
 	@Column(name = "id")
 	private int id;
 	
+//	@NotBlank(message = "Claim Number is required")
 	@Column(name = "claim_no")
 	private String claimNo;
 	@Column(name = "name_of_insured")
+//	@NotBlank(message = "Insured Name is required")
 	private String insuredName;
 	@Column(name = "name_of_insured_company")
+//	@NotBlank(message = "Insured Company Name is required")
 	private String insuredCompanyName;
 	
 	@Column(name="high_blood_pressure")
@@ -87,31 +91,43 @@ public class TreatingDrQuestionnaire {
 	String arthritisTreatment;
 	
 	@Column(name="other_disease")
-	boolean other_disease;
+	boolean otherdisease;
 	@Column(name="other_disease_since")
-	String other_disease_since;
+	String otherdiseasesince;
 	@Column(name="other_disease_treatment")
-	String other_disease_treatment;
+	String otherdiseasetreatment;
 	
 	@Column(name="date_time_of_admission")
+//	@NotBlank(message = "Admission Date-Time is required")
 	String admissionDate;
 	@Column(name="date_time_of_discharge")
+//	@NotBlank(message = "Discharge Date-Time is required")
 	String dischargeDate;
 
 	@Column(name="room_rent_per_day")
+//	@NotBlank(message = "Room Rent is required")
 	int roomRentPerDay;
+//	@NotBlank(message = "Type of room is required")
 	@Column(name="type_of_room")
 	String roomType;
 
 	@Column(name="payment_mode")
+//	@NotBlank(message = "Payment Mode is required")
 	String paymentMode;
 	@Column(name="any_discount_on_hospital_bill")
-	String HospitalBillDiscount;
+//	@NotBlank(message = "discount field is required")
+	int HospitalBillDiscount;
+	@Column(name="total_hospital_bill")
+//	@NotBlank(message = "Total Hospital Bill is required")
+	int totalHospitalBill;
 
+	@Column(name="Doctor_Name")
+	@NotBlank(message = "Doctor Name is required")
+	String doctorName;
 	@Column(name="questionnaire_date_time")
+	@NotBlank(message = "Questionnaire Date is required")
 	String questionnaireDate;
 	@Column(name="case_type")
-
 	String caseType;
 	public int getId() {
 		return id;
@@ -206,14 +222,14 @@ public class TreatingDrQuestionnaire {
 	public String getArthritisTreatment() {
 		return arthritisTreatment;
 	}
-	public boolean isOther_disease() {
-		return other_disease;
+	public boolean isOtherdisease() {
+		return otherdisease;
 	}
-	public String getOther_disease_since() {
-		return other_disease_since;
+	public String getOtherdiseasesince() {
+		return otherdiseasesince;
 	}
-	public String getOther_disease_treatment() {
-		return other_disease_treatment;
+	public String getOtherdiseasetreatment() {
+		return otherdiseasetreatment;
 	}
 	public String getAdmissionDate() {
 		return admissionDate;
@@ -230,8 +246,14 @@ public class TreatingDrQuestionnaire {
 	public String getPaymentMode() {
 		return paymentMode;
 	}
-	public String getHospitalBillDiscount() {
+	public int getHospitalBillDiscount() {
 		return HospitalBillDiscount;
+	}
+	public int getTotalHospitalBill() {
+		return totalHospitalBill;
+	}
+	public String getDoctorName() {
+		return doctorName;
 	}
 	public String getQuestionnaireDate() {
 		return questionnaireDate;
@@ -332,14 +354,14 @@ public class TreatingDrQuestionnaire {
 	public void setArthritisTreatment(String arthritisTreatment) {
 		this.arthritisTreatment = arthritisTreatment;
 	}
-	public void setOther_disease(boolean other_disease) {
-		this.other_disease = other_disease;
+	public void setOtherdisease(boolean otherdisease) {
+		this.otherdisease = otherdisease;
 	}
-	public void setOther_disease_since(String other_disease_since) {
-		this.other_disease_since = other_disease_since;
+	public void setOtherdiseasesince(String otherdiseasesince) {
+		this.otherdiseasesince = otherdiseasesince;
 	}
-	public void setOther_disease_treatment(String other_disease_treatment) {
-		this.other_disease_treatment = other_disease_treatment;
+	public void setOtherdiseasetreatment(String otherdiseasetreatment) {
+		this.otherdiseasetreatment = otherdiseasetreatment;
 	}
 	public void setAdmissionDate(String admissionDate) {
 		this.admissionDate = admissionDate;
@@ -356,8 +378,14 @@ public class TreatingDrQuestionnaire {
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
 	}
-	public void setHospitalBillDiscount(String hospitalBillDiscount) {
+	public void setHospitalBillDiscount(int hospitalBillDiscount) {
 		HospitalBillDiscount = hospitalBillDiscount;
+	}
+	public void setTotalHospitalBill(int totalHospitalBill) {
+		this.totalHospitalBill = totalHospitalBill;
+	}
+	public void setDoctorName(String doctorName) {
+		this.doctorName = doctorName;
 	}
 	public void setQuestionnaireDate(String questionnaireDate) {
 		this.questionnaireDate = questionnaireDate;
@@ -373,9 +401,10 @@ public class TreatingDrQuestionnaire {
 			boolean neurologicaIllnessl, String neurologicaIllnesslSince, String neurologicaIllnesslTreatment,
 			boolean cancer, String cancerSince, String cancerTreatment, boolean ckd, String ckdSince,
 			String ckdTreatment, boolean arthritis, String arthritisSince, String arthritisTreatment,
-			boolean other_disease, String other_disease_since, String other_disease_treatment, String admissionDate,
-			String dischargeDate, int roomRentPerDay, String roomType, String paymentMode,
-			String hospitalBillDiscount, String questionnaireDate, String caseType) {
+			boolean otherdisease, String otherdiseasesince, String otherdiseasetreatment, String admissionDate,
+			String dischargeDate, int roomRentPerDay, String roomType, String paymentMode, int hospitalBillDiscount,
+			int totalHospitalBill, @NotBlank(message = "Doctor Name is required") String doctorName,
+			@NotBlank(message = "Questionnaire Date is required") String questionnaireDate, String caseType) {
 		super();
 		this.id = id;
 		this.claimNo = claimNo;
@@ -408,15 +437,17 @@ public class TreatingDrQuestionnaire {
 		this.arthritis = arthritis;
 		this.arthritisSince = arthritisSince;
 		this.arthritisTreatment = arthritisTreatment;
-		this.other_disease = other_disease;
-		this.other_disease_since = other_disease_since;
-		this.other_disease_treatment = other_disease_treatment;
+		this.otherdisease = otherdisease;
+		this.otherdiseasesince = otherdiseasesince;
+		this.otherdiseasetreatment = otherdiseasetreatment;
 		this.admissionDate = admissionDate;
 		this.dischargeDate = dischargeDate;
 		this.roomRentPerDay = roomRentPerDay;
 		this.roomType = roomType;
 		this.paymentMode = paymentMode;
 		HospitalBillDiscount = hospitalBillDiscount;
+		this.totalHospitalBill = totalHospitalBill;
+		this.doctorName = doctorName;
 		this.questionnaireDate = questionnaireDate;
 		this.caseType = caseType;
 	}
@@ -425,7 +456,6 @@ public class TreatingDrQuestionnaire {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	public String toString() {
 		return "TreatingDrQuestionnaire [id=" + id + ", claimNo=" + claimNo + ", insuredName=" + insuredName
@@ -441,11 +471,12 @@ public class TreatingDrQuestionnaire {
 				+ ", cancer=" + cancer + ", cancerSince=" + cancerSince + ", cancerTreatment=" + cancerTreatment
 				+ ", ckd=" + ckd + ", ckdSince=" + ckdSince + ", ckdTreatment=" + ckdTreatment + ", arthritis="
 				+ arthritis + ", arthritisSince=" + arthritisSince + ", arthritisTreatment=" + arthritisTreatment
-				+ ", other_disease=" + other_disease + ", other_disease_since=" + other_disease_since
-				+ ", other_disease_treatment=" + other_disease_treatment + ", admissionDate=" + admissionDate
+				+ ", otherdisease=" + otherdisease + ", otherdiseasesince=" + otherdiseasesince
+				+ ", otherdiseasetreatment=" + otherdiseasetreatment + ", admissionDate=" + admissionDate
 				+ ", dischargeDate=" + dischargeDate + ", roomRentPerDay=" + roomRentPerDay + ", roomType=" + roomType
 				+ ", paymentMode=" + paymentMode + ", HospitalBillDiscount=" + HospitalBillDiscount
-				+ ", questionnaireDate=" + questionnaireDate + ", caseType=" + caseType + "]";
+				+ ", totalHospitalBill=" + totalHospitalBill + ", doctorName=" + doctorName + ", questionnaireDate="
+				+ questionnaireDate + ", caseType=" + caseType + "]";
 	}
 	
 }

@@ -45,7 +45,7 @@
 		
 		<p class="h4 mb-4"> * Fill below details </p>
 		
-			<form action="#" th:action="@{/familyDoctorPage/add}"
+			<form action="#" th:action="@{/familyDoctor/add}"
 						 th:object="${familydrquestionnaire}" method="POST">
 
 					<!-- Add hidden form field to handle the update -->
@@ -53,9 +53,9 @@
 	
 					<input type="hidden" th:field="*{id}">
 		
-					<input type="text" th:field="*{claimNo}" class="form-control mb-4 w-25" placeholder="Claim Number">			 
-					<input type="text" th:field="*{insuredPersonName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name">			 
-					<input type="text" th:field="*{insuredCompanyName}"	class="form-control mb-4 w-25" placeholder="Insured Company Name">
+					<input type="text" th:field="*{claimNo}" class="form-control mb-4 w-25" placeholder="Claim Number" required>			 
+					<input type="text" th:field="*{insuredPersonName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name" required>			 
+					<input type="text" th:field="*{insuredCompanyName}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" required>
 					
 					<label><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
 					<table>
@@ -113,23 +113,26 @@
 								<option value="false">FALSE</option>		 
 								<option value="true">TRUE</option>
 							</td>
+							<td>
+								<input type="text" th:field="*{heartDiseaseSince}"	placeholder="Heart Disease Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{heartDiseaseRx}"	placeholder="Heart Disease Rx">
+							</td>
 						</tr>
 				    </table>
 
-<!--					<label for="heartDisease">Heart Disease</label>					-->
-<!--					<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">				    -->
-				
 					<div class="row">
 						<div class="col-50">
 							<label for="queDate">Family Dr. Questionnare Date</label>					
-							<input type="datetime-local" th:field="*{queDate}"	class="form-control mb-4 w-25" placeholder="Questionnaire Date">
+							<input type="datetime-local" th:field="*{queDate}" placeholder="Questionnaire Date" required>
 						</div>
 						<div class="col-50">
 							<label for="doctorName">Family Doctor Name</label>					
-							<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name">
+							<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name" required>
 						</div>
 						<div class="col-50">
-							<label for="caseType">Case Type</label>					
+							<label for="caseType">Case Type</label>
 							<input type="text" th:field="*{caseType}" placeholder="Case Type">	
 						</div>
 					</div>

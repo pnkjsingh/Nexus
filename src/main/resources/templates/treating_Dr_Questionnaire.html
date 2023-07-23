@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Treating Doctor's Questionnaire Form</title>
+		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+		<script>
+			function toggleForm() {
+				var form = document.getElementById("myForm");
+				form.style.display = form.style.display === "none" ? "block" : "none";
+			}
+		</script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	</head>
+	<body>
+		<header>
+
+			<nav>
+				<ul>
+					<li><h1>Welcome to Nexus Health Care</h1></li>
+					<li><a href="/home">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="#">Blogs</a></li>
+
+					<li>
+	                    <div class="header-right">
+	                        <div class="header-btn">
+<!--	                            <a href="/contact" class="btn" style="background-color: lightseagreen;">Get in touch</a>-->
+	                            <a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
+	                            
+	                        </div>
+	                    </div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+	<div class="container">
+		
+		<h3>	Treating Doctor's Questionnaire Form 	</h3>
+		<hr>
+		
+		<button onclick="toggleForm()">Show Form</button>
+		<div id="myForm" class="form-container">
+		
+		<p class="h4 mb-4"> * Fill below details </p>
+		
+			<form action="#" th:action="@{/treatingDoctor/add}"
+						 th:object="${treatingdrquestionnaire}" method="POST">
+
+					<!-- Add hidden form field to handle the update -->
+					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
+	
+					<input type="hidden" th:field="*{id}">
+		
+					<div class="row">
+						<div class="col-50">
+							<input type="text" id="claimNo" name="claimNo" th:field="*{claimNo}" placeholder="Claim Number" required>
+						</div>
+						<div class="col-50">
+							<input type="text" id="insuredName" name="insuredName" th:field="*{insuredName}"	placeholder="Insured Preson name" required>
+						</div>
+						<div class="col-50">
+							<input type="text" id="insuredCompanyName" name="insuredCompanyName" th:field="*{insuredCompanyName}"	placeholder="Insured Company Name" required>
+						</div>
+					</div>
+
+					<br>
+					<label><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
+					<table>
+						<tr>
+							<th> Disease Name</th>
+							<th> Is Diagnosed?</th>
+							<th> Duration of Disease</th>
+							<th> Treatment</th>
+						</tr>
+						<tr>
+<!--							<td><label for="highBloodPressure">High blood Pressure</label></td>-->
+							<td><label for="highBloodPressure">High blood Pressure</label></td>
+							<td>
+								<select id="highBloodPressure" name="highBloodPressure" required>
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>
+								<option value="true">TRUE</option>							
+							</td>
+							<td><input type="text" th:field="*{hbpSince}"	placeholder="High blood Pressure Since" >
+							</td>
+							<td><input type="text" th:field="*{hbpTreatment}" placeholder="High blood Pressure Treatment">								
+							</td>
+						</tr>
+						<tr>
+							<td><label for="diabetesMellitus">Diabetes Mellitus</label></td>
+							<td>
+								<select id="diabetesMellitus" name="diabetesMellitus">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{diabetesSince}"	placeholder="Diabetes Mellitus Since">
+							</td>
+							<td>
+								<input type="text" th:field="*{diabetesTreatment}"	placeholder="Diabetes Mellitus Rx">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="respiratoryIllness">Respiratory-Illness</label></td>
+							<td>
+								<select id="respiratoryIllness" name="respiratoryIllness">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{riSince}"	placeholder="Respiratory-Illness Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{riTreatment}"	placeholder="Respiratory-Illness Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="heartDisease">Heart Disease</label></td>
+							<td>
+								<select id="heartDisease" name="Heart Disease">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{heartDiseaseSince}"	placeholder="HearDisease Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{heartDiseaseTreatment}"	placeholder="Heart Disease Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="thyroidIllness">Thyroid Illness</label></td>
+							<td>
+								<select id="thyroidIllness" name="thyroidIllness">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{thyroidIllnessSince}"	placeholder="Thyroid-Illness Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{thyroidIllnessTreatment}"	placeholder="Thyroid Illness Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="neurologicaIllnessl">NeurologicaI llnessl</label></td>
+							<td>
+								<select id="neurologicaIllnessl" name="Neurologica Illnessl">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{neurologicaIllnesslSince}"	placeholder="Neurologica Illnessl Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{neurologicaIllnesslTreatment}"	placeholder="Neurologica Illnessl Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="cancer">Cancer</label></td>
+							<td>
+								<select id="cancer" name="cancer">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{cancerSince}"	placeholder="Cancer Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{cancerTreatment}"	placeholder="Cancer Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="ckd">Ckd</label></td>
+							<td>
+								<select id="ckd" name="ckd">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{ckdSince}"	placeholder="Ckd Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{ckdTreatment}"	placeholder="Ckd Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="arthritis">Arthritis</label></td>
+							<td>
+								<select id="arthritis" name="Arthritis">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" th:field="*{arthritisSince}"	placeholder="Arthritis Since">	 
+							</td>
+							<td>
+								<input type="text" th:field="*{arthritisTreatment}"	placeholder="Arthritis Treatment">
+							</td>
+						</tr>
+						<tr>
+							<td><label for="otherdisease">Other Disease</label></td>
+							<td>
+								<select id="ckd" name="ckd">
+								<option value="false">SELECT</option>
+								<option value="false">FALSE</option>		 
+								<option value="true">TRUE</option>
+							</td>
+							<td>
+								<input type="text" id="otherdiseasesince" name="otherdiseasesince" th:field="*{otherdiseasesince}"	placeholder="Other Disease Since">
+							</td>
+							<td>
+								<input type="text" id="ckd" name="otherdiseasesince" th:field="*{otherdiseasetreatment}"	placeholder="Other Disease Treatment">
+							</td>
+						</tr>
+				    </table>
+
+					<div class="row">
+						<div class="col-50">
+							<label for="admissionDate">Date-Time of Admission</label>					
+							<input type="datetime-local" th:field="*{admissionDate}"	required >
+						</div>
+						<div class="col-50">
+							<label for="dischargeDate">Date-Time of Discharge</label>
+							<input type="datetime-local" th:field="*{dischargeDate}"	required>
+						</div>
+					</div>
+<!--					<label for="heartDisease">Heart Disease</label>					-->
+<!--					<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">				    -->
+
+					<div class="row">
+						<div class="col-50">
+							<label for="roomRentPerDay">Room Rent Per Day</label>					
+							<input type="number" th:field="*{roomRentPerDay}" placeholder="Room Rent Per Day" required>
+						</div>
+						<div class="col-50">
+							<label for="roomType">Room Type(Special/AC/Normal)</label>					
+							<input type="text" th:field="*{roomType}"	placeholder="Room Type" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-50">
+							<label for="paymentMode">Payment Mode</label>					
+							<input type="text" th:field="*{paymentMode}" placeholder="Payment Mode" required>
+						</div>
+						<div class="col-50">
+							<label for="HospitalBillDiscount">Hospital Bill Discount</label>					
+							<input type="number" th:field="*{HospitalBillDiscount}"	placeholder="Hospital Bill Discount" required>
+						</div>
+						<div class="col-50">
+							<label for="totalHospitalBill">Total Hospital Bill</label>					
+							<input type="number" th:field="*{totalHospitalBill}" placeholder="Total Hospital Bill" required>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-50">
+							<label for="questionnaireDate">Treating Dr. Questionnare Date</label>					
+							<input type="datetime-local" th:field="*{questionnaireDate}" required>
+						</div>
+						<div class="col-50">
+							<label for="doctorName">Treating Doctor Name</label>					
+							<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name" required>
+						</div>
+						<div class="col-50">
+							<label for="caseType">Case Type</label>					
+							<input type="text" th:field="*{caseType}" placeholder="Case Type" required>	
+						</div>
+					</div>
+					
+				<button type="submit" class="btn btn-info col-2" >Save</button>			 
+			</form>
+
+			<hr>
+			<a th:href="@{/home}">Goto to Home Page</a>
+		</div>
+		<div class="align-left">
+			<img src="" class="profile" th:src="@{images/health.jfif}">
+		</div>
+		<h5>Click on below button to Upload a Document</h5>
+<!--			<button onclick="toggleForm()">Upload Document</button>-->
+<!--			<div id="myForm" class="form-container">-->
+				<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
+<!--					<div class="row">
+						<div class="col-50">
+							<label for="fileName">File Name</label>					
+							<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
+						</div>
+						<div class="col-50">
+							<label for="caseType">File Type</label>					
+							<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
+						</div>
+					</div>
+-->					
+					<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
+					<br><br>
+					<input type="submit" value="Upload">
+				</form>
+<!--			</div>-->
+		<section>
+
+			<h2>About Us</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo justo et leo interdum, sed scelerisque est cursus. Fusce vel volutpat nunc, ut cursus ex. Nulla ac congue ex, eu finibus nunc.</p>
+		</section>
+		<footer>
+			<p>&copy; 2023 Contact me. All rights reserved.</p>
+		</footer>
+	</body>
+</html>

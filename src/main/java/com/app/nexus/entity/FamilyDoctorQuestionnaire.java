@@ -46,8 +46,12 @@ public class FamilyDoctorQuestionnaire {
 	@Column(name="Ri_Rx")
 	String riRx;
 	
-	@Column(name="Chronic Heart Disease/Thyroid illness")
+	@Column(name="chronic heart disease/thyroid illness")
 	boolean heartDisease;
+	@Column(name="chronic_heart_disease_since")
+	String heartDiseaseSince;
+	@Column(name="chronic_heart_disease_rx")
+	String heartDiseaseRx;
 	
 	@Column(name="Questionnaire_Date")
 	String queDate;
@@ -57,35 +61,6 @@ public class FamilyDoctorQuestionnaire {
 	
 	@Column(name="case_type")
 	String caseType;
-
-	public FamilyDoctorQuestionnaire() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public FamilyDoctorQuestionnaire(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
-			boolean highBloodPressure, String hbpSince, String hbpRx, boolean diabetesMellitus, String diabetesSince,
-			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, boolean heartDisease,
-			String queDate, String doctorName, String caseType) {
-		super();
-		this.id = id;
-		this.claimNo = claimNo;
-		this.insuredPersonName = insuredPersonName;
-		this.insuredCompanyName = insuredCompanyName;
-		this.highBloodPressure = highBloodPressure;
-		this.hbpSince = hbpSince;
-		this.hbpRx = hbpRx;
-		this.diabetesMellitus = diabetesMellitus;
-		this.diabetesSince = diabetesSince;
-		this.diabetesRx = diabetesRx;
-		this.respiratoryIllness = respiratoryIllness;
-		this.riSince = riSince;
-		this.riRx = riRx;
-		this.heartDisease = heartDisease;
-		this.queDate = queDate;
-		this.doctorName = doctorName;
-		this.caseType = caseType;
-	}
 
 	public int getId() {
 		return id;
@@ -139,8 +114,16 @@ public class FamilyDoctorQuestionnaire {
 		return riRx;
 	}
 
-	public boolean getHeartDisease() {
+	public boolean isHeartDisease() {
 		return heartDisease;
+	}
+
+	public String getHeartDiseaseSince() {
+		return heartDiseaseSince;
+	}
+
+	public String getHeartDiseaseRx() {
+		return heartDiseaseRx;
 	}
 
 	public String getQueDate() {
@@ -211,6 +194,14 @@ public class FamilyDoctorQuestionnaire {
 		this.heartDisease = heartDisease;
 	}
 
+	public void setHeartDiseaseSince(String heartDiseaseSince) {
+		this.heartDiseaseSince = heartDiseaseSince;
+	}
+
+	public void setHeartDiseaseRx(String heartDiseaseRx) {
+		this.heartDiseaseRx = heartDiseaseRx;
+	}
+
 	public void setQueDate(String queDate) {
 		this.queDate = queDate;
 	}
@@ -223,14 +214,47 @@ public class FamilyDoctorQuestionnaire {
 		this.caseType = caseType;
 	}
 
+	public FamilyDoctorQuestionnaire(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
+			boolean highBloodPressure, String hbpSince, String hbpRx, boolean diabetesMellitus, String diabetesSince,
+			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, boolean heartDisease,
+			String heartDiseaseSince, String heartDiseaseRx, String queDate, String doctorName, String caseType) {
+		super();
+		this.id = id;
+		this.claimNo = claimNo;
+		this.insuredPersonName = insuredPersonName;
+		this.insuredCompanyName = insuredCompanyName;
+		this.highBloodPressure = highBloodPressure;
+		this.hbpSince = hbpSince;
+		this.hbpRx = hbpRx;
+		this.diabetesMellitus = diabetesMellitus;
+		this.diabetesSince = diabetesSince;
+		this.diabetesRx = diabetesRx;
+		this.respiratoryIllness = respiratoryIllness;
+		this.riSince = riSince;
+		this.riRx = riRx;
+		this.heartDisease = heartDisease;
+		this.heartDiseaseSince = heartDiseaseSince;
+		this.heartDiseaseRx = heartDiseaseRx;
+		this.queDate = queDate;
+		this.doctorName = doctorName;
+		this.caseType = caseType;
+	}
+
+	public FamilyDoctorQuestionnaire() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
-		return "FamilyDoctorQuestionnior [id=" + id + ", claimNo=" + claimNo + ", insuredPersonName="
+		return "FamilyDoctorQuestionnaire [id=" + id + ", claimNo=" + claimNo + ", insuredPersonName="
 				+ insuredPersonName + ", insuredCompanyName=" + insuredCompanyName + ", highBloodPressure="
 				+ highBloodPressure + ", hbpSince=" + hbpSince + ", hbpRx=" + hbpRx + ", diabetesMellitus="
 				+ diabetesMellitus + ", diabetesSince=" + diabetesSince + ", diabetesRx=" + diabetesRx
 				+ ", respiratoryIllness=" + respiratoryIllness + ", riSince=" + riSince + ", riRx=" + riRx
-				+ ", heartDisease=" + heartDisease + ", queDate=" + queDate + ", doctorName=" + doctorName
-				+ ", caseType=" + caseType + "]";
+				+ ", heartDisease=" + heartDisease + ", heartDiseaseSince=" + heartDiseaseSince + ", heartDiseaseRx="
+				+ heartDiseaseRx + ", queDate=" + queDate + ", doctorName=" + doctorName + ", caseType=" + caseType
+				+ "]";
 	}
+
 }
