@@ -3,7 +3,6 @@
 	<head>
 		<title>Treating Doctor's Questionnaire Form</title>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
-
 		<script>
 			function toggleForm() {
 				var form = document.getElementById("myForm");
@@ -14,7 +13,6 @@
 	</head>
 	<body>
 		<header>
-
 			<nav>
 				<ul>
 					<li><h1>Welcome to Nexus Health Care</h1></li>
@@ -22,37 +20,35 @@
 					<li><a href="/about">About</a></li>
 					<li><a href="/services">Services</a></li>
 					<li><a href="#">Blogs</a></li>
-
 					<li>
 	                    <div class="header-right">
 	                        <div class="header-btn">
 <!--	                            <a href="/contact" class="btn" style="background-color: lightseagreen;">Get in touch</a>-->
-	                            <a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
-	                            
+	                            <a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>	                            
 	                        </div>
 	                    </div>
 					</li>
 				</ul>
 			</nav>
 		</header>
-	<div class="container">
-		
 		<h3>	Treating Doctor's Questionnaire Form 	</h3>
-		<hr>
-		
-		<button onclick="toggleForm()">Show Form</button>
+
+<!--	<button onclick="toggleForm()">Show Form</button>
 		<div id="myForm" class="form-container">
-		
+-->		<hr>
 		<p class="h4 mb-4"> * Fill below details </p>
 		
-			<form action="#" th:action="@{/treatingDoctor/add}"
-						 th:object="${treatingdrquestionnaire}" method="POST">
+			<!-- Display the success or error message, if present -->
+			<div th:if="${message}" th:class="${message.startsWith('Questionnaire fail') ? 'error-message' : 'success-message'}">
+				<p th:text="${message}"></p>
+			</div>
+			<form th:action="@{/treatingDoctor/add}"
+				 th:object="${treatingdrquestionnaire}" method="POST">
 
 					<!-- Add hidden form field to handle the update -->
 					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
-	
-					<input type="hidden" th:field="*{id}">
-		
+
+				<input type="hidden" th:field="*{id}">
 					<div class="row">
 						<div class="col-50">
 							<input type="text" id="claimNo" name="claimNo" th:field="*{claimNo}" placeholder="Claim Number" required>
@@ -75,7 +71,7 @@
 							<th> Treatment</th>
 						</tr>
 						<tr>
-<!--							<td><label for="highBloodPressure">High blood Pressure</label></td>-->
+<!--						<td><label for="highBloodPressure">High blood Pressure</label></td>-->
 							<td><label for="highBloodPressure">High blood Pressure</label></td>
 							<td>
 								<select id="highBloodPressure" name="highBloodPressure" required>
@@ -224,7 +220,6 @@
 							</td>
 						</tr>
 				    </table>
-
 					<div class="row">
 						<div class="col-50">
 							<label for="admissionDate">Date-Time of Admission</label>					
@@ -235,8 +230,8 @@
 							<input type="datetime-local" th:field="*{dischargeDate}"	required>
 						</div>
 					</div>
-<!--					<label for="heartDisease">Heart Disease</label>					-->
-<!--					<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">				    -->
+<!--				<label for="heartDisease">Heart Disease</label>					-->
+<!--				<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">				    -->
 
 					<div class="row">
 						<div class="col-50">
@@ -276,35 +271,34 @@
 							<input type="text" th:field="*{caseType}" placeholder="Case Type" required>	
 						</div>
 					</div>
-					
 				<button type="submit" class="btn btn-info col-2" >Save</button>			 
 			</form>
 
 			<hr>
 			<a th:href="@{/home}">Goto to Home Page</a>
-		</div>
-		<div class="align-left">
-			<img src="" class="profile" th:src="@{images/health.jfif}">
-		</div>
-		<h5>Click on below button to Upload a Document</h5>
-<!--			<button onclick="toggleForm()">Upload Document</button>-->
-<!--			<div id="myForm" class="form-container">-->
-				<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
-<!--					<div class="row">
-						<div class="col-50">
-							<label for="fileName">File Name</label>					
-							<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
-						</div>
-						<div class="col-50">
-							<label for="caseType">File Type</label>					
-							<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
-						</div>
+<!--		</div>															-->
+			<div class="align-left">
+				<img src="" class="profile" th:src="@{images/health.jfif}">
+			</div>
+			<h5>Click on below button to Upload a Document</h5>
+<!--		<button onclick="toggleForm()">Upload Document</button>-->
+<!--		<div id="myForm" class="form-container">-->
+			<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
+<!--			<div class="row">
+					<div class="col-50">
+						<label for="fileName">File Name</label>					
+						<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
 					</div>
--->					
-					<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
-					<br><br>
-					<input type="submit" value="Upload">
-				</form>
+					<div class="col-50">
+						<label for="caseType">File Type</label>					
+						<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
+					</div>
+				</div>
+-->
+				<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
+				<br><br>
+				<input type="submit" value="Upload">
+			</form>
 <!--			</div>-->
 		<section>
 

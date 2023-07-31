@@ -35,41 +35,20 @@ public class TreatingDrQuestionnaireConroller {
 	}
 	
 	@PostMapping("/add")
-	public String addContact(@ModelAttribute("treatingdrquestionnaire") @Valid TreatingDrQuestionnaire thetreatingDrQuestionnaire,BindingResult bindingResult) {
+	public String addContact(@ModelAttribute("treatingdrquestionnaire") @Valid TreatingDrQuestionnaire thetreatingDrQuestionnaire,
+			BindingResult bindingResult, Model model) {
 		
 		 if (bindingResult.hasErrors()) {
-				/*
-				 * System.out.println(
-				 * "===============================================================");
-				 * System.out.println(
-				 * "===============================================================");
-				 * System.out.println(bindingResult); System.out.println(
-				 * "===============================================================");
-				 * System.out.println(
-				 * "===============================================================");
-				 * System.out.println(thetreatingDrQuestionnaire); System.out.println(
-				 * "===============================================================");
-				 * System.out.println(
-				 * "===============================================================");
-				 */
+			 			 
+			 model.addAttribute("message", "Questionnaire fail to save!");
 			 
 			 return "treating_Dr_Questionnaire";
 	        }
 		thetreatingDrQuestionnaire.setId(0);
-		//save the Questionnaire
-		/*
-		 * System.out.println(
-		 * "===============================================================");
-		 * System.out.println(
-		 * "===============================================================");
-		 * System.out.println(thetreatingDrQuestionnaire); System.out.println(
-		 * "===============================================================");
-		 * System.out.println(
-		 * "===============================================================");
-		 */
-		// Save the Treating Doctor Questionnaire Form.
+
 		drQuestionnaireServices.save(thetreatingDrQuestionnaire);
-		
+
+		model.addAttribute("message", "Questionnaire saved successfully!");
 		//use a redirect to prevent duplicate submissions
 		return "redirect:/treatingDoctor/show";
 	}
