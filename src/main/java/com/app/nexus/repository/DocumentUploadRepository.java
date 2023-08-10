@@ -2,8 +2,8 @@ package com.app.nexus.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.app.nexus.entity.DocumentUpload;
+import com.app.nexus.entity.Document;
 
-public interface DocumentUploadRepository extends JpaRepository<DocumentUpload, Integer>{
+public interface DocumentUploadRepository extends JpaRepository<Document, Long>{
 
 }

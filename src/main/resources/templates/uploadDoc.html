@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Document</title>
+</head>
+<body>
+    <h2>Upload Document</h2>
+    <form action="/api/documents/upload" method="post" enctype="multipart/form-data">
+        <label for="file">Select a file:</label>
+        <input type="file" name="file" id="file" accept=".pdf,.doc,.docx" required>
+        <br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

@@ -146,10 +146,13 @@
 		<div class="align-left">
 			<img src="" class="profile" th:src="@{images/health.jfif}">
 		</div>
-		<h5>Click on below button to Upload a Document</h5>
+		<h5>Click on below to Upload a Document</h5>
+					<a th:href="@{/upload}">Document Upload Page</a>
+
 <!--			<button onclick="toggleForm()">Upload Document</button>-->
-<!--			<div id="myForm" class="form-container">-->
+<!--			<div id="myForm" class="form-container"
 				<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
+					>-->
 <!--					<div class="row">
 						<div class="col-50">
 							<label for="fileName">File Name</label>					
@@ -161,10 +164,11 @@
 						</div>
 					</div>
 -->					
-					<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
-					<br><br>
-					<input type="submit" value="Upload">
-				</form>
+<!--					<label for="file">Select a file:</label>
+			        <input type="file" name="file" id="file" accept=".pdf,.doc,.docx" required>
+			        <br>
+			        <input type="submit" value="Upload">
+				</form>-->
 <!--			</div>-->
 		<section>
 
