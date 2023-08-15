@@ -1,6 +1,6 @@
 	
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>My Home Page</title>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
@@ -22,25 +22,27 @@
 					<li>
 	                    <div class="header-right">
 	                        <div class="header-btn">
-	                            <a href="/contact/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
+	                            <a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Get in touch</a>
 	                        </div>
 	                    </div>
 					</li>
 				</ul>
 			</nav>
 		</header>
-		<div>
-<!--			<video preload="" autoplay="true" playsinline="" loop="" muted="" poster="721">-->
-<!--				<source src="https://www.enfuse-solutions.com/wp-content/uploads/2022/02/EnFuse-Solutions.mp4" type="video/mp4">-->
-<!--          		<source src="https://www.enfuse-solutions.com/wp-content/uploads/2022/02/EnFuse-Solutions.webm" type="video/webm">-->
-<!--          		<source src="https://www.enfuse-solutions.com/wp-content/uploads/2022/03/EnFuse-Solutions-new.ogg" type="video/ogg">-->
-<!--			</video>-->
-		</div>
 		<div class="align-left">
 <!--			<img src="https://thumbs.dreamstime.com/b/internet-information-technology-businessman-hand-showing-concept-75784736.jpg" alt="" height="300" width="1520"> 
 -->
 			<img src="" th:src="@{images/tech1.jfif}" alt="" height="300" width="1520">
 		</div>
+<!--		<div>
+						<p th:text="${message}" class="message"></p>
+		</div>-->
+		<div th:if="${message}">
+        <script th:inline="javascript">
+            alert([[${message}]]);
+            window.location.href = '/home';
+        </script>
+    </div>
 		<div class="align-left">
 			<img src="" class="profile" th:src="@{images/health.jfif}"  alt="" height="200" width="400">
 <!--			<img src="https://www.enfuse-solutions.com/wp-content/uploads/2021/09/why-us-img.png" alt="Tech Image">
@@ -48,7 +50,7 @@
 		</div>
 		<section>
 			<h2>About Us</h2>
-			<p>As a Calim Investigation Agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
+			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
 
 		<footer>

@@ -111,6 +111,10 @@
 					background-color: #e0e0e0;
 				}
 				
+				.message {
+					color: red;
+				}
+				
 				.success-message {
 				    background-color: #d4edda;
 				    color: #155724;
