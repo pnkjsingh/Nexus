@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-	<header>
-		<nav>
-			<ul>
-				<li><h1>Welcome to Nexus Health Care</h1></li>
-				<li><a href="/home">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/services">Services</a></li>
-				<li><a href="#">Blogs</a></li>
-				<li>
-                    <div class="header-right">
-                        <div class="header-btn">
-<!--	                            <a href="/contact" class="btn" style="background-color: lightseagreen;">Get in touch</a>-->
-							<a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
-	                    </div>
-                    </div>
-				</li>
-			</ul>
-		</nav>
-	</header>
+		<head>
+		<title>Contact Us Page</title>
+		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+	</head>
 	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><h1>Welcome to Nexus Health Care</h1></li>
+					<li><a href="/home">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/services">Services</a></li>
+					<li><a href="#">Blogs</a></li>
+					<li>
+	                    <div class="header-right">
+	                        <div class="header-btn">
+	<!--	                            <a href="/contact" class="btn" style="background-color: lightseagreen;">Get in touch</a>-->
+								<a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>
+		                    </div>
+	                    </div>
+					</li>
+				</ul>
+			</nav>
+		</header>
     	<div class="container">
 			<form action="#" th:action="@{/contactUs/add}" th:object="${contactUs}"	method="POST">
 				
