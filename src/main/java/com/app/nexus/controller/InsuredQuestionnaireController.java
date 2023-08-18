@@ -31,13 +31,35 @@ public class InsuredQuestionnaireController {
 		return "insured_questionnaire";
 	}
 	
+	/*
+	 * @PostMapping("/add") public String
+	 * addContact(@ModelAttribute("familydrquestionnare") InsuredQuestionnaire
+	 * theInsuredQuestionnaire) { theInsuredQuestionnaire.setId(0); //save the
+	 * employee insuredQuestionnaireService.save(theInsuredQuestionnaire);
+	 * 
+	 * //use a redirect to prevent duplicate submissions return
+	 * "redirect:/insured/questionnaireForm"; }
+	 */
+	
 	@PostMapping("/add")
-	public String addContact(@ModelAttribute("familydrquestionnare") InsuredQuestionnaire theInsuredQuestionnaire) {
-		theInsuredQuestionnaire.setId(0);
-		//save the employee
-		insuredQuestionnaireService.save(theInsuredQuestionnaire);
-		
-		//use a redirect to prevent duplicate submissions
-		return "redirect:/insured/questionnaireForm";
+	public String addContact(@ModelAttribute("familydrquestionnare") InsuredQuestionnaire theInsuredQuestionnaire,Model model) {
+		try {
+			if(theInsuredQuestionnaire.getClaimNumber().equals("") || theInsuredQuestionnaire.getInsuredName().equals("") || 
+					theInsuredQuestionnaire.getInsuranceCompany().equals("") || theInsuredQuestionnaire.getHospitalName().equals("")||
+					theInsuredQuestionnaire.getQuestionnaireDate().equals("") || theInsuredQuestionnaire.getIdentityProof().equals("")
+					) {
+				throw new Exception();
+			}
+			else {
+				theInsuredQuestionnaire.setId(0);
+				//save the employee
+				insuredQuestionnaireService.save(theInsuredQuestionnaire);
+				model.addAttribute("message","Contact added successfully!");				
+			}
+		}
+		 catch (Exception e) {
+				model.addAttribute("message","Error adding Contact");
+		}
+		return "insured_questionnaire";
 	}
 }

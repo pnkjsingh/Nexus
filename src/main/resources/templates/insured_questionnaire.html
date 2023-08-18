@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>Family Doctor's Questionnaire Form</title>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
@@ -16,7 +16,6 @@
 
 	<body>
 		<header>
-
 			<nav>
 				<ul>
 					<li><h1>Welcome to Nexus Health Care</h1></li>
@@ -37,24 +36,20 @@
 				</ul>
 			</nav>
 		</header>
+			<div th:if="${message}">
+		        <script th:inline="javascript">
+		            alert([[${message}]]);
+		            window.location.href = '/insured/questionnaireForm';
+		        </script>
+		    </div>
+
 	<div class="container">
-		
 		<h3>	Insured Questionnaire Form 	</h3>
 		<hr>
-		
-		<button onclick="toggleForm()">Show Form</button>
-		<div id="myForm" class="form-container">
-		
 		<p class="h4 mb-4"> * Fill below details </p>
-		
-			<form action="#" th:action="@{/insured/add}"
-						 th:object="${insuredQuestionnaire}" method="POST">
+			<form action="#" th:action="@{/insured/add}" th:object="${insuredQuestionnaire}" method="POST">
 
-					<!-- Add hidden form field to handle the update -->
-					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
-	
 					<input type="hidden" th:field="*{id}">
-
 					<div class="row">
 						<div class="col-50">
 							<label for="claimNumber">Claim Number</label>
@@ -334,37 +329,17 @@
 			</form>
 			<hr>
 			<a th:href="@{/home}">Goto to Home Page</a>
-		</div>
+<!--		</div>-->
 		<div class="align-left">
 			<img src="" class="profile" th:src="@{images/health.jfif}">
 		</div>
-		<h5>Click on below button to Upload a Document</h5>
-<!--			<button onclick="toggleForm()">Upload Document</button>-->
-<!--			<div id="myForm" class="form-container">-->
-				<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
-<!--					<div class="row">
-						<div class="col-50">
-							<label for="fileName">File Name</label>					
-							<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
-						</div>
-						<div class="col-50">
-							<label for="caseType">File Type</label>					
-							<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
-						</div>
-					</div>
--->					
-					<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
-					<br><br>
-					<input type="submit" value="Upload">
-				</form>
-<!--			</div>-->
 		<section>
 
 			<h2>About Us</h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin commodo justo et leo interdum, sed scelerisque est cursus. Fusce vel volutpat nunc, ut cursus ex. Nulla ac congue ex, eu finibus nunc.</p>
 		</section>
 		<footer>
-			<p>&copy; 2023 Contact me. All rights reserved.</p>
+			<p>&copy;2023 Contact me. All rights reserved.</p>
 		</footer>
 	</body>
 </html>
