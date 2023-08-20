@@ -26,6 +26,10 @@ public class WebUser {
 	@Size(min = 1, message = "is required")
 	@Pattern(regexp="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 	private String email;
+	
+	@NotNull(message = "is required")
+	@Size(min = 1, message = "is required")
+	private String roles;
 
 	public WebUser() {
 
@@ -70,4 +74,13 @@ public class WebUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+	
 }

@@ -33,9 +33,7 @@
 		</header>
 		<h3>	Treating Doctor's Questionnaire Form 	</h3>
 
-<!--	<button onclick="toggleForm()">Show Form</button>
-		<div id="myForm" class="form-container">
--->		<hr>
+		<hr>
 		<p class="h4 mb-4"> * Fill below details </p>
 		
 			<!-- Display the success or error message, if present -->
@@ -49,29 +47,33 @@
 					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
 
 				<input type="hidden" th:field="*{id}">
-					<div class="row">
-						<div class="col-50">
+					<table>
+						<tr align="center">
+							<th>Claim Number</th>
+							<th>Insured Name</th>
+							<th>Insured Company Name</th>
+						</tr>
+						<td>
 							<input type="text" id="claimNo" name="claimNo" th:field="*{claimNo}" placeholder="Claim Number" required>
-						</div>
-						<div class="col-50">
+						</td>
+						<td>
 							<input type="text" id="insuredName" name="insuredName" th:field="*{insuredName}"	placeholder="Insured Preson name" required>
-						</div>
-						<div class="col-50">
+						</td>
+						<td>
 							<input type="text" id="insuredCompanyName" name="insuredCompanyName" th:field="*{insuredCompanyName}"	placeholder="Insured Company Name" required>
-						</div>
-					</div>
+						</td>
+					</table>
 
 					<br>
 					<label><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
 					<table>
-						<tr>
+						<tr align="center">
 							<th> Disease Name</th>
 							<th> Is Diagnosed?</th>
 							<th> Duration of Disease</th>
 							<th> Treatment</th>
 						</tr>
 						<tr>
-<!--						<td><label for="highBloodPressure">High blood Pressure</label></td>-->
 							<td><label for="highBloodPressure">High blood Pressure</label></td>
 							<td>
 								<select id="highBloodPressure" name="highBloodPressure" required>
@@ -278,28 +280,8 @@
 			<a th:href="@{/home}">Goto to Home Page</a>
 <!--		</div>															-->
 			<div class="align-left">
-				<img src="" class="profile" th:src="@{images/health.jfif}">
+				<img src="" class="profile" th:src="@{images/HealthCare.jpg}">
 			</div>
-			<h5>Click on below button to Upload a Document</h5>
-<!--		<button onclick="toggleForm()">Upload Document</button>-->
-<!--		<div id="myForm" class="form-container">-->
-			<form method="POST" action="/api/documents/upload" enctype="multipart/form-data" >
-<!--			<div class="row">
-					<div class="col-50">
-						<label for="fileName">File Name</label>					
-						<input type="text" th:field="*{fileName}"	class="form-control mb-4 w-25" placeholder="File Name">
-					</div>
-					<div class="col-50">
-						<label for="caseType">File Type</label>					
-						<input type="text" th:field="*{caseType}"	class="form-control mb-4 w-25" placeholder="Case Type">	
-					</div>
-				</div>
--->
-				<input type="file" name="file" accept=".pdf,.doc,.docx,.txt">
-				<br><br>
-				<input type="submit" value="Upload">
-			</form>
-<!--			</div>-->
 		<section>
 
 			<h2>About Us</h2>

@@ -9,8 +9,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "user_id")
+    private Long user_id;
 
     @Column(name = "username")
     private String userName;
@@ -29,7 +29,7 @@ public class User {
 
     @Column(name = "email")
     private String email;
-
+    
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -54,11 +54,11 @@ public class User {
     }
 
     public Long getId() {
-        return id;
+        return user_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long user_id) {
+        this.user_id = user_id;
     }
 
     public String getUserName() {
@@ -120,7 +120,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "user_id=" + user_id +
                 ", userName='" + userName + '\'' +
                 ", enabled=" + enabled +
                 ", firstName='" + firstName + '\'' +
