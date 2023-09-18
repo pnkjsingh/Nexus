@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
+public class MasterController {
 	
 	@GetMapping("/")
     public String showHome() {
@@ -52,6 +52,19 @@ public class LoginController {
     public String showDocUpload() {
 
         return "uploadDoc";
+    }
+	
+	
+	@GetMapping("/report")
+    public String showReport() {
+
+        return "report";
+    }
+	
+	@GetMapping("/admin")
+    public String Admin() {
+
+        return "admin";
     }
 	
     // add request mapping for /access-denied

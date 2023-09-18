@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+    <title>Photo Slideshow with Links</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
-<body>
-    <h1>Welcome, Admin!</h1>
-    <!-- Add admin-specific content here -->
-</body>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><h1>Welcome to Nexus Health Care</h1></li>
+					<li><a href="/home">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/service">Services</a></li>
+					<li><a href="/showMyLoginPage">Login</a></li>
+					<li>
+	                    <div class="header-right">
+	                        <div class="header-btn">
+	                            <a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Get in touch</a>
+	                        </div>
+	                    </div>
+					</li>
+				</ul>
+			</nav>
+		</header>
+	    <div class="slideshow-container">
+			<div class="mySlides fade">
+				<img src="images/tech1.jfif" alt="Image 1" height="300" width="1520">
+			</div>
+	
+			<div class="mySlides fade">
+				<img src="images/tech2.jfif" alt="Image 2" height="300" width="1520">
+			</div>
+	
+			<div class="mySlides fade">
+				<img src="images/tech3.jfif" alt="Image 3" height="300" width="1520">
+			</div>
+	
+	        <!-- Add more slides as needed -->
+	
+	        <!-- Navigation buttons (optional) -->
+	        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+	    </div>
+	
+	    <div class="links-container">
+	        <a href="#">Link 1</a>
+	        <a href="#">Link 2</a>
+	        <a href="#">Link 3</a>
+	        <!-- Add more links as needed -->
+	    </div>
+	
+	    <script src="js/script.js"></script>
+	</body>
 </html>
