@@ -23,7 +23,7 @@ public class InsuredQuestionnaireController {
 	}
 
 	@GetMapping("/questionnaireForm")
-	public String insuredQuestionnaireAdd(Model theModel) {
+	public String showInsuredQuestionnaireForm(Model theModel) {
 		
 		//Create model attribute to bind form data
 		InsuredQuestionnaire insuredQuestionnaire=new InsuredQuestionnaire();
@@ -42,7 +42,7 @@ public class InsuredQuestionnaireController {
 	 */
 	
 	@PostMapping("/add")
-	public String addContact(@ModelAttribute("familydrquestionnare") InsuredQuestionnaire theInsuredQuestionnaire,Model model) {
+	public String addInsuredQuestionnaire(@ModelAttribute("familydrquestionnare") InsuredQuestionnaire theInsuredQuestionnaire,Model model) {
 		try {
 			if(theInsuredQuestionnaire.getClaimNumber().equals("") || theInsuredQuestionnaire.getInsuredName().equals("") || 
 					theInsuredQuestionnaire.getInsuranceCompany().equals("") || theInsuredQuestionnaire.getHospitalName().equals("")||
@@ -54,7 +54,7 @@ public class InsuredQuestionnaireController {
 				theInsuredQuestionnaire.setId(0);
 				//save the employee
 				insuredQuestionnaireService.save(theInsuredQuestionnaire);
-				model.addAttribute("message","Contact added successfully!");				
+				model.addAttribute("message","Insured Questionnaire added successfully!");				
 			}
 		}
 		 catch (Exception e) {

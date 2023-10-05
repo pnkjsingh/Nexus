@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Services We Provides</title>
+		<title>Insurance-Claim creation Form</title>
+		<script>
+			function toggleForm() {
+				var form = document.getElementById("myForm");
+				form.style.display = form.style.display === "none" ? "block" : "none";
+			}
+		</script>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	</head>
+
 	<body>
 		<div class="header">
 			<a class="menu-icon" href="#">
@@ -37,62 +44,47 @@
 				</svg>
 			</div>
 		</div>
+		<div th:if="${message}">
+	        <script th:inline="javascript">
+	            alert([[${message}]]);
+	            window.location.href = '/insuranceclaim/show';
+	        </script>
+	    </div>
 
-		<div class="slideshow-container">
-			<img src="" th:src="@{images/tech1.jfif}" alt="" height="250" width="1520">
+		<div class="form-container">	
+			
+		    <h1>Insert and Claim Insurance Data</h1>
+			<form  th:action="@{/insuranceclaim/add}" th:object="${insuranceClaimDTO}" method="POST">
+				<!-- Insurance fields -->
+				<input type="text" th:field="*{policyNumber}" />
+				<input type="text" th:field="*{insuranceType}" />
+				<input type="text" th:field="*{insuredName}" />
+				<input type="text" th:field="*{insuranceCompany}" />
+				<input type="text" th:field="*{premiumAmount}" />
+			
+				<!-- Claim fields -->
+				<input type="text" th:field="*{claimAmount}" />
+				<input type="date" th:field="*{claimDate}" />
+			
+				<button type="submit" id="submit">Submit</button>
+			</form>
 		</div>
-		<div class="line-sperater">		</div>
 		
-		<h1 style="text-align: center; margin-top: -0.5em; margin-bottom: 1em;">Below services we provide</h1>
-		<article>
-			<section class="card">
-				<div class="text-content">
-					<h3>Insurance Investigations</h3>
-					<p>We assist insurance companies in evaluating claims, detecting fraudulent activities, and ensuring the integrity of insurance processes.</p>  
-					<a href="#">Join now</a>
-				</div>
-				<div class="visual">
-					<img src="https://images.unsplash.com/photo-1548142813-c348350df52b?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzgzMDU1NDY&ixlib=rb-4.0.3&q=80" alt=""  style="height:110%"/>
-				</div>
-			</section>
-		
-			<section class="card">
-				<div class="text-content">
-					<h3>Private Investigations</h3>
-					<p> Our discreet and professional private investigators assist individuals with personal matters such as infidelity investigations, missing persons cases, and more.</p>  
-					<a href="#">Join now</a>
-				</div>
-				<div class="visual">
-					<img src="https://images.unsplash.com/photo-1564460576398-ef55d99548b2?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzgzMDU1NDY&ixlib=rb-4.0.3&q=80" alt="" style="height:110%" />
-				</div>
-			</section> 
-		
-			<section class="card">
-				<div class="text-content">
-					<h3>Legal Support</h3>
-					<p> We provide comprehensive support to legal professionals, including evidence gathering, witness interviews, and litigation support services.</p>
-					<a href="#">Join now</a>
-				</div>
-				<div class="visual">
-					<img src="https://images.unsplash.com/photo-1631085274261-0ace0296eaa0?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzgzMTExMDg&ixlib=rb-4.0.3&q=80" alt="" style="height:110%" />
-				</div>
-			</section> 
-		</article>
-		
-		<div class="line-sperater">		</div>
+		<div class="line-sperater">
+		</div>
 
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
-		
 		<script src="/js/script.js"></script>
+
 		<section class="before-footer">
 			<h2>About Us</h2>
 			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
 
 		<footer>
-			<p>&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
 		</footer>
 	</body>
 </html>

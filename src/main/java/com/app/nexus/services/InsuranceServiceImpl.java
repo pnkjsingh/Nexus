@@ -12,8 +12,12 @@ import com.app.nexus.repository.InsuranceRepository;
 @Service
 public class InsuranceServiceImpl implements InsuranceServices {
 	
+	private InsuranceRepository insuranceRepository;
+	
 	@Autowired
-	InsuranceRepository insuranceRepository;
+	public InsuranceServiceImpl(InsuranceRepository theInsuranceRepository) {
+		insuranceRepository=theInsuranceRepository;
+	}
 
 	@Override
 	public List<Insurance> findAll() {

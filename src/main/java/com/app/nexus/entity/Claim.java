@@ -26,7 +26,7 @@ public class Claim {
     @Column(name = "claim_date")
     private Date claimDate;
 
-    // Define the many-to-one relationship with Insurance
+	// Define the many-to-one relationship with Insurance
     @ManyToOne
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
@@ -81,4 +81,5 @@ public class Claim {
 		return "Claim [claimId=" + claimId + ", claimAmount=" + claimAmount + ", claimDate=" + claimDate
 				+ ", insurance=" + insurance + "]";
 	}
+
 }

@@ -50,6 +50,6 @@ public class TreatingDrQuestionnaireConroller {
 
 		model.addAttribute("message", "Questionnaire saved successfully!");
 		//use a redirect to prevent duplicate submissions
-		return "redirect:/treatingDoctor/show";
+		return "redirect:/home";
 	}
 }

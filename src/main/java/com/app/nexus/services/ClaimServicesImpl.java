@@ -12,9 +12,13 @@ import com.app.nexus.repository.ClaimRepository;
 @Service
 public class ClaimServicesImpl implements ClaimServices {
 	
-	@Autowired
-	ClaimRepository claimRepository;
+	private ClaimRepository claimRepository;
 
+	@Autowired
+	public ClaimServicesImpl(ClaimRepository theClaimRepository) {
+		claimRepository=theClaimRepository;
+	}
+	
 	@Override
 	public List<Claim> findAll() {
 		

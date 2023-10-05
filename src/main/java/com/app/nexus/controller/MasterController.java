@@ -67,6 +67,12 @@ public class MasterController {
         return "admin";
     }
 	
+	@GetMapping("/insurance")
+    public String insurancePage() {
+
+        return "Insurance";
+    }
+	
     // add request mapping for /access-denied
 
     @GetMapping("/access-denied")

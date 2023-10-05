@@ -9,32 +9,46 @@
 				form.style.display = form.style.display === "none" ? "block" : "none";
 			}
 		</script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	</head>
 	<body>
-		<header>
-			<nav>
-				<ul>
-					<li><h1>Welcome to Nexus Health Care</h1></li>
-					<li><a href="/home">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/services">Services</a></li>
-					<li><a href="#">Blogs</a></li>
-					<li>
-	                    <div class="header-right">
-	                        <div class="header-btn">
-<!--	                            <a href="/contact" class="btn" style="background-color: lightseagreen;">Get in touch</a>-->
-	                            <a href="/showFormForContact" class="btn" style="background-color: lightseagreen;">Get in touch</a>	                            
-	                        </div>
-	                    </div>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<h3>	Treating Doctor's Questionnaire Form 	</h3>
-
-		<hr>
-		<p class="h4 mb-4"> * Fill below details </p>
+		<div class="header">
+			<a class="menu-icon" href="#">
+				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+				</svg>
+				<h2> Nexus Health Care</h2>
+			</a>
+			<div class="header-menu">
+				<a href="/home">Home</a>
+				<a href="/about">About</a>
+				<a href="/service">Services</a>
+				<a href="/showMyLoginPage">Login</a>
+				<a href="/contactUs/form">Contact</a>
+			</div>
+<!--			<div class="header-right">
+				<div class="header-btn">
+					<a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Contact</a>
+				</div>
+			</div>
+-->
+			<div class="header-icons">
+				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+				</svg>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+					<path d="M437.02 330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521 243.251 404 198.548 404 148 404 66.393 337.607 0 256 0S108 66.393 108 148c0 50.548 25.479 95.251 64.262 121.962-36.21 12.495-69.398 33.136-97.281 61.018C26.629 379.333 0 443.62 0 512h40c0-119.103 96.897-216 216-216s216 96.897 216 216h40c0-68.38-26.629-132.667-74.98-181.02zM256 256c-59.551 0-108-48.448-108-108S196.449 40 256 40s108 48.448 108 108-48.449 108-108 108z" />
+				</svg>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 208.955 208.955">
+					<path d="M190.85 200.227L178.135 58.626a7.5 7.5 0 00-7.47-6.829h-26.221V39.971c0-22.04-17.93-39.971-39.969-39.971-22.038 0-39.966 17.931-39.966 39.971v11.826H38.27a7.5 7.5 0 00-7.47 6.829L18.035 200.784a7.5 7.5 0 007.47 8.17h157.946a7.5 7.5 0 007.399-8.727zM79.509 39.971c0-13.769 11.2-24.971 24.967-24.971 13.768 0 24.969 11.202 24.969 24.971v11.826H79.509V39.971zm-45.8 153.984L45.127 66.797h19.382v13.412a7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.5-7.5V66.797h49.936v13.412a7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.5-7.5V66.797h19.364l11.418 127.158H33.709z" />
+				</svg>
+			</div>
+		</div>
+		
+		<div class="form-container">		
+			<h2><Center>	Treating Doctor's Questionnaire Form 	</Center></h2>
+	
+			<hr>
+			<p class="text-decoration1"> * Fill below details </p>
 		
 			<!-- Display the success or error message, if present -->
 			<div th:if="${message}" th:class="${message.startsWith('Questionnaire fail') ? 'error-message' : 'success-message'}">
@@ -46,14 +60,23 @@
 					<!-- Add hidden form field to handle the update -->
 					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
 
-				<input type="hidden" th:field="*{id}">
-					<table>
-						<tr>
-							<th>Claim Number</th>
-							<th>Insured Name</th>
-							<th>Insured Company Name</th>
-						</tr>
-						<td>
+				<div class="row">
+					<input type="hidden" th:field="*{id}"/>		
+					<div class="col-50">
+						<label class="levelAzure" for="claimNo">claim Number</label>
+						<input type="text" id="claimNo" name="claimNo" th:field="*{claimNo}" class="form-control mb-4 w-25" placeholder="Claim Number" required>			 
+					</div>
+					<div class="col-50">
+						<label class="levelAzure" for="insuredName">Insured Name</label>
+						<input type="text" id="insuredName" name="insuredName" th:field="*{insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Name" required>
+					</div>
+					<div class="col-50">
+						<label class="levelAzure" for="insuredCompanyName">Insured Company Name</label>
+						<input type="text" id="insuredCompanyName" name="insuredCompanyName" th:field="*{insuredCompanyName}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" required>
+					</div>
+				</div>
+
+<!--						<td>
 							<input type="text" id="claimNo" name="claimNo" th:field="*{claimNo}" placeholder="Claim Number" required>
 						</td>
 						<td>
@@ -63,9 +86,9 @@
 							<input type="text" id="insuredCompanyName" name="insuredCompanyName" th:field="*{insuredCompanyName}"	placeholder="Insured Company Name" required>
 						</td>
 					</table>
+-->
 
-					<br>
-					<label><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
+					<label style="margin-top: 2em; margin-left: 7em; color: azure;"><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
 					<table>
 						<tr>
 							<th> Disease Name</th>
@@ -224,12 +247,16 @@
 				    </table>
 					<div class="row">
 						<div class="col-50">
-							<label for="admissionDate">Date-Time of Admission</label>					
+							<label class="levelAzure" for="admissionDate">Date-Time of Admission</label>					
 							<input type="datetime-local" th:field="*{admissionDate}"	required >
 						</div>
 						<div class="col-50">
-							<label for="dischargeDate">Date-Time of Discharge</label>
+							<label class="levelAzure" for="dischargeDate">Date-Time of Discharge</label>
 							<input type="datetime-local" th:field="*{dischargeDate}"	required>
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="questionnaireDate">Treating Dr. Questionnare Date</label>					
+							<input type="datetime-local" th:field="*{questionnaireDate}" required>
 						</div>
 					</div>
 <!--				<label for="heartDisease">Heart Disease</label>					-->
@@ -237,58 +264,55 @@
 
 					<div class="row">
 						<div class="col-50">
-							<label for="roomRentPerDay">Room Rent Per Day</label>					
+							<label class="levelAzure" for="roomRentPerDay">Room Rent Per Day</label>					
 							<input type="number" th:field="*{roomRentPerDay}" placeholder="Room Rent Per Day" required>
 						</div>
 						<div class="col-50">
-							<label for="roomType">Room Type(Special/AC/Normal)</label>					
+							<label class="levelAzure" for="roomType">Room Type(Special/AC/Normal)</label>					
 							<input type="text" th:field="*{roomType}"	placeholder="Room Type" required>
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="caseType">Case Type</label>					
+							<input type="text" th:field="*{caseType}" placeholder="Case Type" required>	
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<label for="paymentMode">Payment Mode</label>					
+							<label class="levelAzure" for="paymentMode">Payment Mode</label>					
 							<input type="text" th:field="*{paymentMode}" placeholder="Payment Mode" required>
 						</div>
 						<div class="col-50">
-							<label for="HospitalBillDiscount">Hospital Bill Discount</label>					
+							<label class="levelAzure" for="HospitalBillDiscount">Hospital Bill Discount</label>					
 							<input type="number" th:field="*{HospitalBillDiscount}"	placeholder="Hospital Bill Discount" required>
 						</div>
 						<div class="col-50">
-							<label for="totalHospitalBill">Total Hospital Bill</label>					
+							<label class="levelAzure" for="totalHospitalBill">Total Hospital Bill</label>					
 							<input type="number" th:field="*{totalHospitalBill}" placeholder="Total Hospital Bill" required>	
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<label for="questionnaireDate">Treating Dr. Questionnare Date</label>					
-							<input type="datetime-local" th:field="*{questionnaireDate}" required>
-						</div>
-						<div class="col-50">
-							<label for="doctorName">Treating Doctor Name</label>					
+							<label class="levelAzure" for="doctorName">Treating Doctor Name</label>					
 							<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name" required>
 						</div>
-						<div class="col-50">
-							<label for="caseType">Case Type</label>					
-							<input type="text" th:field="*{caseType}" placeholder="Case Type" required>	
-						</div>
 					</div>
-				<button type="submit" class="btn btn-info col-2" >Save</button>			 
+				<button type="submit" class="save-button" >Save</button>			 
 			</form>
+		</div>
 
-			<hr>
-			<a th:href="@{/home}">Goto to Home Page</a>
-<!--		</div>															-->
-			<div class="align-left">
-				<img src="" class="profile" th:src="@{images/HealthCare.jpg}">
-			</div>
-		<section>
+		<div class="line-sperater">		</div>
+		<div class="centered-input">
+			<input type="range" value="230" min="0" max="360" id="hue">
+	    </div>
 
+		<script src="/js/script.js"></script>
+		<section class="before-footer">
 			<h2>About Us</h2>
 			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
+
 		<footer>
-			<p>&copy; 2023 Contact me. All rights reserved.</p>
+			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
 		</footer>
 	</body>
 </html>
