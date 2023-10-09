@@ -42,7 +42,7 @@ public class InsuredQuestionnaireController {
 	 */
 	
 	@PostMapping("/add")
-	public String addInsuredQuestionnaire(@ModelAttribute("familydrquestionnare") InsuredQuestionnaire theInsuredQuestionnaire,Model model) {
+	public String addInsuredQuestionnaire(@ModelAttribute("insuredQuestionnaire") InsuredQuestionnaire theInsuredQuestionnaire,Model model) {
 		try {
 			if(theInsuredQuestionnaire.getClaimNumber().equals("") || theInsuredQuestionnaire.getInsuredName().equals("") || 
 					theInsuredQuestionnaire.getInsuranceCompany().equals("") || theInsuredQuestionnaire.getHospitalName().equals("")||

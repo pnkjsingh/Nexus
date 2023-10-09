@@ -40,7 +40,7 @@ public class TreatingDrQuestionnaireConroller {
 		
 		 if (bindingResult.hasErrors()) {
 			 			 
-			 model.addAttribute("message", "Questionnaire fail to save!");
+			 model.addAttribute("message", "Questionnaire failed to save!");
 			 
 			 return "treating_Dr_Questionnaire";
 	        }

@@ -11,8 +11,8 @@ public interface ClaimServices {
 	
 	Claim  save(Claim claim);
 	
-	Claim findById(Long id);
+	Claim findByClaimNumber(String claimNumber);
 	
-	void deleteById(Long id);
+	void deleteById(String id);
 	
 }

@@ -3,10 +3,10 @@
 	<head>
 		<title>Insurance-Claim creation Form</title>
 		<script>
-			function toggleForm() {
+<!--			function toggleForm() {
 				var form = document.getElementById("myForm");
 				form.style.display = form.style.display === "none" ? "block" : "none";
-			}
+			}-->
 		</script>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	</head>
@@ -44,39 +44,77 @@
 				</svg>
 			</div>
 		</div>
-		<div th:if="${message}">
-	        <script th:inline="javascript">
-	            alert([[${message}]]);
-	            window.location.href = '/insuranceclaim/show';
-	        </script>
-	    </div>
 
 		<div class="form-container">	
 			
-		    <h1>Insert and Claim Insurance Data</h1>
+		    <h2><center>	Insert and Claim Insurance Data	</center></h2>
+		    <hr>
 			<form  th:action="@{/insuranceclaim/add}" th:object="${insuranceClaimDTO}" method="POST">
 				<!-- Insurance fields -->
-				<input type="text" th:field="*{policyNumber}" />
-				<input type="text" th:field="*{insuranceType}" />
-				<input type="text" th:field="*{insuredName}" />
-				<input type="text" th:field="*{insuranceCompany}" />
-				<input type="text" th:field="*{premiumAmount}" />
-			
-				<!-- Claim fields -->
-				<input type="text" th:field="*{claimAmount}" />
-				<input type="date" th:field="*{claimDate}" />
-			
-				<button type="submit" id="submit">Submit</button>
+					<div class="row">
+						<div class="col-50">
+							<label class="levelAzure" for="policyNumber">Policy Number</label>
+							<input type="text" th:field="*{policyNumber}" class="form-control mb-4 w-25" placeholder="Policy Number">
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="claimNumber">Claim Number</label>
+							<input type="text" th:field="*{claimNumber}"	class="form-control mb-4 w-25" placeholder="Claim Number">			 
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="insuredName">Insured Name</label>
+							<input type="text" th:field="*{insuredName}" class="form-control mb-4 w-25" placeholder="Insured Name">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-50">
+							<label class="levelAzure" for="insuranceCompany">Insurance Company</label>
+							<input type="text" th:field="*{insuranceCompany}" class="form-control mb-4 w-25" placeholder="Insurance Company">
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="premiumAmount">Premium Amount</label>
+							<input type="number" th:field="*{premiumAmount}"	class="form-control mb-4 w-25" placeholder="Premium Amount">
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="insuranceType">Insurance Type</label>
+<!--						/*	<input type="text" th:field="*{insuranceType}"	class="form-control mb-4 w-25" placeholder="Insurance Type">		*/-->
+							<select id="insuranceType" name="insuranceType" >
+							<option value="false">Cashless</option>
+							<option value="true">Reimbursment</option>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-50">
+							<label class="levelAzure" for="claimAmount">Claim Amount</label>
+							<input type="number" th:field="*{claimAmount}" class="form-control mb-4 w-25" placeholder="Claim Amount">
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="policyDate">Policy Date</label>
+							<input type="date" th:field="*{policyDate}"	class="form-control mb-4 w-25" placeholder="Policy Date">
+						</div>
+						<div class="col-50">
+							<label class="levelAzure" for="claimDate">Claim Date</label>
+							<input type="date" th:field="*{claimDate}"	class="form-control mb-4 w-25" placeholder="Claim Date">
+						</div>
+					</div>
+		
+				<button type="submit" class="save-button" id="submit">Submit</button>
 			</form>
 		</div>
-		
+
+		<div th:if="${message}">
+			<div id="myModal" class="modal">
+				<span class="close" onclick="closeModal()">&times;</span>
+				<p th:text="${message}"></p>
+			</div>
+		</div>
+
 		<div class="line-sperater">
 		</div>
 
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
-		<script src="/js/script.js"></script>
+		<script src="/js/form.js"></script>
 
 		<section class="before-footer">
 			<h2>About Us</h2>

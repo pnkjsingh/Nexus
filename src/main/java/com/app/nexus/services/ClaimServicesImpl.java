@@ -32,26 +32,25 @@ public class ClaimServicesImpl implements ClaimServices {
 	}
 
 	@Override
-	public Claim findById(Long id) {
-		Optional<Claim> result=claimRepository.findById(id);
+	public Claim findByClaimNumber(String claimNumber) {
+		Optional<Claim> result=claimRepository.findById(claimNumber);
 		Claim claim=null;
 		if(result.isPresent()) {
 			claim=result.get();
-		}else {
-			throw new RuntimeException("Did not found given Claim id: "+id);
 		}
 		return claim;
 	}
 
+	
 	@Override
-	public void deleteById(Long id) {
+	public void deleteById(String claimNumber) {
 		// TODO Auto-generated method stub
-		Optional<Claim> result=claimRepository.findById(id);
+		Optional<Claim> result=claimRepository.findById(claimNumber);
 		Claim claim=null;
 		if(result.isPresent()) {
 			claimRepository.delete(claim);
 		}else {
-			throw new RuntimeException("Did not found given Claim id: "+id);
+			throw new RuntimeException("Did not found given Claim id: "+claimNumber);
 		}
 	}
 }

@@ -10,32 +10,45 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Claim")
 public class Claim {
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "claim_id")
-    private Long claimId;
+//	@Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
+//    private Long id;
 
-    @Column(name = "claim_amount")
+	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "claim_number")
+    private String claimNumber;
+
+	@NotNull
+	@Column(name = "claim_amount")
     private double claimAmount;
 
-    @Column(name = "claim_date")
+	@NotNull
+	@Column(name = "claim_date")
     private Date claimDate;
 
 	// Define the many-to-one relationship with Insurance
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
 
-	public Long getClaimId() {
-		return claimId;
+//	public Long getId() {
+//		return id;
+//	}
+
+    public String getClaimNumber() {
+		return claimNumber;
 	}
 
-	public double getClaimAmount() {
+    public double getClaimAmount() {
 		return claimAmount;
 	}
 
@@ -47,8 +60,12 @@ public class Claim {
 		return insurance;
 	}
 
-	public void setClaimId(Long claimId) {
-		this.claimId = claimId;
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+
+	public void setClaimNumber(String claimNumber) {
+		this.claimNumber = claimNumber;
 	}
 
 	public void setClaimAmount(double claimAmount) {
@@ -63,9 +80,10 @@ public class Claim {
 		this.insurance = insurance;
 	}
 
-	public Claim(Long claimId, double claimAmount, Date claimDate, Insurance insurance) {
+	public Claim(/* Long id, */ String claimNumber, double claimAmount, Date claimDate, Insurance insurance) {
 		super();
-		this.claimId = claimId;
+//		this.id = id;
+		this.claimNumber = claimNumber;
 		this.claimAmount = claimAmount;
 		this.claimDate = claimDate;
 		this.insurance = insurance;
@@ -78,7 +96,7 @@ public class Claim {
 
 	@Override
 	public String toString() {
-		return "Claim [claimId=" + claimId + ", claimAmount=" + claimAmount + ", claimDate=" + claimDate
+		return "Claim [claimNumber=" + claimNumber + ", claimAmount=" + claimAmount + ", claimDate=" + claimDate
 				+ ", insurance=" + insurance + "]";
 	}
 

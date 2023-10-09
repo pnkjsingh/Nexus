@@ -6,6 +6,8 @@ public class InsuranceClaimDTO {
 	
 	private String policyNumber;
 	
+	private String claimNumber;
+	
 	private String insuranceType;
 	
 	private String insuredName;
@@ -17,9 +19,17 @@ public class InsuranceClaimDTO {
 	private double claimAmount;
 	
 	private Date claimDate;
-	
+
+	private Date policyDate;
+
 	public String getPolicyNumber() {
 		return policyNumber;
+	}
+	public String getClaimNumber() {
+		return claimNumber;
+	}
+	public void setClaimNumber(String claimNumber) {
+		this.claimNumber = claimNumber;
 	}
 	public String getInsuranceType() {
 		return insuranceType;
@@ -38,6 +48,9 @@ public class InsuranceClaimDTO {
 	}
 	public Date getClaimDate() {
 		return claimDate;
+	}
+	public Date getPolicyDate() {
+		return policyDate;
 	}
 	public void setPolicyNumber(String policyNumber) {
 		this.policyNumber = policyNumber;
@@ -59,5 +72,8 @@ public class InsuranceClaimDTO {
 	}
 	public void setClaimDate(Date claimDate) {
 		this.claimDate = claimDate;
+	}
+	public void setPolicyDate(Date policyDate) {
+		this.policyDate = policyDate;
 	}
 }

@@ -32,8 +32,8 @@ public class InsuranceServiceImpl implements InsuranceServices {
 	}
 
 	@Override
-	public Insurance findById(int id) {
-		Optional<Insurance> result=insuranceRepository.findById((long) id);
+	public Insurance findById(String id) {
+		Optional<Insurance> result=insuranceRepository.findById(id);
 		Insurance insurance=null;
 		if(result.isPresent()) {
 			insurance=result.get();
@@ -47,8 +47,8 @@ public class InsuranceServiceImpl implements InsuranceServices {
 	}
 
 	@Override
-	public void deleteById(int id) {
-		Optional<Insurance> result=insuranceRepository.findById((long) id);
+	public void deleteById(String id) {
+		Optional<Insurance> result=insuranceRepository.findById(id);
 		Insurance insurance=null;
 		if(result.isPresent()) {
 			insuranceRepository.delete(insurance);

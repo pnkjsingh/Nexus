@@ -59,6 +59,9 @@
 		font-size: 2ch;
 	}
 
+	 a{
+		text-decoration: none;
+	}
 	@media screen and (max-width: 740px) {
 		.header-menu {
 			display: none;
@@ -138,11 +141,10 @@
 
 	label {
 	  margin-bottom: 5px;
-	  display: flex;
 	}
 			
 	table {
-		width: 80%;
+		width: 85%;
 		margin: 20px auto;
 		border-collapse: collapse;
 		border: 1px solid #ccc;
@@ -153,15 +155,15 @@
 		border: 1px solid #ccc;
 	}
 	th {
-		background-color: rgb(0, 0, 0);
+		background-color: rgb(0, 155, 155);
 		color: rgb(255, 255, 255);
 		text-align: center;
 	}
 	tr:nth-child(even) {
-		background-color: #f2f2f2;
+		background-color: rgb(0, 255, 255);
 	}
 	tr:nth-child(odd) {
-		background-color: rgb(128, 128, 128);
+		background-color: rgb(132, 255, 255);
 	}
 	tr:hover {
 		background-color: #e0e0e0;
@@ -625,7 +627,7 @@ article {
 		--header-bg: oklch(35% .01 200);
 		--text: white;
 	}		
-	
+
 	li {
 		--i: 0;
 		--_bg: oklch(
@@ -637,61 +639,63 @@ article {
 			calc(var(--hue) - (var(--i) + 5))
 		);
 	}
+
+	.scoreboard {
+		margin-top: 1em;
+	}
+	.scoreboard > header {
+		background: var(--header-bg);
+		color: var(--text);
+	}
 	
+	.scoreboard > header > svg {
+		color: var(--primary);
+	}
 	
-		.scoreboard > header {
-			background: var(--header-bg);
-			color: var(--text);
-		}
-		
-		.scoreboard > header > svg {
-			color: var(--primary);
-		}
-		
-		.scoreboard li {
-			background: var(--_bg);
-			color: var(--text);
-		}
-		
-		/* demo.scoreboard */
-		.scoreboard {
-			--_pad: 1rem 1.5rem;
-		
-			border-radius: 10px;
-			overflow: clip;
-			justify-self: start;
-		}
-		
-		.scoreboard > header {
-			display: flex;
-			gap: 1rem;
-			padding: var(--_pad);
-		}
-		
-		.scoreboard > header > svg {
-			inline-size: 2.5ch;
-		}
-		
-		.scoreboard > ol {
-			padding: 0;
-		}
-		
-		.scoreboard > ol > li {
-			padding: var(--_pad);
-			display: flex;
-			gap: 1rem;
-		}
-		
-		.scoreboard > ol > li::marker {
-			display: inline-block;
-		}
-		
-		.scoreboard > ol > li > p {
-			flex: 1;
-			inline-size: clamp(10ch, 50vw, 30ch);
-			text-align: center;
-		}
-		
+	.scoreboard li {
+		background: var(--_bg);
+		color: var(--text);
+	}
+	
+	/* demo.scoreboard */
+	.scoreboard {
+		--_pad: 1rem 1.5rem;
+	
+		border-radius: 10px;
+		overflow: clip;
+		justify-self: start;
+	}
+	
+	.scoreboard > header {
+		display: flex;
+		gap: 1rem;
+		padding: var(--_pad);
+	}
+	
+	.scoreboard > header > svg {
+		inline-size: 2.5ch;
+	}
+	
+	.scoreboard > ol {
+		padding: 0;
+	}
+	
+	.scoreboard > ol > li {
+		padding: var(--_pad);
+		display: flex;
+		gap: 1rem;
+	}
+	
+	.scoreboard > ol > li::marker {
+		display: inline-block;
+	}
+	
+	.scoreboard > ol > li > p {
+		flex: 1;
+		inline-size: clamp(10ch, 50vw, 30ch);
+		text-align: center;
+	}
+	
 		* {
 			margin: 0;
 		}
@@ -753,4 +757,30 @@ article {
 	.save-button:hover{
 		background-color: aqua;
 	}
+	
+		/* Modal styles : used in form filling page for popup*/
+		.modal {
+/*			z-index: 1;*/
+			width: 30%;
+			background-color: White;
+			margin-left: 20em;
+			margin-top: 2em;
+			padding: 25px;
+			color: red;
+		}
+		
+		
+		.close {
+			color: black;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+		
+		.close:hover,
+		.close:focus {
+			color: black;
+			cursor: pointer;
+		}
+
 	

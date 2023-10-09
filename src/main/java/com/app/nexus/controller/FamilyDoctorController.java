@@ -35,7 +35,7 @@ public class FamilyDoctorController {
 	}
 
 	@PostMapping("/add")
-	public String addContact(@ModelAttribute("familydrquestionnare") @Valid FamilyDoctorQuestionnaire thefamilyDoctorQuestionnaiore,BindingResult bindingResult) {
+	public String addContact(@ModelAttribute("familydrquestionnaire") @Valid FamilyDoctorQuestionnaire thefamilyDoctorQuestionnaiore,BindingResult bindingResult) {
 
 		if(bindingResult.hasErrors()) {
 			return "dr_questionnaire";
@@ -48,5 +48,4 @@ public class FamilyDoctorController {
 		//use a redirect to prevent duplicate submissions
 		return "redirect:/familyDoctor/show";
 	}
-
 }

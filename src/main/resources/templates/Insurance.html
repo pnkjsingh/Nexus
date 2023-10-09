@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
+		<meta charset="UTF-8">
+		<title>Insurance and Claim Data</title>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+
 	</head>
-	
 	<body>
 		<div class="header">
 			<a class="menu-icon" href="#">
@@ -24,7 +26,8 @@
 					<a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Contact</a>
 				</div>
 			</div>
--->			<div class="header-icons">
+-->
+			<div class="header-icons">
 				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
 				</svg>
@@ -36,50 +39,52 @@
 				</svg>
 			</div>
 		</div>
-
-	    <div class="scoreboard">
-			<ol>
-				<li style="--i: 1">
-					<a href="/insuranceclaim/show"><B>Create Case</B></a>
-				</li>
-				<li style="--i: 2">
-					<p>Assign Case</p>
-		    	</li>
-				<li style="--i: 3">
-					<a href="insuranceclaim/show/all">All Cases</a>
-		    	</li>
-		    	<li style="--i: 4">
-					<p>Create New Account</p>
-		    	</li>
-		    	<li style="--i: 5">
-					<p>Approve Account</p>
-		    	</li>
-		    	<li style="--i: 6">
-					<p>Suspend Account</p>
-		    	</li>
-		    	<li style="--i: 7">
-					<p>All Accounts</p>
-		    	</li>
-				<li style="--i: 7">
-					<p>Reports</p>
-				</li>
-			</ol>
+		<h1>Insurance and Claim Data</h1>
+		<table>
+			<thead>
+			    <tr>
+			        <th>Insurance Id</th>
+			        <th>Policy Number</th>
+			        <th>Insured Name</th>
+			        <th>Insurance Type</th>
+			        <th>Insurance Company</th>
+			        <th>Premium Amount</th>
+			        <th>Policy Date</th>
+			        <th>Claim Number</th>
+			        <th>Claim Amount</th>
+			        <th>Claim Date</th>
+			    </tr>
+			</thead>
+			<tbody>
+				<tr th:each="data : ${data}">
+					<td th:text="${data.insuranceId}"></td>
+					<td th:text="${data.policyNumber}"></td>
+					<td th:text="${data.insuredName}"></td>
+					<td th:text="${data.insuranceType}"></td>
+					<td th:text="${data.insuranceCompany}"></td>
+					<td th:text="${data.premiumAmount}"></td>
+					<td th:text="${data.policyDate}"></td>
+					<td th:each="claim : ${data.claims}" th:text="${claim.claimNumber}"></td>
+					<td th:each="claim : ${data.claims}" th:text="${claim.claimAmount}"></td>
+					<td th:each="claim : ${data.claims}" th:text="${claim.claimDate}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="line-sperater">
 		</div>
-
-		<div class="line-sperater">		</div>
 
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
+		<script src="/js/form.js"></script>
 
-		<script src="/js/script.js"></script>
-	
 		<section class="before-footer">
-		<h2>About Us</h2>
-		<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
+			<h2>About Us</h2>
+			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
+
 		<footer>
-			<p>&copy;2023 Contact me. All rights reserved.</p>
+			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
 		</footer>
 	</body>
 </html>

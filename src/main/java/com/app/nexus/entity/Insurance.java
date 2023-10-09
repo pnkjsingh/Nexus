@@ -1,5 +1,6 @@
 package com.app.nexus.entity;
 
+import java.sql.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -10,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Insurance")
@@ -20,24 +22,31 @@ public class Insurance {
     @Column(name = "insurance_id")
     private Long insuranceId;
 
-    @Column(name = "policy_number")
-    private String policyNumber;
+	@Column(name = "policy_number")
+	private String policyNumber;
 
-    @Column(name = "insurance_type")
-    private String insuranceType;
+	@Column(name = "insurance_type")
+	private String insuranceType;
     
-    @Column(name = "insured_name")
-    private String insuredName;
+	@NotNull
+	@Column(name = "insured_name")
+	private String insuredName;
 
-    @Column(name = "insurance_company")
-    private String insuranceCompany;
-    
-    @Column(name = "premium_amount")
-    private double premiumAmount;
+	@NotNull
+	@Column(name = "insurance_company")
+	private String insuranceCompany;
 
-    // Define the one-to-many relationship with Claim
-    @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
-    private List<Claim> claims;
+	@NotNull
+	@Column(name = "premium_amount")
+	private double premiumAmount;
+
+	@NotNull
+	@Column(name="policy-date")
+	private Date policyDate;
+
+	// Define the one-to-many relationship with Claim
+	@OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
+	private List<Claim> claims;
 
 	public Long getInsuranceId() {
 		return insuranceId;
@@ -61,6 +70,10 @@ public class Insurance {
 
 	public double getPremiumAmount() {
 		return premiumAmount;
+	}
+
+	public Date getPolicyDate() {
+		return policyDate;
 	}
 
 	public List<Claim> getClaims() {
@@ -91,6 +104,10 @@ public class Insurance {
 		this.premiumAmount = premiumAmount;
 	}
 
+	public void setPolicyDate(Date policyDate) {
+		this.policyDate = policyDate;
+	}
+	
 	public void setClaims(List<Claim> claims) {
 		this.claims = claims;
 	}
@@ -99,21 +116,25 @@ public class Insurance {
 		super();
 	}
 
-	public Insurance(Long insuranceId, String policyNumber, String insuranceType, double premiumAmount, String insuranceCompany, String insuredName,
-			List<Claim> claims) {
+	public Insurance(Long insuranceId, String policyNumber, String insuranceType, String insuredName,
+			String insuranceCompany, double premiumAmount, Date policyDate, List<Claim> claims) {
 		super();
 		this.insuranceId = insuranceId;
 		this.policyNumber = policyNumber;
 		this.insuranceType = insuranceType;
-		this.insuredName=insuredName;
-		this.insuranceCompany=insuranceCompany;
+		this.insuredName = insuredName;
+		this.insuranceCompany = insuranceCompany;
 		this.premiumAmount = premiumAmount;
+		this.policyDate = policyDate;
 		this.claims = claims;
 	}
 
 	@Override
 	public String toString() {
 		return "Insurance [insuranceId=" + insuranceId + ", policyNumber=" + policyNumber + ", insuranceType="
-				+ insuranceType + ", premiumAmount=" + premiumAmount + ", claims=" + claims + insuranceCompany + ", insuranceCompany=" + insuranceCompany + "]";
+				+ insuranceType + ", insuredName=" + insuredName + ", insuranceCompany=" + insuranceCompany
+				+ ", premiumAmount=" + premiumAmount + ", policyDate=" + policyDate + ", claims=" + claims + "]";
 	}
+
+
 }
