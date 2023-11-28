@@ -104,18 +104,18 @@
 						</div>
 						<!-- Email -->
 						<div class="input-group">
-							<label for="roles">Email: </label>
+							<label for="roles">Email: </label><br>
 							<input type="text" th:field="*{email}" placeholder="Email (*)" class="form-control" />
 						</div>
-
 						<div th:if="${#fields.hasErrors('email')}"	style="margin-bottom: 25px" class="text-danger">
 							<ul>
 								<li th:each="err : ${#fields.errors('email')}" th:text="'Email ' + ${err}" />
 							</ul>
 						</div>
+						
 						<!-- Role -->
 						<div class="input-group">
-							<label for="roles">Role : </label>
+							<label for="roles">Role : </label><br>
 <!--							<select id="roles" name="roles" required class="input-group">-->
 							<select id="roles" name="roles" required >
 								<option value="">--Select--</option>
@@ -132,7 +132,7 @@
 						<!-- Registration Button -->
 						<div style="margin-top: 10px" class="form-group">
 							<div class="col-sm-6 controls">
-								<button type="submit" class="btn btn-primary">Register</button>
+								<button type="submit" class="submit-btn">Register</button>
 							</div>
 						</div>
 					</form>

@@ -10,8 +10,8 @@ public interface InsuranceServices {
 	
 	Insurance save(Insurance insurance);
 	
-	Insurance findById(String id);
+	Insurance findById(Long id);
 	
-	void deleteById(String id);	
+	void deleteById(Long id);	
 
 }

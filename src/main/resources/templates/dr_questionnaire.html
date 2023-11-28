@@ -41,25 +41,26 @@
 		<div class="form-container">		
 			<h3>	Family Doctor's Questionnaire Form 	</h3>
 			<hr>
+				<div class="row">
+					<div class="col-50">
+						<label class="levelAzure" for="claimNumber">Claim Number</label>
+						<input type="text" th:field="${claim.claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number" readonly="true">
+					</div>
+					<div class="col-50">
+						<label class="levelAzure" for="insuredName">Insured Preson name</label>
+						<input type="text" th:field="${insurance.insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name" readonly="true">			 
+					</div>
+					<div class="col-50">
+						<label class="levelAzure" for="insuranceCompany">Insured Company Name</label>
+						<input type="text" th:field="${insurance.insuranceCompany}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" readonly="true">
+					</div>
+				</div>
 			<p class="text-decoration1"> * Fill below details </p>
 		
-			<form action="#" th:action="@{/familyDoctor/add}"	th:object="${familydrquestionnaire}" method="POST">
-				<!-- Add hidden form field to handle the update -->
-				<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
+			<form th:action="@{/familyDoctor/add}"	th:object="${familydrquestionnaire}" method="POST">
 				<div class="row">
-					<input type="hidden" th:field="*{id}"/>		
-					<div class="col-50">
-						<label class="levelAzure" for="caseType">claim Number</label>
-						<input type="text" th:field="*{claimNo}" class="form-control mb-4 w-25" placeholder="Claim Number" required>			 
-					</div>
-					<div class="col-50">
-						<label class="levelAzure" for="caseType">Insured Name</label>
-						<input type="text" th:field="*{insuredPersonName}"	class="form-control mb-4 w-25" placeholder="Insured Preson Name" required>
-					</div>
-					<div class="col-50">
-						<label class="levelAzure" for="caseType">Insured Company Name</label>
-						<input type="text" th:field="*{insuredCompanyName}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" required>
-					</div>
+				<input type="hidden" th:field="${familydrquestionnaire.id}">
+				<input type="hidden" th:field="${familydrquestionnaire.claim.claimNumber}">
 				</div>
 				
 				<label style="margin-top: 2em; margin-left: 7em; color: azure;">
@@ -139,17 +140,15 @@
 						<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name" required>
 					</div>
 					<div class="col-50">
-						<label class="levelAzure" for="caseType">Case Type</label>
-						<input type="text" th:field="*{caseType}" placeholder="Case Type">	
 					</div>
 				</div>
-				<button type="submit" class="save-button">Save</button>			 
+				<button type="submit" class="submit-btn">Save</button>			 
 			</form>
 		</div>
 		<div class="line-sperater">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
-	    </div>
+		</div>
 
 		<script src="/js/script.js"></script>
 		<section class="before-footer">

@@ -14,31 +14,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.app.nexus.entity.Claim;
+import com.app.nexus.entity.FamilyDoctorQuestionnaire;
 import com.app.nexus.entity.Insurance;
 import com.app.nexus.entity.InsuranceAndClaim;
+import com.app.nexus.entity.InsuredQuestionnaire;
+import com.app.nexus.entity.TreatingDrQuestionnaire;
 import com.app.nexus.entity.dto.InsuranceClaimDTO;
 import com.app.nexus.services.ClaimServices;
+import com.app.nexus.services.FamilyDoctorServices;
 import com.app.nexus.services.InsuranceServices;
+import com.app.nexus.services.InsuredQuestionnaireService;
+import com.app.nexus.services.TreatingDrQuestionnaireServices;
+import com.app.nexus.services.UserService;
 
 @Controller
 @RequestMapping("/insuranceclaim")
 public class InsuranceClaimController {
-    
 	private InsuranceServices insuranceService;
-    private ClaimServices claimService;
+	private ClaimServices claimService;
+	private InsuredQuestionnaireService insuredQuestionnaireService;
+	private FamilyDoctorServices familyDoctorServices;
+	private TreatingDrQuestionnaireServices treatingDrQuestionnaireServices;
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	public InsuranceClaimController(InsuranceServices insuranceService, ClaimServices claimService, InsuredQuestionnaireService insuredQuestionnaireService,
+			FamilyDoctorServices familyDoctorServices, TreatingDrQuestionnaireServices treatingDrQuestionnaireServices) {
+		this.insuranceService = insuranceService;
+		this.claimService = claimService;
+		this.insuredQuestionnaireService=insuredQuestionnaireService;
+		this.familyDoctorServices=familyDoctorServices;
+		this.treatingDrQuestionnaireServices=treatingDrQuestionnaireServices;
+	}
 
-    @Autowired
-    public InsuranceClaimController(InsuranceServices insuranceService, ClaimServices claimService) {
-        this.insuranceService = insuranceService;
-        this.claimService = claimService;
-    }
-    
 	@GetMapping("/show")
 	public String showInsuranceClaim(Model theModel) {
 		
 		//Create model attribute to bind form data
 		Insurance insurance=new Insurance();
 		Claim claim=new Claim();
+		List<String> userList = userService.findAllUserName();
+		// Fetch data from other tables as needed
+		theModel.addAttribute("users", userList);
 		theModel.addAttribute("insurance",insurance);
 		theModel.addAttribute("claim",claim);
 		theModel.addAttribute("insuranceClaimDTO", new InsuranceClaimDTO());
@@ -51,15 +69,15 @@ public class InsuranceClaimController {
 			if(insuranceClaimDTO.getPolicyNumber().equals("")||insuranceClaimDTO.getInsuredName().equals("")||
 					insuranceClaimDTO.getInsuranceCompany().equals("")||insuranceClaimDTO.getClaimNumber().equals("")||
 					insuranceClaimDTO.getClaimAmount()<=0||insuranceClaimDTO.getPremiumAmount()<0||insuranceClaimDTO.getClaimDate().before(insuranceClaimDTO.getPolicyDate()) ){
-				
+
 				throw new Exception("Check, some non-empty field is empty.!");
-			}	
+			}
 			else {
 				Claim existingClaim = claimService.findByClaimNumber(insuranceClaimDTO.getClaimNumber());
 				if (existingClaim != null) {
-                    // Handle duplicate claim number, you can throw an exception or display an error message
-                    throw new Exception("Claim with this claim number is already attached to another insurance.");
-                }else {
+					// Handle duplicate claim number, you can throw an exception or display an error message
+					throw new Exception("Claim with this claim number is already attached to another insurance.");
+				}else {
 					// Create and populate Insurance and Claim entities from the DTO
 					Insurance insurance = new Insurance();
 					insurance.setPolicyNumber(insuranceClaimDTO.getPolicyNumber());
@@ -68,17 +86,34 @@ public class InsuranceClaimController {
 					insurance.setInsuranceCompany(insuranceClaimDTO.getInsuranceCompany());
 					insurance.setPremiumAmount(insuranceClaimDTO.getPremiumAmount());
 					insurance.setPolicyDate(insuranceClaimDTO.getPolicyDate());
-					
+
 					Claim claim = new Claim();
 					claim.setClaimNumber(insuranceClaimDTO.getClaimNumber());
 					claim.setClaimAmount(insuranceClaimDTO.getClaimAmount());
 					claim.setClaimDate(insuranceClaimDTO.getClaimDate());
+					claim.setAssignedTo(insuranceClaimDTO.getAssignedTo());
 					claim.setInsurance(insurance);
+				
+					InsuredQuestionnaire insuredQuestionnaire=new InsuredQuestionnaire();
+//					insuredQuestionnaire.setId(insuranceClaimDTO.getInsuredQuestionaireId());
+					insuredQuestionnaire.setId(0);
+					insuredQuestionnaire.setClaim(claim);
 					
+					FamilyDoctorQuestionnaire doctorQuestionnaire=new FamilyDoctorQuestionnaire();
+					doctorQuestionnaire.setId(0);
+					doctorQuestionnaire.setClaim(claim);
+					
+					TreatingDrQuestionnaire treatingDrQuestionnaire=new TreatingDrQuestionnaire();
+					treatingDrQuestionnaire.setId(0);
+					treatingDrQuestionnaire.setClaim(claim);
+
 					// Save both Insurance and Claim entities to the database
 					// (You'll need to inject your repository or service classes here)
 					insuranceService.save(insurance);
 					claimService.save(claim);
+					insuredQuestionnaireService.save(insuredQuestionnaire);
+					familyDoctorServices.save(doctorQuestionnaire);
+					treatingDrQuestionnaireServices.save(treatingDrQuestionnaire);
 					model.addAttribute("message","Insurance Claim added successfully!");
 //						return "redirect:/insuranceclaim/show";
 //						return "message";

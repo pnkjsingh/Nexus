@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.app.nexus.entity.Insurance;
 
 @Repository
-public interface InsuranceRepository extends JpaRepository<Insurance, String>{
+public interface InsuranceRepository extends JpaRepository<Insurance, Long>{
 
 }

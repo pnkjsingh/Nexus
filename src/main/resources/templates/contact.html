@@ -39,28 +39,30 @@
 		</div>
 
     	<div class="container">
+			<h2><center>Contact</center></h2>
+			<hr><br>
 			<form action="#" th:action="@{/contactUs/add}" th:object="${contactUs}"	method="POST">
 				
 				<input type="hidden" th:field="*{id}">
 				
-		        <label for="firstName">First Name:</label>
+		        <label for="firstName">First Name: &nbsp;</label>
         		<input type="text" th:field="*{firstName}" name="firstName" placeholder="First Name (*)"><br><br>
 		
-		        <label for="lastName">Last Name:</label>
+		        <label for="lastName">Last Name:&nbsp;&nbsp;</label>
 <!--    	    <input type="text" id="lastName" name="lastName"><br><br>-->
         		<input type="text" th:field="*{lastName}" name="lastName" placeholder="Last Name (*)"><br><br>
 
-				<label for="mobile">Mobile No:</label>
-				<input type="text" th:field="*{mobile}" name="mobile" placeholder="Mobile (*)"><br><br>
+				<label for="mobile">Mobile No:&nbsp;</label>
+				<input type="tel" th:field="*{mobile}" name="mobile" placeholder="Mobile (*)"><br><br>
 
-				<label for="email">Email:</label>
+				<label for="email">Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 				<input type="email" th:field="*{email}" name="email" placeholder="Email (*)"><br><br>
 
-				<label for="messages">Message:</label>
+				<label for="messages">Message: &nbsp;&nbsp;&nbsp;</label>
 				<input type="text" th:field="*{messages}" name="messages" placeholder="Messages"><br><br>
         
 <!--				<button type="button" onclick="addContact()">Add Client</button>		-->
-				<button type="submit" class="btn btn-info col-2">Add Client</button>			 
+				<button type="submit" class="submit-btn">Send</button>			 
 			</form>
 		</div>
 

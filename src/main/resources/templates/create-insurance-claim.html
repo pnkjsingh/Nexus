@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Insurance-Claim creation Form</title>
+		<title>Insurance-Claim Case creation Form</title>
 		<script>
-<!--			function toggleForm() {
+/*			function toggleForm() {
 				var form = document.getElementById("myForm");
 				form.style.display = form.style.display === "none" ? "block" : "none";
-			}-->
+			}*/
 		</script>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	</head>
@@ -45,11 +45,10 @@
 			</div>
 		</div>
 
-		<div class="form-container">	
-			
-		    <h2><center>	Insert and Claim Insurance Data	</center></h2>
+		<div class="form-container">
+		    <h2><center>	Create a Insurance-Claim Case	</center></h2>
 		    <hr>
-			<form  th:action="@{/insuranceclaim/add}" th:object="${insuranceClaimDTO}" method="POST">
+			<form  id ="createcaseform" th:action="@{/insuranceclaim/add}" th:object="${insuranceClaimDTO}" method="POST">
 				<!-- Insurance fields -->
 					<div class="row">
 						<div class="col-50">
@@ -75,17 +74,18 @@
 							<input type="number" th:field="*{premiumAmount}"	class="form-control mb-4 w-25" placeholder="Premium Amount">
 						</div>
 						<div class="col-50">
-							<label class="levelAzure" for="insuranceType">Insurance Type</label>
-<!--						/*	<input type="text" th:field="*{insuranceType}"	class="form-control mb-4 w-25" placeholder="Insurance Type">		*/-->
-							<select id="insuranceType" name="insuranceType" >
-							<option value="false">Cashless</option>
-							<option value="true">Reimbursment</option>
+							<label class="levelAzure" for="claimAmount">Claim Amount</label>
+							<input type="number" th:field="*{claimAmount}" class="form-control mb-4 w-25" placeholder="Claim Amount">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<label class="levelAzure" for="claimAmount">Claim Amount</label>
-							<input type="number" th:field="*{claimAmount}" class="form-control mb-4 w-25" placeholder="Claim Amount">
+							<label class="levelAzure" for="insuranceType">Insurance Type</label>
+							<select id="insuranceType" name="insuranceType" aria-placeholder="--Select--" >
+								<option value="false">-select-</option>
+								<option value="Cashless">Cashless</option>
+								<option value="Reimbursment">Reimbursment</option>
+							</select>
 						</div>
 						<div class="col-50">
 							<label class="levelAzure" for="policyDate">Policy Date</label>
@@ -96,11 +96,18 @@
 							<input type="date" th:field="*{claimDate}"	class="form-control mb-4 w-25" placeholder="Claim Date">
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-50">
+							<label class="levelAzure" for="assignedTo">Select Assign:</label>
+							<select id="assignedTo" name="assignedTo" th:field="*{assignedTo}">
+								<option th:each="user : ${users}" th:value="${user}" th:text="${user}"></option>
+							</select>
+						</div>
+					</div>
 		
-				<button type="submit" class="save-button" id="submit">Submit</button>
+				<button type="submit" class="submit-btn" id="submit">Submit</button>
 			</form>
 		</div>
-
 		<div th:if="${message}">
 			<div id="myModal" class="modal">
 				<span class="close" onclick="closeModal()">&times;</span>

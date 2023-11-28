@@ -11,11 +11,8 @@
 				form.style.display = form.style.display === "none" ? "block" : "none";
 			}
 		</script>
-
 	</head>
-
 	<body>
-
 		<div class="header">
 			<a class="menu-icon" href="#">
 				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -51,32 +48,34 @@
 
 			<div th:if="${message}">
 		        <script th:inline="javascript">
-		            alert([[${message}]]);
+		            alert([[$,{message}]]);
 		            window.location.href = '/insured/questionnaireForm';
 		        </script>
 		    </div>
 
 	<div class="form-container">
 		<h2><center>Insured Questionnaire Form	</center></h2>
+		<br>
 		<hr>
 		<label class="text-decoration1"> * Fill below details:- </label>
-			<form action="#" th:action="@{/insured/add}" th:object="${insuredQuestionnaire}" method="POST">
-
-					<input type="hidden" th:field="*{id}">
 					<div class="row">
-						<div class="col-50">
-							<label class="levelAzure" for="claimNumber">Claim Number</label>
-							<input type="text" th:field="*{claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number">
-						</div>
-						<div class="col-50">
-							<label class="levelAzure" for="insuredName">Insured Preson name</label>
-							<input type="text" th:field="*{insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name">			 
-						</div>
-						<div class="col-50">
-							<label class="levelAzure" for="insuranceCompany">Insured Company Name</label>
-							<input type="text" th:field="*{insuranceCompany}"	class="form-control mb-4 w-25" placeholder="Insured Company Name">
-						</div>
-					</div>
+				<div class="col-50">
+					<label class="levelAzure" for="claimNumber">Claim Number</label>
+					<input type="text" th:field="${claim.claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number" readonly="true">
+				</div>
+				<div class="col-50">
+					<label class="levelAzure" for="insuredName">Insured Preson name</label>
+					<input type="text" th:field="*{insurance.insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name" readonly="true">			 
+				</div>
+				<div class="col-50">
+					<label class="levelAzure" for="insuranceCompany">Insured Company Name</label>
+					<input type="text" th:field="${insurance.insuranceCompany}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" readonly="true">
+				</div>
+			</div>
+			<form th:action="@{/insured/add}" th:object="${insuredQuestionnaire}" method="POST">
+					<input type="hidden" th:field="${insuredQuestionnaire.id}">
+					<input type="hidden" th:field="${insuredQuestionnaire.claim.claimNumber}">
+
 					<div class="row">
 						<div class="col-50">
 							<label class="levelAzure" for="hospitalName">Hospital Name</label>
@@ -119,209 +118,176 @@
 							<input type="text" th:field="*{estimatedHospitalBill}"	class="form-control mb-4 w-25" placeholder="Estimated Hospital Bill">
 						</div>
 					</div>
-					<br><hr>
-					<label class="text-decoration1">Kindly select drop-down of Diagnosed 'Disease Name'-</label>
-					<div class="row">
-						<div class="col-50">
-							<label class="levelAzure">Disease Name</label>
-						</div>
-						<div class="col-50">
-							<label class="levelAzure">Duration of Disease</label>
-						</div>
-						<div class="col-50">
-							<label class="levelAzure">Treatment</label>
-						</div>
-					</div>					
-					<div class="row">
-						<div class="col-50">
-							<label for="highBloodPressure">High blood Pressure</label>
-							<select id="highBloodPressure" name="highBloodPressure">
-							<option value="false">FALSE</option>
-							<option value="true">TRUE</option>
-						</div>
-						<div class="col-50">
-							<label for="hbpDuration">High blood Pressure Duration</label>
-							<input type="text" th:field="*{hbpDuration}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Duration">
-						</div>
-						<div class="col-50">
-							<label for="hbpDrugName">High blood Pressure Drug Name</label>
-							<input type="text" th:field="*{hbpDrugName}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Drug Name" >
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="hbpDrugName">High blood Pressure Drug Name</label>
-							<input type="text" th:field="*{hbpDrugName}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Drug Name" aria-colspan="30">
-						</div>
-						<div class="col-50">
-							<label for="hbpDuration">High blood Pressure Duration</label>
-							<input type="text" th:field="*{hbpDuration}"	class="form-control mb-4 w-25" placeholder="High blood Pressure Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="diabetesMellitus">Diabetes Mellitus</label>
-							<select id="diabetesMellitus" name="diabetesMellitus">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="dmDrugName">Diabetes Mellitus  Drug Name</label>
-							<input type="text" th:field="*{dmDrugName}"	class="form-control mb-4 w-25" placeholder="Diabetes Mellitus  Drug Name">
-						</div>
-						<div class="col-50">
-							<label for="dmDuration">Diabetes Mellitus Duration</label>
-							<input type="text" th:field="*{dmDuration}"		class="form-control mb-4 w-25" placeholder="Diabetes Mellitus Duration">
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-50">
-							<label for="anyHeartDisease">Any Heart Disease</label>
-							<select id="anyHeartDisease" name="anyHeartDisease">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="hdDrugName">Heart Disease Drug Name</label>
-							<input type="text" th:field="*{hdDrugName}"	class="form-control mb-4 w-25" placeholder="Heart Disease Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="hdDuration">Heart Disease Duration</label>
-							<input type="text" th:field="*{hdDuration}"	class="form-control mb-4 w-25" placeholder="Heart Disease Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="anyLiverDisease">Any Liver Disease</label>
-							<select id="anyLiverDisease" name="anyLiverDisease">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="liverDiseaseDrugName">Liver Disease Drug Name</label>
-							<input type="text" th:field="*{liverDiseaseDrugName}"	class="form-control mb-4 w-25" placeholder="Liver Disease Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="liverDiseaseDuration">Liver Disease Duration</label>
-							<input type="text" th:field="*{liverDiseaseDuration}"	class="form-control mb-4 w-25" placeholder="Liver Disease Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="kidneyDisease">Any Kidney Disease</label>
-							<select id="kidneyDisease" name="kidneyDisease">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="kidneyDrugName">Kidney Disease Drug Name</label>
-							<input type="text" th:field="*{kidneyDrugName}"	class="form-control mb-4 w-25" placeholder="Kidney Disease Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="kdDuration">Kidney Disease Duration</label>
-							<input type="text" th:field="*{kdDuration}"	class="form-control mb-4 w-25" placeholder="Kidney Disease Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="neurologicalDisease">Neurological Disease</label>
-							<select id="neurologicalDisease" name="neurologicalDisease">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="neurologicalDiseaseDrugName">Neurological Disease Drug Name</label>
-							<input type="text" th:field="*{neurologicalDiseaseDrugName}"	class="form-control mb-4 w-25" placeholder="Neurological Disease Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="neurologicalDiseaseDuration">Neurological Disease Duration</label>
-							<input type="text" th:field="*{neurologicalDiseaseDuration}"	class="form-control mb-4 w-25" placeholder="Neurological Disease Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="cancer">Cancer</label>
-							<select id="cancer" name="cancer">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="cancerDrugName">Cancer Drug Name</label>
-							<input type="text" th:field="*{cancerDrugName}"	class="form-control mb-4 w-25" placeholder="Cancer Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="cancerDuration">Cancer Duration</label>
-							<input type="text" th:field="*{cancerDuration}"	class="form-control mb-4 w-25" placeholder="Cancer Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="respiratoryIllness">Respiratory Illness</label>
-							<select id="respiratoryIllness" name="respiratoryIllness">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="respiratoryIllnessDrugName">Respiratory Illness Drug Name</label>
-							<input type="text" th:field="*{respiratoryIllnessDrugName}"	class="form-control mb-4 w-25" placeholder="Respiratory Illness Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="respiratoryIllnessDuration">Respiratory Illness Duration</label>
-							<input type="text" th:field="*{respiratoryIllnessDuration}"	class="form-control mb-4 w-25" placeholder="Respiratory Illness Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="arthritis">Arthritis</label>
-							<select id="arthritis" name="arthritis">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="arthritisDrugName">Arthritis Drug Name</label>
-							<input type="text" th:field="*{arthritisDrugName}"	class="form-control mb-4 w-25" placeholder="Arthritis Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="arthritisDuration">Arthritis Duration</label>
-							<input type="text" th:field="*{arthritisDuration}"	class="form-control mb-4 w-25" placeholder="Arthritis Duration">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="anyMajorDisease">Any Major Disease</label>
-							<select id="anyMajorDisease" name="arthritis">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-50">
-							<label for="diseaseDrugName">Disease Drug Name</label>
-							<input type="text" th:field="*{diseaseDrugName}"	class="form-control mb-4 w-25" placeholder="Disease Drug Name">			 
-						</div>
-						<div class="col-50">
-							<label for="diseaseDuration">Disease Duration</label>
-							<input type="text" th:field="*{diseaseDuration}"	class="form-control mb-4 w-25" placeholder="Disease Duration">
-						</div>
-					</div>
-					
+					<br>
+					<label style="margin-top: 2em; margin-left: 5em; color: azure;"><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
+					<table>
+						<tr>
+							<th> Disease Name</th>
+							<th> Is Diagnosed?</th>
+							<th> Duration of Disease</th>
+							<th> Treatment</th>
+						</tr>
+						<tr>
+							<td><label for="highBloodPressure">High blood Pressure</label></td>
+							<td>
+								<select id="highBloodPressure" name="highBloodPressure" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+								<input type="text" th:field="*{hbpDuration}" placeholder="High blood Pressure Duration">
+							</td>
+							<td>
+								<input type="text" th:field="*{hbpDrugName}" placeholder="High blood Pressure Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="diabetesMellitus">Diabetes Mellitus</label></td>
+							<td>
+								<select id="diabetesMellitus" name="diabetesMellitus" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{dmDrugName}"	placeholder="Diabetes Mellitus  Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{dmDuration}" placeholder="Diabetes Mellitus Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="anyHeartDisease">Any Heart Disease</label></td>
+							<td>
+								<select id="anyHeartDisease" name="anyHeartDisease" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{hdDrugName}"	placeholder="Heart Disease Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{hdDuration}" placeholder="Heart Disease Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="anyLiverDisease">Any Liver Disease</label></td>
+							<td>
+								<select id="anyLiverDisease" name="anyLiverDisease" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{liverDiseaseDrugName}"	placeholder="Liver Disease Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{liverDiseaseDuration}" placeholder="Liver Disease Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="kidneyDisease">Any Kidney Disease</label></td>
+							<td>
+								<select id="kidneyDisease" name="kidneyDisease" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{kidneyDrugName}"	placeholder="Kidney Disease Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{kdDuration}" placeholder="Kidney Disease Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="neurologicalDisease"> Neurological Disease</label></td>
+							<td>
+								<select id="neurologicalDisease" name="neurologicalDisease" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{neurologicalDiseaseDrugName}"	placeholder="Neurological Disease Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{neurologicalDiseaseDuration}" placeholder="Neurological Disease Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="cancer"> Cancer </label></td>
+							<td>
+								<select id="cancer" name="cancer" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{cancerDrugName}"	placeholder=" Cancer Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{cancerDuration}" placeholder=" Cancer Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="respiratoryIllness"> Respiratory Illness </label></td>
+							<td>
+								<select id="respiratoryIllness" name="respiratoryIllness" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{respiratoryIllnessDrugName}"	placeholder=" Respiratory Illness Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{respiratoryIllnessDuration}" placeholder=" Respiratory Illness Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="arthritis"> Arthritis </label></td>
+							<td>
+								<select id="arthritis" name="arthritis" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{arthritisDrugName}"	placeholder=" Arthritis Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{arthritisDuration}" placeholder=" Arthritis Duration" >
+							</td>
+						</tr>
+						<tr>
+							<td><label for="anyMajorDisease"> Any Major Disease </label></td>
+							<td>
+								<select id="anyMajorDisease" name="anyMajorDisease" required>
+									<option value="false">SELECT</option>
+									<option value="false">FALSE</option>
+									<option value="true">TRUE</option>
+								</select>							
+							</td>
+							<td>
+							<input type="text" th:field="*{diseaseDrugName}"	placeholder=" Disease Drug Name">
+							</td>
+							<td>
+								<input type="text" th:field="*{diseaseDuration}" placeholder=" Disease Duration" >
+							</td>
+						</tr>
+					</table>
 					<div class="row">
 						<div class="col-50">
 							<label class="levelAzure" for="alcoholSmokingTobacco">Alcohol Smoking/Tobacco ?</label>
@@ -351,7 +317,7 @@
 							<input type="text" th:field="*{description}"	class="form-control mb-4 w-25" placeholder="Description">
 						</div>
 					</div>
-				<button type="submit" class="save-button">Save</button>			 
+				<button type="submit" class="submit-btn">Save</button>			 
 			</form>
 		</div>
 		

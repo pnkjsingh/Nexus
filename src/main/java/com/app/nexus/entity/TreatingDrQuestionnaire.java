@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
@@ -17,16 +19,10 @@ public class TreatingDrQuestionnaire {
 	@Column(name = "id")
 	private int id;
 	
-//	@NotBlank(message = "Claim Number is required")
-	@Column(name = "claim_no")
-	private String claimNo;
-	@Column(name = "name_of_insured")
-//	@NotBlank(message = "Insured Name is required")
-	private String insuredName;
-	@Column(name = "name_of_insured_company")
-//	@NotBlank(message = "Insured Company Name is required")
-	private String insuredCompanyName;
-	
+    @OneToOne
+    @JoinColumn(name = "claim", referencedColumnName = "claim_number")
+    private Claim claim;
+    
 	@Column(name="high_blood_pressure")
 	boolean highBloodPressure;
 	@Column(name="hbp_since")
@@ -132,14 +128,8 @@ public class TreatingDrQuestionnaire {
 	public int getId() {
 		return id;
 	}
-	public String getClaimNo() {
-		return claimNo;
-	}
-	public String getInsuredName() {
-		return insuredName;
-	}
-	public String getInsuredCompanyName() {
-		return insuredCompanyName;
+	public Claim getClaim() {
+		return claim;
 	}
 	public boolean isHighBloodPressure() {
 		return highBloodPressure;
@@ -264,14 +254,8 @@ public class TreatingDrQuestionnaire {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public void setClaimNo(String claimNo) {
-		this.claimNo = claimNo;
-	}
-	public void setInsuredName(String insuredName) {
-		this.insuredName = insuredName;
-	}
-	public void setInsuredCompanyName(String insuredCompanyName) {
-		this.insuredCompanyName = insuredCompanyName;
+	public void setClaim(Claim claim) {
+		this.claim = claim;
 	}
 	public void setHighBloodPressure(boolean highBloodPressure) {
 		this.highBloodPressure = highBloodPressure;
@@ -393,7 +377,7 @@ public class TreatingDrQuestionnaire {
 	public void setCaseType(String caseType) {
 		this.caseType = caseType;
 	}
-	public TreatingDrQuestionnaire(int id, String claimNo, String insuredName, String insuredCompanyName,
+	public TreatingDrQuestionnaire(int id, Claim claim,
 			boolean highBloodPressure, String hbpSince, String hbpTreatment, boolean diabetesMellitus,
 			String diabetesSince, String diabetesTreatment, boolean heartDisease, String heartDiseaseSince,
 			String heartDiseaseTreatment, boolean respiratoryIllness, String riSince, String riTreatment,
@@ -407,9 +391,7 @@ public class TreatingDrQuestionnaire {
 			@NotBlank(message = "Questionnaire Date is required") String questionnaireDate, String caseType) {
 		super();
 		this.id = id;
-		this.claimNo = claimNo;
-		this.insuredName = insuredName;
-		this.insuredCompanyName = insuredCompanyName;
+		this.claim = claim;
 		this.highBloodPressure = highBloodPressure;
 		this.hbpSince = hbpSince;
 		this.hbpTreatment = hbpTreatment;
@@ -458,8 +440,7 @@ public class TreatingDrQuestionnaire {
 	}
 	@Override
 	public String toString() {
-		return "TreatingDrQuestionnaire [id=" + id + ", claimNo=" + claimNo + ", insuredName=" + insuredName
-				+ ", insuredCompanyName=" + insuredCompanyName + ", highBloodPressure=" + highBloodPressure
+		return "TreatingDrQuestionnaire [id=" + id + ", claim=" + claim + ", highBloodPressure=" + highBloodPressure
 				+ ", hbpSince=" + hbpSince + ", hbpTreatment=" + hbpTreatment + ", diabetesMellitus=" + diabetesMellitus
 				+ ", diabetesSince=" + diabetesSince + ", diabetesTreatment=" + diabetesTreatment + ", heartDisease="
 				+ heartDisease + ", heartDiseaseSince=" + heartDiseaseSince + ", heartDiseaseTreatment="

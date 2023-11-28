@@ -2,13 +2,13 @@ package com.app.nexus.entity;
 
 import java.sql.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -34,17 +34,43 @@ public class Claim {
 	@Column(name = "claim_date")
     private Date claimDate;
 
+	@Column(name = "assigned_to")
+    private String assignedTo;
+
 	// Define the many-to-one relationship with Insurance
     @NotNull
     @ManyToOne
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
+    
+ // Define the one-to-one relationship with InsuredQuestionnaire
+    @OneToOne(mappedBy = "claim", cascade = CascadeType.ALL)
+    @JoinColumn(name="insuredQuestionnaire_id")
+    private InsuredQuestionnaire insuredQuestionnaire;
 
+    // Define the one-to-one relationship with Treating Doctor Questionnaire
+    @OneToOne(mappedBy = "claim", cascade = CascadeType.ALL)
+    @JoinColumn(name="FamilyDrQuestionnaire_id")
+    private FamilyDoctorQuestionnaire familyDrQuestionnaire;
+
+    // Define the one-to-one relationship with Treating Doctor Questionnaire
+    @OneToOne(mappedBy = "claim", cascade = CascadeType.ALL)
+    @JoinColumn(name="TreatingDrQuestionnaire_id")
+    private TreatingDrQuestionnaire treatingDrQuestionnaire;
+    
 //	public Long getId() {
 //		return id;
 //	}
 
-    public String getClaimNumber() {
+    public InsuredQuestionnaire getInsuredQuestionnaire() {
+		return insuredQuestionnaire;
+	}
+
+	public void setInsuredQuestionnaire(InsuredQuestionnaire insuredQuestionnaire) {
+		this.insuredQuestionnaire = insuredQuestionnaire;
+	}
+
+	public String getClaimNumber() {
 		return claimNumber;
 	}
 
@@ -60,12 +86,31 @@ public class Claim {
 		return insurance;
 	}
 
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+
 //	public void setId(Long id) {
 //		this.id = id;
 //	}
-
+	
 	public void setClaimNumber(String claimNumber) {
 		this.claimNumber = claimNumber;
+	}
+
+	public FamilyDoctorQuestionnaire getFamilyDrQuestionnaire() {
+		return familyDrQuestionnaire;
+	}
+
+	public void setFamilyDrQuestionnaire(FamilyDoctorQuestionnaire familyDrQuestionnaire) {
+		this.familyDrQuestionnaire = familyDrQuestionnaire;
+	}
+
+	public TreatingDrQuestionnaire getTreatingDrQuestionnaire() {
+		return treatingDrQuestionnaire;
+	}
+	public void setTreatingDrQuestionnaire(TreatingDrQuestionnaire treatingDrQuestionnaire) {
+		this.treatingDrQuestionnaire = treatingDrQuestionnaire;
 	}
 
 	public void setClaimAmount(double claimAmount) {
@@ -80,13 +125,21 @@ public class Claim {
 		this.insurance = insurance;
 	}
 
-	public Claim(/* Long id, */ String claimNumber, double claimAmount, Date claimDate, Insurance insurance) {
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public Claim(String claimNumber, @NotNull double claimAmount, @NotNull Date claimDate, String assignedTo,
+			@NotNull Insurance insurance, InsuredQuestionnaire insuredQuestionnaire, FamilyDoctorQuestionnaire familyDrQuestionnaire, TreatingDrQuestionnaire treatingDrQuestionnaire) {
 		super();
-//		this.id = id;
 		this.claimNumber = claimNumber;
 		this.claimAmount = claimAmount;
 		this.claimDate = claimDate;
+		this.assignedTo = assignedTo;
 		this.insurance = insurance;
+		this.insuredQuestionnaire = insuredQuestionnaire;
+		this.familyDrQuestionnaire = familyDrQuestionnaire;
+		this.treatingDrQuestionnaire = treatingDrQuestionnaire;
 	}
 
 	public Claim() {
@@ -97,7 +150,9 @@ public class Claim {
 	@Override
 	public String toString() {
 		return "Claim [claimNumber=" + claimNumber + ", claimAmount=" + claimAmount + ", claimDate=" + claimDate
-				+ ", insurance=" + insurance + "]";
+				+ ", assignedTo=" + assignedTo + ", insurance=" + insurance + ", insuredQuestionnaire="
+				+ insuredQuestionnaire + ", familyDrQuestionnaire=" + familyDrQuestionnaire
+				+ ", treatingDrQuestionnaire=" + treatingDrQuestionnaire + "]";
 	}
 
 }

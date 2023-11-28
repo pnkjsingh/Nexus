@@ -32,7 +32,7 @@ public class InsuranceServiceImpl implements InsuranceServices {
 	}
 
 	@Override
-	public Insurance findById(String id) {
+	public Insurance findById(Long id) {
 		Optional<Insurance> result=insuranceRepository.findById(id);
 		Insurance insurance=null;
 		if(result.isPresent()) {
@@ -47,7 +47,7 @@ public class InsuranceServiceImpl implements InsuranceServices {
 	}
 
 	@Override
-	public void deleteById(String id) {
+	public void deleteById(Long id) {
 		Optional<Insurance> result=insuranceRepository.findById(id);
 		Insurance insurance=null;
 		if(result.isPresent()) {

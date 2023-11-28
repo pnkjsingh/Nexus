@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,14 +18,11 @@ public class FamilyDoctorQuestionnaire {
 	@Column(name="Id")
 	int id;
 
-	@Column(name="Claim_No")
-	String claimNo;
-	
-	@Column(name="Name_of_Insured")
-	String insuredPersonName;
-	
-	@Column(name="Name_of_Insured_Company")
-	String insuredCompanyName;
+//	@Column(name="Claim_No")
+//	String claimNo;
+    @OneToOne
+    @JoinColumn(name = "claim", referencedColumnName = "claim_number")
+    private Claim claim;
 	
 	@Column(name="High_Blood_pressure")
 	boolean highBloodPressure;
@@ -59,23 +58,12 @@ public class FamilyDoctorQuestionnaire {
 	@Column(name="Doctor_Name")
 	String doctorName;
 	
-	@Column(name="case_type")
-	String caseType;
-
 	public int getId() {
 		return id;
 	}
 
-	public String getClaimNo() {
-		return claimNo;
-	}
-
-	public String getInsuredPersonName() {
-		return insuredPersonName;
-	}
-
-	public String getInsuredCompanyName() {
-		return insuredCompanyName;
+	public Claim getClaim() {
+		return claim;
 	}
 
 	public boolean isHighBloodPressure() {
@@ -134,24 +122,12 @@ public class FamilyDoctorQuestionnaire {
 		return doctorName;
 	}
 
-	public String getCaseType() {
-		return caseType;
-	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public void setClaimNo(String claimNo) {
-		this.claimNo = claimNo;
-	}
-
-	public void setInsuredPersonName(String insuredPersonName) {
-		this.insuredPersonName = insuredPersonName;
-	}
-
-	public void setInsuredCompanyName(String insuredCompanyName) {
-		this.insuredCompanyName = insuredCompanyName;
+	public void setClaim(Claim claim) {
+		this.claim = claim;
 	}
 
 	public void setHighBloodPressure(boolean highBloodPressure) {
@@ -210,19 +186,13 @@ public class FamilyDoctorQuestionnaire {
 		this.doctorName = doctorName;
 	}
 
-	public void setCaseType(String caseType) {
-		this.caseType = caseType;
-	}
-
-	public FamilyDoctorQuestionnaire(int id, String claimNo, String insuredPersonName, String insuredCompanyName,
+	public FamilyDoctorQuestionnaire(int id, Claim claim, 
 			boolean highBloodPressure, String hbpSince, String hbpRx, boolean diabetesMellitus, String diabetesSince,
 			String diabetesRx, boolean respiratoryIllness, String riSince, String riRx, boolean heartDisease,
-			String heartDiseaseSince, String heartDiseaseRx, String queDate, String doctorName, String caseType) {
+			String heartDiseaseSince, String heartDiseaseRx, String queDate, String doctorName) {
 		super();
 		this.id = id;
-		this.claimNo = claimNo;
-		this.insuredPersonName = insuredPersonName;
-		this.insuredCompanyName = insuredCompanyName;
+		this.claim = claim;
 		this.highBloodPressure = highBloodPressure;
 		this.hbpSince = hbpSince;
 		this.hbpRx = hbpRx;
@@ -237,24 +207,19 @@ public class FamilyDoctorQuestionnaire {
 		this.heartDiseaseRx = heartDiseaseRx;
 		this.queDate = queDate;
 		this.doctorName = doctorName;
-		this.caseType = caseType;
 	}
 
 	public FamilyDoctorQuestionnaire() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "FamilyDoctorQuestionnaire [id=" + id + ", claimNo=" + claimNo + ", insuredPersonName="
-				+ insuredPersonName + ", insuredCompanyName=" + insuredCompanyName + ", highBloodPressure="
+		return "FamilyDoctorQuestionnaire [id=" + id + ", claim=" + claim + ", highBloodPressure="
 				+ highBloodPressure + ", hbpSince=" + hbpSince + ", hbpRx=" + hbpRx + ", diabetesMellitus="
 				+ diabetesMellitus + ", diabetesSince=" + diabetesSince + ", diabetesRx=" + diabetesRx
 				+ ", respiratoryIllness=" + respiratoryIllness + ", riSince=" + riSince + ", riRx=" + riRx
 				+ ", heartDisease=" + heartDisease + ", heartDiseaseSince=" + heartDiseaseSince + ", heartDiseaseRx="
-				+ heartDiseaseRx + ", queDate=" + queDate + ", doctorName=" + doctorName + ", caseType=" + caseType
-				+ "]";
+				+ heartDiseaseRx + ", queDate=" + queDate + ", doctorName=" + doctorName + "]";
 	}
-
 }

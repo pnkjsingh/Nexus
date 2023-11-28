@@ -8,6 +8,12 @@ public class InsuranceClaimDTO {
 	
 	private String claimNumber;
 	
+	private int insuredQuestionaireId;
+
+	private int familyDrQuestionaireId;
+
+	private int treatingDrQuestionaireId;
+	
 	private String insuranceType;
 	
 	private String insuredName;
@@ -21,7 +27,23 @@ public class InsuranceClaimDTO {
 	private Date claimDate;
 
 	private Date policyDate;
+	
+	private String assignedTo;
 
+	public int getInsuredQuestionaireId() {
+		return insuredQuestionaireId;
+	}
+	
+	public void setInsuredQuestionaireId(int insuredQuestionaireId) {
+		this.insuredQuestionaireId = insuredQuestionaireId;
+	}
+
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
 	public String getPolicyNumber() {
 		return policyNumber;
 	}
@@ -75,5 +97,18 @@ public class InsuranceClaimDTO {
 	}
 	public void setPolicyDate(Date policyDate) {
 		this.policyDate = policyDate;
+	}
+	public int getFamilyDrQuestionaireId() {
+		return familyDrQuestionaireId;
+	}
+	public void setFamilyDrQuestionaireId(int familyDrQuestionaireId) {
+		this.familyDrQuestionaireId = familyDrQuestionaireId;
+	}
+
+	public int getTreatingDrQuestionaireId() {
+		return treatingDrQuestionaireId;
+	}
+	public void setTreatingDrQuestionaireId(int treatingDrQuestionaireId) {
+		this.treatingDrQuestionaireId = treatingDrQuestionaireId;
 	}
 }

@@ -2,6 +2,9 @@ package com.app.nexus.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +46,10 @@ public class UserDaoImpl implements UserDao {
 		entityManager.merge(theUser);
 	}
 
-
+	@Override
+	public List<String> findAllUsernames() {
+		TypedQuery<String> query = entityManager.createQuery("SELECT u.userName FROM User u", String.class);
+		return query.getResultList();
+		
+    }
 }
