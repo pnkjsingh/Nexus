@@ -389,17 +389,18 @@
 
 	.container1 {
 		display: flex;
+		justify-content: space-between;
 	}
 
 	.menu {
 		background-color: cornflowerblue;
 		color: rgb(0, 0, 0);
-		width: 10%;
+		width: 20%;
 		padding: 20px;
 	}
 
 	.menu ul {
-		list-style-type: none;
+		list-style-type: disc; /*To add bullet points*/
 		padding: 0;
 	}
 
@@ -809,5 +810,13 @@ article {
 			color: black;
 			cursor: pointer;
 		}
-
+		
+/*		.center {
+			display: block;
+			margin-left: 30%;
+		}
+*/		
+		.chart-container {
+			flex-basis: 70%;
+		}
 	

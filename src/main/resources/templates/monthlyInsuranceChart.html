@@ -1,30 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
+		<meta charset="UTF-8">
+		<title>Monthly Insurance Chart</title>
+		<!-- Add any necessary CSS stylesheets here -->
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
 	</head>
-	
 	<body>
 		<div class="header">
-			<a class="menu-icon" href="#">
-				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-				</svg>
-				<h2> Nexus Health Care</h2>
-			</a>
-			<div class="header-menu">
-				<a href="/home">Home</a>
-				<a href="/about">About</a>
-				<a href="/service">Services</a>
-				<a href="/showMyLoginPage">Login</a>
-				<a href="/contactUs/form">Contact</a>
+		<a class="menu-icon" href="#">
+			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+			</svg>
+			<h2> Nexus Health Care</h2>
+		</a>
+		<div class="header-menu">
+			<a href="/home">Home</a>
+			<a href="/about">About</a>
+			<a href="/service">Services</a>
+			<a href="/showMyLoginPage">Login</a>
+			<a href="/contactUs/form">Contact</a>
 			</div>
-<!--			<div class="header-right">
+<!--		<div class="header-right">
 				<div class="header-btn">
 					<a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Contact</a>
 				</div>
 			</div>
--->			<div class="header-icons">
+-->
+			<div class="header-icons">
 				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
 				</svg>
@@ -36,50 +39,47 @@
 				</svg>
 			</div>
 		</div>
+		<div class="container1">
 
-	    <div class="scoreboard">
-			<ol>
-				<li style="--i: 1">
-					<a href="/insuranceclaim/show"><B>Create Case</B></a>
-				</li>
-				<li style="--i: 2">
-					<p>Assign Case</p>
-		    	</li>
-				<li style="--i: 3">
-					<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
-		    	</li>
-		    	<li style="--i: 4">
-					<a th:href="@{/register/showRegistrationForm}"><B>Create New Account</B></a>
-		    	</li>
-		    	<li style="--i: 5">
-					<a href="/register/enabled"><b>Approve Account</b></a>
-		    	</li>
-		    	<li style="--i: 6">
-					<a href="/register/disabled"><b>Suspend Account</b></a>
-		    	</li>
-		    	<li style="--i: 7">
-					<a href="/register/show/all"><b>All Accounts</b></a>
-		    	</li>
-				<li style="--i: 7">
-					<a href="/report"><b>Reports</b></a>
-				</li>
-			</ol>
+			<div class="scoreboard">
+				<ol>
+					<li style="background-color: steelblue;"><h2>Charts</h2></li>
+					<li style="--i: 1">
+						<a href="/monthlyInsuranceChart"><B> Monthly Insurance Chart </B></a>
+					</li>
+					<li style="--i: 2">
+						<a href="/pie-chart"><b>All Cases pie Chart</b></a>
+			    	</li>
+					<li style="--i: 1">
+						<a href="/companyChart"><B> Company Insurance Chart </B></a>
+					</li>
+					<li style="--i: 2">
+						<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
+			    	</li>
+					<li style="--i: 1">
+						<a href="/report"><b>Reports</b></a>
+					</li>
+				</ol>
+			</div>
+			
+			<div class="chart-container">
+			<h1	style="margin-left: 30%;">Monthly Insurance Chart</h1>
+					<div class="line-sperater" style="margin-left: 25%; margin-right: 25%;">		</div>
+			    <div th:if="${chartBase64}">
+			        <img th:src="'data:image/png;base64,' + ${chartBase64}" alt="Monthly Insurance Chart"/>
+			    </div>
+			    <div th:unless="${chartBase64}">
+			        <p>No data available to generate the chart.</p>
+			    </div>
+			    <!-- Add any additional content or styling here -->
+			</div>
+			
 		</div>
-
 		<div class="line-sperater">		</div>
-
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
-
 		<script src="/js/script.js"></script>
-	
-		<section class="before-footer">
-		<h2>About Us</h2>
-		<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
-		</section>
-		<footer>
-			<p>&copy;2023 Contact me. All rights reserved.</p>
-		</footer>
+
 	</body>
 </html>

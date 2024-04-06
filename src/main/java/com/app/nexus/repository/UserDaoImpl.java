@@ -8,12 +8,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+//import org.hibernate.Session;
+//import org.hibernate.SessionFactory;
+//import org.hibernate.query.Query;
 
 import com.app.nexus.entity.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
+//	@Autowired
+//	private SessionFactory sessionFactory;
+	
 	private EntityManager entityManager;
 
 	@Autowired
@@ -50,6 +56,13 @@ public class UserDaoImpl implements UserDao {
 	public List<String> findAllUsernames() {
 		TypedQuery<String> query = entityManager.createQuery("SELECT u.userName FROM User u", String.class);
 		return query.getResultList();
-		
     }
-}
+
+	/*
+	 * @Override public List<User> findAll() { Session currentSession =
+	 * sessionFactory.getCurrentSession();
+	 * 
+	 * // Retrieve all users using HQL Query<User> query =
+	 * currentSession.createQuery("from User", User.class); return
+	 * query.getResultList(); }
+	 */}

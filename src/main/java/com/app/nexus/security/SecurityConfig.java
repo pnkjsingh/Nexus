@@ -36,34 +36,29 @@ public class SecurityConfig {
 		http.authorizeHttpRequests(configurer -> 
 			configurer
 //				.requestMatchers("/", "/home", "/services", "/about").permitAll()
-				.requestMatchers(mvcMatcherBuilder.pattern("/familyDoctor/show")).hasRole("EMPLOYEE")
-				.requestMatchers(mvcMatcherBuilder.pattern("")).hasRole("ADMIN")
-				.requestMatchers(mvcMatcherBuilder.pattern("/**")).permitAll()
-				.anyRequest().authenticated()
+//			.requestMatchers(mvcMatcherBuilder.pattern("/familyDoctor/show")).hasRole("EMPLOYEE")
+			
+			.requestMatchers(mvcMatcherBuilder.pattern("/familyDoctor/questionnaireForm/**")).authenticated()
+			.requestMatchers(mvcMatcherBuilder.pattern("/treatingDoctor/questionnaireForm/**")).hasRole("EMPLOYEE")
+            // Add any other URL patterns and their corresponding access rules as needed
+            .requestMatchers(mvcMatcherBuilder.pattern("/")).hasRole("ADMIN")
+            .requestMatchers(mvcMatcherBuilder.pattern("/showMyLoginPage")).permitAll()
+            .requestMatchers(mvcMatcherBuilder.pattern("/**")).permitAll()
+            .anyRequest().authenticated()
 			)
 			.formLogin(form ->
 					form
 						.loginPage("/showMyLoginPage")
 						.loginProcessingUrl("/authenticateTheUser")
 						.permitAll()
-			).logout(logout->logout.permitAll())
+			).logout(logout->logout
+					.logoutUrl("/logout") // Specify the logout URL
+					.logoutSuccessUrl("/showMyLoginPage?logout") // Redirect to login page after logout
+					.invalidateHttpSession(true) // Invalidate HTTP session
+					.deleteCookies("JSESSIONID") // Delete cookies
+					.permitAll())
 			.exceptionHandling(configurer-> configurer.accessDeniedPage("/access-denied")
 		);
 		return http.build();
 	}
-	
-	/*
-	 * @Bean public SecurityFilterChain filterChain(HttpSecurity http) throws
-	 * Exception { http.authorizeHttpRequests(configurer -> configurer
-	 * .requestMatchers("/familyDoctor/show").hasRole("EMPLOYEE")
-	 * .requestMatchers("/leaders/**").hasRole("MANAGER")
-	 * .requestMatchers("/systems/**").hasRole("ADMIN")
-	 * .requestMatchers("/register/**").permitAll() .anyRequest().authenticated() )
-	 * .formLogin(form -> form .loginPage("/showMyLoginPage")
-	 * .loginProcessingUrl("/authenticateTheUser") .permitAll() ) .logout(logout ->
-	 * logout.permitAll() ) .exceptionHandling(configurer ->
-	 * configurer.accessDeniedPage("/access-denied") );
-	 * 
-	 * return http.build(); }
-	 */
 }

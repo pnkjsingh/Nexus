@@ -15,4 +15,5 @@ public interface UserService extends UserDetailsService {
 
 	void save(WebUser webUser);
 	
+//	public List<User> findAll();
 }

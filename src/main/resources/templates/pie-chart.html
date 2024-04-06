@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
+		<meta charset="UTF-8">
+		<title>Pie Chart</title>
+		<!-- Add any necessary CSS stylesheets here -->
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</head>
-	
 	<body>
 		<div class="header">
 			<a class="menu-icon" href="#">
@@ -19,12 +22,7 @@
 				<a href="/showMyLoginPage">Login</a>
 				<a href="/contactUs/form">Contact</a>
 			</div>
-<!--			<div class="header-right">
-				<div class="header-btn">
-					<a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Contact</a>
-				</div>
-			</div>
--->			<div class="header-icons">
+			<div class="header-icons">
 				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
 				</svg>
@@ -36,50 +34,81 @@
 				</svg>
 			</div>
 		</div>
+		<div class="container1">
 
-	    <div class="scoreboard">
-			<ol>
-				<li style="--i: 1">
-					<a href="/insuranceclaim/show"><B>Create Case</B></a>
-				</li>
-				<li style="--i: 2">
-					<p>Assign Case</p>
-		    	</li>
-				<li style="--i: 3">
-					<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
-		    	</li>
-		    	<li style="--i: 4">
-					<a th:href="@{/register/showRegistrationForm}"><B>Create New Account</B></a>
-		    	</li>
-		    	<li style="--i: 5">
-					<a href="/register/enabled"><b>Approve Account</b></a>
-		    	</li>
-		    	<li style="--i: 6">
-					<a href="/register/disabled"><b>Suspend Account</b></a>
-		    	</li>
-		    	<li style="--i: 7">
-					<a href="/register/show/all"><b>All Accounts</b></a>
-		    	</li>
-				<li style="--i: 7">
-					<a href="/report"><b>Reports</b></a>
-				</li>
-			</ol>
+			<div class="scoreboard">
+				<ol>
+					<li style="background-color: steelblue;"><h2>Charts</h2></li>
+					<li style="--i: 1">
+						<a href="/monthlyInsuranceChart"><B> Monthly Insurance Chart </B></a>
+					</li>
+					<li style="--i: 2">
+						<a href="/pie-chart"><b>All Cases pie Chart</b></a>
+			    	</li>
+					<li style="--i: 3">
+						<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
+			    	</li>
+					<li style="--i: 4">
+						<a href="/report"><b>Reports</b></a>
+					</li>
+				</ol>
+			</div>
+
+		<div style="width: 80%">
+			<canvas id="pieChart"></canvas>
 		</div>
-
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			var dataMap = /*[[${dataMap}]]*/ {};
+			var labels = Object.keys(dataMap);
+			var data = Object.values(dataMap);
+		
+			var ctx = document.getElementById('pieChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+				type: 'pie',
+					data: {
+					labels: labels,
+					datasets: [{
+						label: 'Percentage of Cases',
+						data: data,
+						backgroundColor: [
+							'rgba(255, 99, 132, 1)',
+							'rgba(255, 255, 0, 1)'
+						],
+						borderColor: [
+							'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)'
+						],
+						borderWidth: 1
+					}]
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: false,
+					plugins: {
+						title: {
+							display: true,
+							text: 'Percentage of Cashless and Reimbursement Cases',
+							font: {
+								size: 20,
+								weight:'bold',
+								color: 'black'
+							}
+						},
+						legend: {
+							position: 'bottom'
+						}
+					}
+				}
+			});
+			/*]]>*/
+		</script>
+		</div>
 		<div class="line-sperater">		</div>
-
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
-
 		<script src="/js/script.js"></script>
-	
-		<section class="before-footer">
-		<h2>About Us</h2>
-		<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
-		</section>
-		<footer>
-			<p>&copy;2023 Contact me. All rights reserved.</p>
-		</footer>
+
 	</body>
 </html>

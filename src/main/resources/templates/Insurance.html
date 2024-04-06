@@ -14,6 +14,7 @@
 				</svg>
 				<h2> Nexus Health Care</h2>
 			</a>
+
 			<div class="header-menu">
 				<a href="/home">Home</a>
 				<a href="/about">About</a>
@@ -21,12 +22,7 @@
 				<a href="/showMyLoginPage">Login</a>
 				<a href="/contactUs/form">Contact</a>
 			</div>
-<!--			<div class="header-right">
-				<div class="header-btn">
-					<a href="/contactUs/form" class="btn" style="background-color: lightseagreen;">Contact</a>
-				</div>
-			</div>
--->
+
 			<div class="header-icons">
 				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -39,53 +35,95 @@
 				</svg>
 			</div>
 		</div>
-		<h1>Insurance and Claim Data</h1>
-		<table>
-			<thead>
-				<tr>
-					<th style="width: 1ch;">Id</th>
-					<th style="width: 3ch;">Policy Number</th>
-					<th style="width: 3ch;">Insured Name</th>
-					<th style="width: 2ch;">Case Type</th>
-					<th style="width: 4cm;">Claim Company</th>
-<!--			        <th>Premium Amount</th>		-->
-					<th style="width: 3cm;">Policy Date</th>
-					<th style="width: 3em;">Claim Number</th>
-<!--			        <th>Claim Amount</th>		-->
-					<th style="width: 3cm;">Claim Date</th>
-					<th style="width: 3cm;">Re-Assign</th>
-					<th style="width: 3cm;">Questionnnire</th>
-					<th style="width: 3cm;">Family Dr Questionnnire</th>
-					<th style="width: 3cm;">Treating Dr Questionnnire</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="data : ${data}">
-					<td th:text="${data.insuranceId}"></td>
-					<td th:text="${data.policyNumber}"></td>
-					<td th:text="${data.insuredName}"></td>
-					<td th:text="${data.insuranceType}"></td>
-					<td th:text="${data.insuranceCompany}"></td>
-<!--					<td th:text="${data.premiumAmount}"></td>	-->
-					<td th:text="${data.policyDate}"></td>
-					<td th:each="claim : ${data.claims}" th:text="${claim.claimNumber}"></td>
-<!--					<td th:each="claim : ${data.claims}" th:text="${claim.claimAmount}"></td>	-->
-					<td th:each="claim : ${data.claims}" th:text="${claim.claimDate}"></td>
-					<td>
-						<a th:href="@{/assign-claim/{id}(id=${data.policyNumber})}">Assign</a>
-					</td>
-					<td th:each="claim : ${data.claims}">
-						<a th:href="@{/insured/questionnaireForm/{id}(id=${claim.claimNumber})}">Insured Questionaire</a>
-					</td>
-					<td th:each="claim : ${data.claims}">
-						<a th:href="@{/familyDoctor/questionnaireForm/{id}(id=${claim.claimNumber})}">Family Dr Questionaire</a>
-					</td>
-					<td th:each="claim : ${data.claims}">
-						<a th:href="@{/treatingDoctor/questionnaireForm/{id}(id=${claim.claimNumber})}">Treating Dr Questionaire</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="container1">
+
+		    <div class="scoreboard">
+				<ol>
+					<li style="--i: 1">
+						<a href="/insuranceclaim/show"><B>Create Case</B></a>
+					</li>
+					<li style="--i: 2">
+						<p>Assign Case</p>
+			    	</li>
+					<li style="--i: 1">
+						<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
+			    	</li>
+			    	<li style="--i: 2">
+						<a th:href="@{/register/showRegistrationForm}"><B>Create New Account</B></a>
+			    	</li>
+			    	<li style="--i: 1">
+						<a href="/register/enabled"><b>Approve Account</b></a>
+			    	</li>
+			    	<li style="--i: 2">
+						<a href="/register/disabled"><b>Suspend Account</b></a>
+			    	</li>
+			    	<li style="--i: 1">
+						<a href="/register/show/all"><b>All Accounts</b></a>
+			    	</li>
+					<li style="--i: 2">
+						<a href="/report"><b>Reports</b></a>
+					</li>
+				</ol>
+				<ol>
+					<li style="background-color: steelblue;"><h4>Charts</h4></li>
+					<li style="--i: 1">
+						<a href="/monthlyInsuranceChart"><B> Monthly Insurance Chart </B></a>
+					</li>
+					<li style="--i: 2">
+						<a href="/pie-chart"><b>All Cases pie Chart</b></a>
+			    	</li>
+				</ol>
+			</div>
+			<div class="chart-container">
+				<table style="margin-left: -1.5%;">
+					<h1 style="margin-left: 30%;">Insurance and Claim Data</h1>
+					<thead>
+						<tr>
+							<th style="width: 1ch;">Id</th>
+							<th style="width: 3ch;">Policy Number</th>
+							<th style="width: 3ch;">Insured Name</th>
+							<th style="width: 2ch;">Case Type</th>
+							<th style="width: 4cm;">Claim Company</th>
+		<!--			        <th>Premium Amount</th>		-->
+							<th style="width: 3cm;">Policy Date</th>
+							<th style="width: 3em;">Claim Number</th>
+		<!--			        <th>Claim Amount</th>		-->
+							<th style="width: 3cm;">Claim Date</th>
+							<th style="width: 3cm;">Re-Assign</th>
+							<th style="width: 3cm;">Questionnnire</th>
+							<th style="width: 3cm;">Family Dr Questionnnire</th>
+							<th style="width: 3cm;">Treating Dr Questionnnire</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="data : ${data}">
+							<td th:text="${data.insuranceId}"></td>
+							<td th:text="${data.policyNumber}"></td>
+							<td th:text="${data.insuredName}"></td>
+							<td th:text="${data.insuranceType}"></td>
+							<td th:text="${data.insuranceCompany}"></td>
+		<!--					<td th:text="${data.premiumAmount}"></td>	-->
+							<td th:text="${data.policyDate}"></td>
+							<td th:each="claim : ${data.claims}" th:text="${claim.claimNumber}"></td>
+		<!--					<td th:each="claim : ${data.claims}" th:text="${claim.claimAmount}"></td>	-->
+							<td th:each="claim : ${data.claims}" th:text="${claim.claimDate}"></td>
+							<td>
+								<a th:href="@{/assign-claim/{id}(id=${data.policyNumber})}">Assign</a>
+							</td>
+							<td th:each="claim : ${data.claims}">
+								<a th:href="@{/insured/questionnaireForm/{id}(id=${claim.claimNumber})}">Insured Questionaire</a>
+							</td>
+							<td th:each="claim : ${data.claims}">
+								<a th:href="@{/familyDoctor/questionnaireForm/{id}(id=${claim.claimNumber})}">Family Dr Questionaire</a>
+							</td>
+							<td th:each="claim : ${data.claims}">
+								<a th:href="@{/treatingDoctor/questionnaireForm/{id}(id=${claim.claimNumber})}">Treating Dr Questionaire</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
 		<div class="line-sperater">
 		</div>
 

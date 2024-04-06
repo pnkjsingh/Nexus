@@ -1,6 +1,7 @@
 package com.app.nexus.entity;
 
 import jakarta.persistence.*;
+
 import java.util.Collection;
 
 @Entity
@@ -10,7 +11,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private Long user_id;
+	private Long user_Id;
 
     @Column(name = "username")
     private String userName;
@@ -39,13 +40,20 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String password, boolean enabled) {
-        this.userName = userName;
-        this.password = password;
-        this.enabled = enabled;
-    }
+    public User(Long user_Id, String userName, String password, boolean enabled, String firstName,
+			String lastName, String email, Collection<Role> roles) {
+		super();
+		this.user_Id = user_Id;
+		this.userName = userName;
+		this.password = password;
+		this.enabled = enabled;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.roles = roles;
+	}
 
-    public User(String userName, String password, boolean enabled,
+	public User(String userName, String password, boolean enabled,
                 Collection<Role> roles) {
         this.userName = userName;
         this.password = password;
@@ -54,11 +62,11 @@ public class User {
     }
 
     public Long getId() {
-        return user_id;
+        return user_Id;
     }
 
-    public void setId(Long user_id) {
-        this.user_id = user_id;
+    public void setId(Long user_Id) {
+        this.user_Id = user_Id;
     }
 
     public String getUserName() {
@@ -120,7 +128,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "user_Id=" + user_Id +
                 ", userName='" + userName + '\'' +
                 ", enabled=" + enabled +
                 ", firstName='" + firstName + '\'' +

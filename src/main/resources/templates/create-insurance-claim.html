@@ -44,8 +44,45 @@
 				</svg>
 			</div>
 		</div>
-
-		<div class="form-container">
+		<div class="container1">
+		    <div class="scoreboard">
+				<ol>
+					<li style="--i: 1">
+						<a href="/insuranceclaim/show"><B>Create Case</B></a>
+					</li>
+					<li style="--i: 2">
+						<p>Assign Case</p>
+			    	</li>
+					<li style="--i: 1">
+						<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
+			    	</li>
+			    	<li style="--i: 2">
+						<a th:href="@{/register/showRegistrationForm}"><B>Create New Account</B></a>
+			    	</li>
+			    	<li style="--i: 1">
+						<a href="/register/enabled"><b>Approve Account</b></a>
+			    	</li>
+			    	<li style="--i: 2">
+						<a href="/register/disabled"><b>Suspend Account</b></a>
+			    	</li>
+			    	<li style="--i: 1">
+						<a href="/register/show/all"><b>All Accounts</b></a>
+			    	</li>
+					<li style="--i: 2">
+						<a href="/report"><b>Reports</b></a>
+					</li>
+				</ol>
+				<ol>
+					<li style="background-color: steelblue;"><h4>Charts</h4></li>
+					<li style="--i: 1">
+						<a href="/monthlyInsuranceChart"><B> Monthly Insurance Chart </B></a>
+					</li>
+					<li style="--i: 2">
+						<a href="/pie-chart"><b>All Cases pie Chart</b></a>
+			    	</li>
+				</ol>
+			</div>
+					<div class="form-container">
 		    <h2><center>	Create a Insurance-Claim Case	</center></h2>
 		    <hr>
 			<form  id ="createcaseform" th:action="@{/insuranceclaim/add}" th:object="${insuranceClaimDTO}" method="POST">
@@ -108,6 +145,9 @@
 				<button type="submit" class="submit-btn" id="submit">Submit</button>
 			</form>
 		</div>
+
+		</div>
+
 		<div th:if="${message}">
 			<div id="myModal" class="modal">
 				<span class="close" onclick="closeModal()">&times;</span>

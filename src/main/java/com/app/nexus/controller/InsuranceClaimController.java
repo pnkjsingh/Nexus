@@ -35,6 +35,7 @@ public class InsuranceClaimController {
 	private InsuredQuestionnaireService insuredQuestionnaireService;
 	private FamilyDoctorServices familyDoctorServices;
 	private TreatingDrQuestionnaireServices treatingDrQuestionnaireServices;
+
 	@Autowired
 	private UserService userService;
 	

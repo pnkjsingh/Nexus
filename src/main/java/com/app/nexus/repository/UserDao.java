@@ -11,5 +11,7 @@ public interface UserDao {
     void save(User theUser);
     
     List<String> findAllUsernames();
-
+    
+//    List<User> findAll();
+    
 }
