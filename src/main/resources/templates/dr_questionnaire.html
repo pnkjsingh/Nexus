@@ -3,6 +3,14 @@
 	<head>
 		<title>Family Doctor's Questionnaire Form</title>
 		<link rel="stylesheet" type="text/css" href="/css/styles.css">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			function toggleForm() {
+				var form = document.getElementById("myForm");
+				form.style.display = form.style.display === "none" ? "block" : "none";
+			}
+		</script>
 	</head>
 	<body>
 		<div class="header">
@@ -31,9 +39,17 @@
 				</svg>
 			</div>
 		</div>
-		
-		<div class="form-container">		
-			<h3>	Family Doctor's Questionnaire Form 	</h3>
+
+		<div th:if="${message}">
+	        <script th:inline="javascript">
+	            alert([[$,{message}]]);
+	            window.location.href = '/familyDoctor/questionnaireForm';
+	        </script>
+	    </div>
+
+		<div class="form-container">
+			<h2><center>	Family Doctor's Questionnaire Form 	</center></h2>
+			<br>
 			<hr>
 				<div class="row">
 					<div class="col-50">
@@ -41,21 +57,19 @@
 						<input type="text" th:field="${claim.claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number" readonly="true">
 					</div>
 					<div class="col-50">
-						<label class="levelAzure" for="insuredName">Insured Preson name</label>
-						<input type="text" th:field="${insurance.insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name" readonly="true">			 
+						<label class="levelAzure" for="insuredName">Insured Person name</label>
+						<input type="text" th:field="${insurance.insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Person name" readonly="true">			 
 					</div>
 					<div class="col-50">
 						<label class="levelAzure" for="insuranceCompany">Insured Company Name</label>
 						<input type="text" th:field="${insurance.insuranceCompany}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" readonly="true">
 					</div>
 				</div>
-			<p class="text-decoration1"> * Fill below details </p>
-		
+			<br>
+			<label class="text-decoration1"> * Fill below details:- </label>		
 			<form th:action="@{/familyDoctor/add}"	th:object="${familydrquestionnaire}" method="POST">
-				<div class="row">
 				<input type="hidden" th:field="${familydrquestionnaire.id}">
 				<input type="hidden" th:field="${familydrquestionnaire.claim.claimNumber}">
-				</div>
 				
 				<label style="margin-top: 2em; margin-left: 7em; color: azure;">
 						<B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B>
@@ -68,78 +82,67 @@
 						<th> Treatment</th>
 					</tr>
 					<tr>
-<!--					<td><label for="highBloodPressure">High blood Pressure</label></td>-->
-						<td><label>High blood Pressure</label></td>
-						<td>
-							<select id="highBloodPressure" name="highBloodPressure">
-							<option value="false">FALSE</option>
-							<option value="true">TRUE</option>							
-						</td>
-						<td><input type="text" th:field="*{hbpSince}"	placeholder="High blood Pressure Since" >
-						</td>
-						<td><input type="text" th:field="*{hbpRx}" placeholder="High blood Pressure Rx">								
-						</td>
+						<td><label for="highBloodPressure">High blood Pressure</label></td>
+	                    <td>
+	                        <select id="highBloodPressure" th:field="*{highBloodPressure}" required>
+<!--	                            <option value="">SELECT</option>-->
+	                            <option value="false" th:selected="*{highBloodPressure == false}">FALSE</option>
+	                            <option value="true" th:selected="*{highBloodPressure == true}">TRUE</option>
+	                        </select>
+	                    </td>
+
+						<td><input type="text" th:field="*{hbpSince}" placeholder="High blood Pressure Since"></td>
+						<td><input type="text" th:field="*{hbpRx}" placeholder="High blood Pressure Rx"></td>
 					</tr>
 					<tr>
 						<td><label for="diabetesMellitus">Diabetes Mellitus</label></td>
 						<td>
-							<select id="diabetesMellitus" name="diabetesMellitus">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
+							<select id="diabetesMellitus" th:field="*{diabetesMellitus}">
+								<option value="false" th:selected="*{diabetesMellitus==false}">FALSE</option>		 
+								<option value="true" th:selected="*{diabetesMellitus==true}">TRUE</option>
+							</select>
 						</td>
-						<td>
-							<input type="text" th:field="*{diabetesSince}"	placeholder="Diabetes Mellitus Since">
-						</td>
-						<td>
-							<input type="text" th:field="*{diabetesRx}"	placeholder="Diabetes Mellitus Rx">
-						</td>
+						<td><input type="text" th:field="*{diabetesSince}"	placeholder="Diabetes Mellitus Since"></td>
+						<td><input type="text" th:field="*{diabetesRx}"	placeholder="Diabetes Mellitus Rx"></td>
 					</tr>
 					<tr>
-						<td><label for="respiratoryIllness">Respiratory-Illness</label></td>
+						<td><label for="respiratoryIllness">Respiratory Illness</label></td>
 						<td>
-							<select id="respiratoryIllness" name="respiratoryIllness">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
+							<select id="respiratoryIllness" th:field="*{respiratoryIllness}">
+								<option value="false" th:selected="*{respiratoryIllness==false}">FALSE</option>		 
+								<option value="true" th:selected="*{respiratoryIllness==true}">TRUE</option>
+							</select>
 						</td>
-						<td>
-							<input type="text" th:field="*{riSince}"	placeholder="Respiratory-Illness Since">	 
-						</td>
-						<td>
-							<input type="text" th:field="*{riRx}"	placeholder="Respiratory-Illness Rx">
-						</td>
+						<td><input type="text" th:field="*{riSince}"	placeholder="Respiratory Illness Since"></td>
+						<td><input type="text" th:field="*{riRx}"	placeholder="Respiratory Illness Rx"></td>
 					</tr>
 					<tr>
 						<td><label for="heartDisease">Heart Disease</label></td>
 						<td>
-							<select id="heartDisease" name="Heart Disease">
-							<option value="false">FALSE</option>		 
-							<option value="true">TRUE</option>
+							<select id="heartDisease"	th:field="*{heartDisease}">
+								<option value="false"	th:selected="*{heartDisease==false}">FALSE</option>		 
+								<option value="true"	th:selected="*{heartDisease==true}">TRUE</option>
+							</select>
 						</td>
-						<td>
-							<input type="text" th:field="*{heartDiseaseSince}"	placeholder="Heart Disease Since">	 
-						</td>
-						<td>
-							<input type="text" th:field="*{heartDiseaseRx}"	placeholder="Heart Disease Rx">
-						</td>
+						<td><input type="text" th:field="*{heartDiseaseSince}"	placeholder="Heart Disease Since"></td>
+						<td><input type="text" th:field="*{heartDiseaseRx}"	placeholder="Heart Disease Rx"> </td>
 					</tr>
 				</table>
 
 				<div class="row">
 					<div class="col-50">
-						<label class="levelAzure" for="queDate">Family Dr. Questionnare Date</label>					
-						<input type="datetime-local" th:field="*{queDate}" placeholder="Questionnaire Date" required>
+						<label class="levelAzure" for="queDate">Family Dr. Questionnaire Date</label>					
+						<input type="datetime-local" th:field="*{queDate}"	class="form-control mb-4 w-25"	placeholder="Questionnaire Date" required>
 					</div>
 					<div class="col-50">
 						<label class="levelAzure" for="doctorName">Family Doctor Name</label>					
-						<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name" required>
-					</div>
-					<div class="col-50">
+						<input type="text" th:field="*{doctorName}"	class="form-control mb-4 w-25"	placeholder="Doctor Name" required>
 					</div>
 				</div>
 				<button type="submit" class="submit-btn">Save</button>			 
 			</form>
 		</div>
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 		</div>
@@ -149,9 +152,10 @@
 			<h2>About Us</h2>
 			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
-
 		<footer>
-			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
 		</footer>
-	</body>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>	</body>
 </html>
