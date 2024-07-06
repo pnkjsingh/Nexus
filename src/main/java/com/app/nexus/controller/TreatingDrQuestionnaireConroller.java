@@ -51,11 +51,10 @@ public class TreatingDrQuestionnaireConroller {
 		 if (bindingResult.hasErrors()) {
 			 			 
 			model.addAttribute("message", "Questionnaire failed to save!"); 
-			return "treating_Dr_Questionnaire";
-			
+			return "treating_Dr_Questionnaire";	
 		}
-//		thetreatingDrQuestionnaire.setId(0);
 
+		 //		thetreatingDrQuestionnaire.setId(0);
 		drQuestionnaireServices.save(thetreatingDrQuestionnaire);
 
 		model.addAttribute("message", "Questionnaire saved successfully!");
