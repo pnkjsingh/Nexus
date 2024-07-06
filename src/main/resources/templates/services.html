@@ -35,7 +35,7 @@
 		<div class="slideshow-container">
 			<img src="" th:src="@{images/tech1.jfif}" alt="" height="250" width="1520">
 		</div>
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		
 		<h1 style="text-align: center; margin-top: -0.5em; margin-bottom: 1em;">Below services we provide</h1>
 		<article>
@@ -73,7 +73,7 @@
 			</section> 
 		</article>
 		
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
@@ -84,9 +84,11 @@
 			<h2>About Us</h2>
 			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
-
 		<footer>
-			<p>&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
 		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>

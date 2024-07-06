@@ -34,7 +34,7 @@
 		<div class="slideshow-container">
 			<img src="" th:src="@{images/tech1.jfif}" alt="" height="250" width="1520">
 		</div>
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<article>
 			<section class="card">
 				<div class="text-content">
@@ -81,7 +81,7 @@
 			</section> 
 		</article>
 
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
@@ -96,7 +96,10 @@
 			The registration number of this company is 338325 .Its registered address is where Company is actual registered : Room No. 302, Trimurti App Mumbradevi Colony, ROA THANE Thane MH 400612 IN. For any Query You can reach this company by email address or Postal address.
 		</section>
 		<footer>
-			<p>&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
 		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>

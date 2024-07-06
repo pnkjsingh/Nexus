@@ -43,7 +43,7 @@
 						<a href="/monthlyInsuranceChart"><B> Monthly Insurance Chart </B></a>
 					</li>
 					<li style="--i: 2">
-						<a href="/pie-chart"><b>All Cases pie Chart</b></a>
+						<a href="/pie-chart"><b>Cases pie Chart</b></a>
 			    	</li>
 					<li style="--i: 3">
 						<a href="/insuranceclaim/show/all"><b>All Cases</b></a>
@@ -54,9 +54,9 @@
 				</ol>
 			</div>
 
-		<div style="width: 80%">
-			<canvas id="pieChart"></canvas>
-		</div>
+			<div style="width: 80%">
+				<canvas id="pieChart"></canvas>
+			</div>
 		<script th:inline="javascript">
 			/*<![CDATA[*/
 			var dataMap = /*[[${dataMap}]]*/ {};
@@ -104,11 +104,16 @@
 			/*]]>*/
 		</script>
 		</div>
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
 		<script src="/js/script.js"></script>
-
+		<footer>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
+		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>

@@ -148,7 +148,7 @@
 			</div>
 		</div>
 
-		<div class="line-sperater">
+		<div class="line-separator">
 		</div>
 
 		<div class="centered-input">
@@ -160,9 +160,11 @@
 			<h2>About Us</h2>
 			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
-
 		<footer>
-			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
 		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>

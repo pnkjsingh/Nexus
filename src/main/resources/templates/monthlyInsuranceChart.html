@@ -57,8 +57,8 @@
 			</div>
 			
 			<div class="chart-container">
-			<h1	style="margin-left: 30%;">Monthly Insurance Chart</h1>
-					<div class="line-sperater" style="margin-left: 25%; margin-right: 25%;">		</div>
+				<h1	style="margin-left: 30%;">Monthly Insurance Chart</h1>
+				<div class="line-separator" style="margin-left: 25%; margin-right: 25%;">	</div>
 			    <div th:if="${chartBase64}">
 			        <img th:src="'data:image/png;base64,' + ${chartBase64}" alt="Monthly Insurance Chart"/>
 			    </div>
@@ -69,11 +69,16 @@
 			</div>
 			
 		</div>
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
 		<script src="/js/script.js"></script>
-
+		<footer>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
+		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>
