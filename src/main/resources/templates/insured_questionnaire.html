@@ -40,19 +40,18 @@
 			</div>
 		</div>
 
-			<div th:if="${message}">
-		        <script th:inline="javascript">
-		            alert([[$,{message}]]);
-		            window.location.href = '/insured/questionnaireForm';
-		        </script>
-		    </div>
+		<div th:if="${message}">
+	        <script th:inline="javascript">
+	            alert([[$,{message}]]);
+	            window.location.href = '/insured/questionnaireForm';
+	        </script>
+	    </div>
 
-	<div class="form-container">
-		<h2><center>Insured Questionnaire Form	</center></h2>
-		<br>
-		<hr>
-		<label class="text-decoration1"> * Fill below details:- </label>
-					<div class="row">
+		<div class="form-container">
+			<h2><center>Insured Questionnaire Form	</center></h2>
+			<br>
+			<hr>
+			<div class="row">
 				<div class="col-50">
 					<label class="levelAzure" for="claimNumber">Claim Number</label>
 					<input type="text" th:field="${claim.claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number" readonly="true">
@@ -66,7 +65,9 @@
 					<input type="text" th:field="${insurance.insuranceCompany}"	class="form-control mb-4 w-25" placeholder="Insured Company Name" readonly="true">
 				</div>
 			</div>
-			<form th:action="@{/insured/add}" th:object="${insuredQuestionnaire}" method="POST">
+			<br>
+	 		<label class="text-decoration1"> * Fill below details:- </label>
+				<form th:action="@{/insured/add}" th:object="${insuredQuestionnaire}" method="POST">
 					<input type="hidden" th:field="${insuredQuestionnaire.id}">
 					<input type="hidden" th:field="${insuredQuestionnaire.claim.claimNumber}">
 
@@ -86,7 +87,7 @@
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<label class="levelAzure" for="highBloodPressure">Identity Proof</label>
+							<label class="levelAzure" for="identityProof">Identity Proof</label>
 							<input type="text" th:field="*{identityProof}"	class="form-control mb-4 w-25" placeholder="Identity Proof">
 						</div>
 						<div class="col-50">
@@ -100,12 +101,27 @@
 					</div>
 					<div class="row">
 						<div class="col-50">
-							<label class="levelAzure" for="highBloodPressure">Room Rent Per Day</label>
-							<input type="text" th:field="*{roomRentPerDay}"	class="form-control mb-4 w-25" placeholder="Room Rent Per Day">
+							<label class="levelAzure" for="roomRentPerDay">Room Rent Per Day</label>
+<!--							<input type="text" th:field="*{roomRentPerDay}"	class="form-control mb-4 w-25" placeholder="Room Rent Per Day">-->
+								<select id="roomRentPerDay" th:field="*{roomRentPerDay}" required>
+		                            <option value="">SELECT</option>
+		                            <option value="500" th:selected="*{roomRentPerDay == '500'}">less than 500</option>
+		                            <option value="1000" th:selected="*{roomRentPerDay == '1000'}">500-1000</option>
+		                            <option value="1500" th:selected="*{roomRentPerDay == '1500'}">1000-2000</option>
+		                            <option value="2000" th:selected="*{roomRentPerDay == '2000'}">2000+</option>
+		                        </select>
+
 						</div>
 						<div class="col-50">
-							<label class="levelAzure" for="highBloodPressure">Room Type</label>
-							<input type="text" th:field="*{roomType}"	class="form-control mb-4 w-25" placeholder="Room Type">
+							<label class="levelAzure" for="roomType">Room Type</label>
+<!--							<input type="text" th:field="*{roomType}"	class="form-control mb-4 w-25" placeholder="Room Type">-->
+		                        <select id="roomType" th:field="*{roomType}" required>
+		                            <option value="">SELECT</option>
+		                            <option value="normal" th:selected="*{roomType == 'normal'}">Normal</option>
+		                            <option value="delux" th:selected="*{roomType == 'delux'}">Delux</option>
+		                            <option value="superdelux" th:selected="*{roomType == 'superdelux'}">SuperDelux</option>
+		                            <option value="special" th:selected="*{roomType == 'special'}">Special</option>
+		                        </select>
 						</div>
 						<div class="col-50">
 							<label class="levelAzure" for="highBloodPressure">Estimated Hospital Bill</label>
@@ -113,7 +129,9 @@
 						</div>
 					</div>
 					<br>
-					<label style="margin-top: 2em; margin-left: 5em; color: azure;"><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
+					<label style="margin-top: 2em; margin-left: 5em; color: azure;">
+						<B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B>
+					</label>
 					<table>
 						<tr>
 							<th> Disease Name</th>
@@ -122,14 +140,15 @@
 							<th> Treatment</th>
 						</tr>
 						<tr>
-							<td><label for="highBloodPressure">High blood Pressure</label></td>
-							<td>
-								<select id="highBloodPressure" name="highBloodPressure" required>
-									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
-								</select>							
-							</td>
+		                    <td><label for="highBloodPressure">High blood Pressure</label></td>
+		                    <td>
+		                        <select id="highBloodPressure" th:field="*{highBloodPressure}" required>
+		                            <option value="">SELECT</option>
+		                            <option value="false" th:selected="*{highBloodPressure == 'false'}">FALSE</option>
+		                            <option value="true" th:selected="*{highBloodPressure == 'true'}">TRUE</option>
+		                        </select>
+		                    </td>
+							
 							<td>
 								<input type="text" th:field="*{hbpDuration}" placeholder="High blood Pressure Duration">
 							</td>
@@ -138,14 +157,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td><label for="diabetesMellitus">Diabetes Mellitus</label></td>
-							<td>
-								<select id="diabetesMellitus" name="diabetesMellitus" required>
-									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
-								</select>							
-							</td>
+
+		                    <td><label for="diabetesMellitus">Diabetes Mellitus</label></td>
+		                    <td>
+		                        <select id="diabetesMellitus" th:field="*{diabetesMellitus}" required>
+		                            <option value="">SELECT</option>
+		                            <option value="false" th:selected="*{diabetesMellitus == 'false'}">FALSE</option>
+		                            <option value="true" th:selected="*{diabetesMellitus == 'true'}">TRUE</option>
+		                        </select>
+		                    </td>
 							<td>
 							<input type="text" th:field="*{dmDrugName}"	placeholder="Diabetes Mellitus  Drug Name">
 							</td>
@@ -156,10 +176,10 @@
 						<tr>
 							<td><label for="anyHeartDisease">Any Heart Disease</label></td>
 							<td>
-								<select id="anyHeartDisease" name="anyHeartDisease" required>
+								<select id="anyHeartDisease" th:field="*{anyHeartDisease}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{anyHeartDisease == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{anyHeartDisease == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -172,10 +192,10 @@
 						<tr>
 							<td><label for="anyLiverDisease">Any Liver Disease</label></td>
 							<td>
-								<select id="anyLiverDisease" name="anyLiverDisease" required>
+								<select id="anyLiverDisease" th:field="*{anyLiverDisease}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{anyLiverDisease == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{anyLiverDisease == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -188,10 +208,10 @@
 						<tr>
 							<td><label for="kidneyDisease">Any Kidney Disease</label></td>
 							<td>
-								<select id="kidneyDisease" name="kidneyDisease" required>
+								<select id="kidneyDisease" th:field="*{kidneyDisease}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{kidneyDisease == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{kidneyDisease == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -204,10 +224,10 @@
 						<tr>
 							<td><label for="neurologicalDisease"> Neurological Disease</label></td>
 							<td>
-								<select id="neurologicalDisease" name="neurologicalDisease" required>
+								<select id="neurologicalDisease" th:field="*{neurologicalDisease}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{neurologicalDisease == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{neurologicalDisease == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -220,10 +240,10 @@
 						<tr>
 							<td><label for="cancer"> Cancer </label></td>
 							<td>
-								<select id="cancer" name="cancer" required>
+								<select id="cancer" th:field="*{cancer}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{cancer == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{cancer == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -236,10 +256,10 @@
 						<tr>
 							<td><label for="respiratoryIllness"> Respiratory Illness </label></td>
 							<td>
-								<select id="respiratoryIllness" name="respiratoryIllness" required>
+								<select id="respiratoryIllness" th:field="*{respiratoryIllness}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{respiratoryIllness == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{respiratoryIllness == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -252,10 +272,10 @@
 						<tr>
 							<td><label for="arthritis"> Arthritis </label></td>
 							<td>
-								<select id="arthritis" name="arthritis" required>
+								<select id="arthritis" th:field="*{arthritis}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{arthritis == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{arthritis == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -268,10 +288,10 @@
 						<tr>
 							<td><label for="anyMajorDisease"> Any Major Disease </label></td>
 							<td>
-								<select id="anyMajorDisease" name="anyMajorDisease" required>
+								<select id="anyMajorDisease" th:field="*{anyMajorDisease}" required>
 									<option value="">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
+									<option value="false" th:selected="*{anyMajorDisease == 'false'}">FALSE</option>
+									<option value="true" th:selected="*{anyMajorDisease == 'true'}">TRUE</option>
 								</select>							
 							</td>
 							<td>
@@ -285,7 +305,13 @@
 					<div class="row">
 						<div class="col-50">
 							<label class="levelAzure" for="alcoholSmokingTobacco">Alcohol Smoking/Tobacco ?</label>
-							<input type="text" th:field="*{alcoholSmokingTobacco}"	class="form-control mb-4 w-25" placeholder="Alcohol Smoking/Tobacco ?">
+<!--							<input type="text" th:field="*{alcoholSmokingTobacco}"	class="form-control mb-4 w-25" placeholder="Alcohol Smoking/Tobacco ?">-->
+								<select id="alcoholSmokingTobacco" th:field="*{alcoholSmokingTobacco}" required>
+		                            <option value="">SELECT</option>
+		                            <option value="false" th:selected="*{alcoholSmokingTobacco == 'false'}">YES</option>
+		                            <option value="true" th:selected="*{alcoholSmokingTobacco == 'true'}">NO</option>
+		                        </select>
+
 						</div>
 						<div class="col-50">
 							<label class="levelAzure" for="diagnosisAsPerDoctor">Diagnosis As Per Doctor</label>
@@ -315,19 +341,22 @@
 			</form>
 		</div>
 		
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
 
 		<script src="/js/script.js"></script>
-		<section>
+		<section class="before-footer">
 			<h2>About Us</h2>
 			<p>As a claim investigation agency, we are dedicated to unraveling the truth and providing comprehensive investigative solutions. With a commitment to excellence, integrity, and thoroughness, we specialize in delivering accurate and timely results to meet the diverse needs of our clients.</p>
 		</section>
 
 		<footer>
-			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
 		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>
