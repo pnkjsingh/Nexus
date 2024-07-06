@@ -55,8 +55,8 @@
 					<input type="text" th:field="${claim.claimNumber}" class="form-control mb-4 w-25" placeholder="Claim Number" readonly="true">
 				</div>
 				<div class="col-50">
-					<label class="levelAzure" for="insuredName">Insured Preson name</label>
-					<input type="text" th:field="*{insurance.insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Preson name" readonly="true">			 
+					<label class="levelAzure" for="insuredName">Insured Person name</label>
+					<input type="text" th:field="*{insurance.insuredName}"	class="form-control mb-4 w-25" placeholder="Insured Person name" readonly="true">			 
 				</div>
 				<div class="col-50">
 					<label class="levelAzure" for="insuranceCompany">Insured Company Name</label>
@@ -68,22 +68,8 @@
 				<input type="hidden" th:field="${treatingdrquestionnaire.id}">
 				<input type="hidden" th:field="${treatingdrquestionnaire.claim.claimNumber}">
 
-					<!-- Add hidden form field to handle the update -->
-					<!-- Hidden form field required for updates  This binds to the model attribute (Tell your app which employee to update) -->
-
-<!--					<td>
-							<input type="text" id="claimNo" name="claimNo" th:field="*{claimNo}" placeholder="Claim Number" required>
-						</td>
-						<td>
-							<input type="text" id="insuredName" name="insuredName" th:field="*{insuredName}"	placeholder="Insured Preson name" required>
-						</td>
-						<td>
-							<input type="text" id="insuredCompanyName" name="insuredCompanyName" th:field="*{insuredCompanyName}"	placeholder="Insured Company Name" required>
-						</td>
-					</table>
--->
 					<br>
-					<label style="margin-top: 2em; margin-left: 7em; color: azure;"><B> Dear, Sir Please specify whether patient is suffering from following illness? (please mention exact duration)</B></label>
+					<label style="margin-top: 2em; margin-left: 7em; color: azure;"><B> Dear, please specify whether the patient is suffering from the following illnesses? (please mention exact duration)</B></label>
 					<table>
 						<tr>
 							<th> Disease Name</th>
@@ -93,161 +79,113 @@
 						</tr>
 						<tr>
 							<td><label for="highBloodPressure">High blood Pressure</label></td>
-							<td>
-								<select id="highBloodPressure" name="highBloodPressure" required>
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>
-									<option value="true">TRUE</option>
-								</select>							
-							</td>
-							<td><input type="text" th:field="*{hbpSince}"	placeholder="High blood Pressure Since" >
-							</td>
-							<td><input type="text" th:field="*{hbpTreatment}" placeholder="High blood Pressure Treatment">								
-							</td>
+		                    <td>
+		                        <select id="highBloodPressure" th:field="*{highBloodPressure}" required>
+		                            <option value="false" th:selected="*{highBloodPressure == false}">FALSE</option>
+		                            <option value="true" th:selected="*{highBloodPressure == true}">TRUE</option>
+		                        </select>
+		                    </td>
+							<td><input type="text" th:field="*{hbpSince}"	placeholder="High blood Pressure Since" ></td>
+							<td><input type="text" th:field="*{hbpTreatment}" placeholder="High blood Pressure Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="diabetesMellitus">Diabetes Mellitus</label></td>
 							<td>
-								<select id="diabetesMellitus" name="diabetesMellitus">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="diabetesMellitus" th:field="*{diabetesMellitus}" required>
+									<option value="false" th:selected="*{diabetesMellitus == false}">FALSE</option>		 
+									<option value="true" th:selected="*{diabetesMellitus == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{diabetesSince}"	placeholder="Diabetes Mellitus Since">
-							</td>
-							<td>
-								<input type="text" th:field="*{diabetesTreatment}"	placeholder="Diabetes Mellitus Rx">
-							</td>
+							<td><input type="text" th:field="*{diabetesSince}"	placeholder="Diabetes Mellitus Since"></td>
+							<td><input type="text" th:field="*{diabetesTreatment}"	placeholder="Diabetes Mellitus Rx"></td>
 						</tr>
 						<tr>
-							<td><label for="respiratoryIllness">Respiratory-Illness</label></td>
+							<td><label for="respiratoryIllness">Respiratory Illness</label></td>
 							<td>
-								<select id="respiratoryIllness" name="respiratoryIllness">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="respiratoryIllness" th:field="*{respiratoryIllness}" required>
+									<option value="false" th:selected="*{respiratoryIllness == false}">FALSE</option>		 
+									<option value="true" th:selected="*{respiratoryIllness == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{riSince}"	placeholder="Respiratory-Illness Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{riTreatment}"	placeholder="Respiratory-Illness Treatment">
-							</td>
+							<td><input type="text" th:field="*{riSince}"	placeholder="Respiratory Illness Since"></td>
+							<td><input type="text" th:field="*{riTreatment}"	placeholder="Respiratory Illness Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="heartDisease">Heart Disease</label></td>
 							<td>
-								<select id="heartDisease" name="Heart Disease">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="heartDisease" th:field="*{heartDisease}" required>
+									<option value="false" th:selected="*{heartDisease == false}">FALSE</option>		 
+									<option value="true" th:selected="*{heartDisease == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{heartDiseaseSince}"	placeholder="HearDisease Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{heartDiseaseTreatment}"	placeholder="Heart Disease Treatment">
-							</td>
+							<td><input type="text" th:field="*{heartDiseaseSince}"	placeholder="Heart Disease Since"></td>
+							<td><input type="text" th:field="*{heartDiseaseTreatment}"	placeholder="Heart Disease Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="thyroidIllness">Thyroid Illness</label></td>
 							<td>
-								<select id="thyroidIllness" name="thyroidIllness">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="thyroidIllness" th:field="*{thyroidIllness}" required>
+									<option value="false" th:selected="*{thyroidIllness == false}">FALSE</option>		 
+									<option value="true" th:selected="*{thyroidIllness == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{thyroidIllnessSince}"	placeholder="Thyroid-Illness Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{thyroidIllnessTreatment}"	placeholder="Thyroid Illness Treatment">
-							</td>
+							<td><input type="text" th:field="*{thyroidIllnessSince}"	placeholder="Thyroid Illness Since"></td>
+							<td><input type="text" th:field="*{thyroidIllnessTreatment}"	placeholder="Thyroid Illness Treatment"></td>
 						</tr>
 						<tr>
-							<td><label for="neurologicaIllnessl">NeurologicaI llnessl</label></td>
+							<td><label for="neurologicalIllness">NeurologicaI llnessl</label></td>
 							<td>
-								<select id="neurologicaIllnessl" name="Neurologica Illnessl">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="neurologicalIllness" th:field="*{neurologicalIllness}" required>
+									<option value="false" th:selected="*{neurologicalIllness == false}">FALSE</option>		 
+									<option value="true" th:selected="*{neurologicalIllness == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{neurologicaIllnesslSince}"	placeholder="Neurologica Illnessl Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{neurologicaIllnesslTreatment}"	placeholder="Neurologica Illnessl Treatment">
-							</td>
+							<td><input type="text" th:field="*{neurologicalIllnessSince}"	placeholder="neurological Illness Since"></td>
+							<td><input type="text" th:field="*{neurologicalIllnessTreatment}"	placeholder="Neurologica Illnessl Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="cancer">Cancer</label></td>
 							<td>
-								<select id="cancer" name="cancer">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="cancer" th:field="*{cancer}" required>
+									<option value="false" th:selected="*{cancer == false}">FALSE</option>		 
+									<option value="true" th:selected="*{cancer == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{cancerSince}"	placeholder="Cancer Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{cancerTreatment}"	placeholder="Cancer Treatment">
-							</td>
+							<td><input type="text" th:field="*{cancerSince}"	placeholder="Cancer Since"></td>
+							<td><input type="text" th:field="*{cancerTreatment}"	placeholder="Cancer Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="ckd">Ckd</label></td>
 							<td>
-								<select id="ckd" name="ckd">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="ckd" th:field="*{ckd}" required>
+									<option value="false" th:selected="*{ckd == false}">FALSE</option>		 
+									<option value="true" th:selected="*{ckd == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{ckdSince}"	placeholder="Ckd Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{ckdTreatment}"	placeholder="Ckd Treatment">
-							</td>
+							<td><input type="text" th:field="*{ckdSince}"	placeholder="Ckd Since"></td>
+							<td><input type="text" th:field="*{ckdTreatment}"	placeholder="Ckd Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="arthritis">Arthritis</label></td>
 							<td>
-								<select id="arthritis" name="Arthritis">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="arthritis" th:field="*{Arthritis}" required>
+									<option value="false" th:selected="*{Arthritis == false}">FALSE</option>		 
+									<option value="true" th:selected="*{Arthritis == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" th:field="*{arthritisSince}"	placeholder="Arthritis Since">	 
-							</td>
-							<td>
-								<input type="text" th:field="*{arthritisTreatment}"	placeholder="Arthritis Treatment">
-							</td>
+							<td><input type="text" th:field="*{arthritisSince}"	placeholder="Arthritis Since"></td>
+							<td><input type="text" th:field="*{arthritisTreatment}"	placeholder="Arthritis Treatment"></td>
 						</tr>
 						<tr>
 							<td><label for="otherdisease">Other Disease</label></td>
 							<td>
-								<select id="ckd" name="ckd">
-									<option value="false">SELECT</option>
-									<option value="false">FALSE</option>		 
-									<option value="true">TRUE</option>
+								<select id="otherdisease" th:field="*{otherdisease}" required>
+									<option value="false"  th:selected="*{otherdisease == false}">FALSE</option>		 
+									<option value="true"  th:selected="*{otherdisease == true}">TRUE</option>
 								</select>
 							</td>
-							<td>
-								<input type="text" id="otherdiseasesince" name="otherdiseasesince" th:field="*{otherdiseasesince}"	placeholder="Other Disease Since">
-							</td>
-							<td>
-								<input type="text" id="ckd" name="otherdiseasesince" th:field="*{otherdiseasetreatment}"	placeholder="Other Disease Treatment">
-							</td>
+							<td><input type="text" th:field="*{otherdiseasesince}"	placeholder="Other Disease Since"></td>
+							<td><input type="text" th:field="*{otherdiseasetreatment}"	placeholder="Other Disease Treatment"></td>
 						</tr>
 				    </table>
 					<div class="row">
@@ -260,25 +198,34 @@
 							<input type="datetime-local" th:field="*{dischargeDate}"	required>
 						</div>
 						<div class="col-50">
-							<label class="levelAzure" for="questionnaireDate">Treating Dr. Questionnare Date</label>					
+							<label class="levelAzure" for="questionnaireDate">Treating Dr. Questionnaire Date</label>					
 							<input type="datetime-local" th:field="*{questionnaireDate}" required>
 						</div>
 					</div>
-<!--				<label for="heartDisease">Heart Disease</label>					-->
-<!--				<input type="text" th:field="*{heartDisease}"	class="form-control mb-4 w-25" placeholder="Heart Disease">				    -->
-
 					<div class="row">
 						<div class="col-50">
 							<label class="levelAzure" for="roomRentPerDay">Room Rent Per Day</label>					
 							<input type="number" th:field="*{roomRentPerDay}" placeholder="Room Rent Per Day" required>
 						</div>
 						<div class="col-50">
-							<label class="levelAzure" for="roomType">Room Type(Special/AC/Normal)</label>					
-							<input type="text" th:field="*{roomType}"	placeholder="Room Type" required>
+							<label class="levelAzure" for="roomType">Room Type</label>
+		                        <select id="roomType" th:field="*{roomType}" required>
+		                            <option value="">SELECT</option>
+		                            <option value="normal" th:selected="*{roomType == 'normal'}">Normal</option>
+		                            <option value="delux" th:selected="*{roomType == 'delux'}">Delux</option>
+		                            <option value="superdelux" th:selected="*{roomType == 'superdelux'}">SuperDelux</option>
+		                            <option value="special" th:selected="*{roomType == 'special'}">Special</option>
+		                        </select>
 						</div>
 						<div class="col-50">
-							<label class="levelAzure" for="caseType">Case Type</label>					
-							<input type="text" th:field="*{caseType}" placeholder="Case Type" required>	
+<!--							<label class="levelAzure" for="caseType">Case Type</label>					
+							<input type="text" th:field="*{caseType}" placeholder="Case Type" required>	-->
+							<label class="levelAzure" for="caseType">Case Type</label>
+							<select id="insuranceType" th:field="*{caseType}" required>
+								<option value="">SELECT</option>
+								<option value="Cashless" th:selected="*{caseType == 'Cashless'}">Cashless</option>
+								<option value="Reimbursment" th:selected="*{caseType == 'Reimbursment'}">Reimbursment</option>
+							</select>
 						</div>
 					</div>
 					<div class="row">
@@ -301,11 +248,11 @@
 							<input type="text" th:field="*{doctorName}"	placeholder="Doctor Name" required>
 						</div>
 					</div>
-				<button type="submit" class="save-button" >Save</button>			 
+				<button type="submit" class="submit-btn" >Save</button>			 
 			</form>
 		</div>
 
-		<div class="line-sperater">		</div>
+		<div class="line-separator">		</div>
 		<div class="centered-input">
 			<input type="range" value="230" min="0" max="360" id="hue">
 	    </div>
@@ -317,7 +264,10 @@
 		</section>
 
 		<footer>
-			<p style="text-align: center;">&copy; 2023 My Home Page. All rights reserved.</p>
+			<p style="text-align: center;">&copy; <span id="year"></span> Nexus Health Care. All rights reserved.</p>
 		</footer>
+		<script>
+			document.getElementById('year').textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>
