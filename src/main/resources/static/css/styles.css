@@ -79,13 +79,6 @@
 		align-items: center;
 		gap: 10px;
 	}
-	.header-icons svg {
-		width: 18px;
-	}
-	.header-icons svg:not(:last-child) {
-		margin-right: 20px;
-	}
-
 	.header-menu a:hover {
 		background-color: lightblue;
 		color: black;
