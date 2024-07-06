@@ -199,7 +199,7 @@ public class InsuredQuestionnaire {
 		return estimatedHospitalBill;
 	}
 
-	public Boolean isHighBloodPressure() {
+	public Boolean getHighBloodPressure() {
 		return highBloodPressure;
 	}
 
@@ -211,7 +211,7 @@ public class InsuredQuestionnaire {
 		return hbpDuration;
 	}
 
-	public Boolean isDiabetesMellitus() {
+	public Boolean getDiabetesMellitus() {
 		return diabetesMellitus;
 	}
 

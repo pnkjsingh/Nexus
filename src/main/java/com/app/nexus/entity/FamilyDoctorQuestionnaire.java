@@ -66,7 +66,7 @@ public class FamilyDoctorQuestionnaire {
 		return claim;
 	}
 
-	public boolean isHighBloodPressure() {
+	public boolean getHighBloodPressure() {
 		return highBloodPressure;
 	}
 
