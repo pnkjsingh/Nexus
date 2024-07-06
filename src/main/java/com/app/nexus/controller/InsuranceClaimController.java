@@ -67,13 +67,17 @@ public class InsuranceClaimController {
 	@PostMapping("/add")
 	public String addInsuranceClaim(@ModelAttribute("insuranceClaimDTO") InsuranceClaimDTO insuranceClaimDTO, BindingResult bindingResult, Model model) {
 		try {
-			if(insuranceClaimDTO.getPolicyNumber().equals("")||insuranceClaimDTO.getInsuredName().equals("")||
-					insuranceClaimDTO.getInsuranceCompany().equals("")||insuranceClaimDTO.getClaimNumber().equals("")||
-					insuranceClaimDTO.getClaimAmount()<=0||insuranceClaimDTO.getPremiumAmount()<0||insuranceClaimDTO.getClaimDate().before(insuranceClaimDTO.getPolicyDate()) ){
+			if(insuranceClaimDTO.getPolicyNumber().equals("")||insuranceClaimDTO.getInsuredName().equals("")
+				||insuranceClaimDTO.getInsuranceCompany().equals("")||insuranceClaimDTO.getClaimNumber().equals("")
+				||insuranceClaimDTO.getClaimAmount()<=0||insuranceClaimDTO.getPremiumAmount()<0
+				||insuranceClaimDTO.getInsuranceType().equals("false")||insuranceClaimDTO.getInsuranceType().equals("") ){
 
 				throw new Exception("Check, some non-empty field is empty.!");
 			}
 			else {
+				if(insuranceClaimDTO.getClaimDate().before(insuranceClaimDTO.getPolicyDate())) {
+					throw new Exception("Claim date can't be before Policy Date.!");
+				}
 				Claim existingClaim = claimService.findByClaimNumber(insuranceClaimDTO.getClaimNumber());
 				if (existingClaim != null) {
 					// Handle duplicate claim number, you can throw an exception or display an error message
@@ -173,7 +177,6 @@ public class InsuranceClaimController {
 
             combinedData.add(insuranceAndClaim);
         }
-
         return combinedData;
     }
 }
