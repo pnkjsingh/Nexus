@@ -58,12 +58,12 @@ public class TreatingDrQuestionnaire {
 	@Column(name="thyroid_illness_treatment")
 	String thyroidIllnessTreatment;
 
-	@Column(name="neurologica_illnessl")
-	boolean neurologicaIllnessl;
-	@Column(name="neurologica_illnessl_since")
-	String neurologicaIllnesslSince;
-	@Column(name="neurologica_illnessl_treatment")
-	String neurologicaIllnesslTreatment;
+	@Column(name="neurological_illness")
+	boolean neurologicalIllness;
+	@Column(name="neurological_illness_since")
+	String neurologicalIllnessSince;
+	@Column(name="neurological_illness_treatment")
+	String neurologicalIllnessTreatment;
 	
 	@Column(name="cancer")
 	boolean cancer;
@@ -131,7 +131,7 @@ public class TreatingDrQuestionnaire {
 	public Claim getClaim() {
 		return claim;
 	}
-	public boolean isHighBloodPressure() {
+	public boolean getHighBloodPressure() {
 		return highBloodPressure;
 	}
 	public String getHbpSince() {
@@ -140,7 +140,7 @@ public class TreatingDrQuestionnaire {
 	public String getHbpTreatment() {
 		return hbpTreatment;
 	}
-	public boolean isDiabetesMellitus() {
+	public boolean getDiabetesMellitus() {
 		return diabetesMellitus;
 	}
 	public String getDiabetesSince() {
@@ -149,7 +149,7 @@ public class TreatingDrQuestionnaire {
 	public String getDiabetesTreatment() {
 		return diabetesTreatment;
 	}
-	public boolean isHeartDisease() {
+	public boolean getHeartDisease() {
 		return heartDisease;
 	}
 	public String getHeartDiseaseSince() {
@@ -158,7 +158,7 @@ public class TreatingDrQuestionnaire {
 	public String getHeartDiseaseTreatment() {
 		return heartDiseaseTreatment;
 	}
-	public boolean isRespiratoryIllness() {
+	public boolean getRespiratoryIllness() {
 		return respiratoryIllness;
 	}
 	public String getRiSince() {
@@ -167,7 +167,7 @@ public class TreatingDrQuestionnaire {
 	public String getRiTreatment() {
 		return riTreatment;
 	}
-	public boolean isThyroidIllness() {
+	public boolean getThyroidIllness() {
 		return thyroidIllness;
 	}
 	public String getThyroidIllnessSince() {
@@ -176,16 +176,16 @@ public class TreatingDrQuestionnaire {
 	public String getThyroidIllnessTreatment() {
 		return thyroidIllnessTreatment;
 	}
-	public boolean isNeurologicaIllnessl() {
-		return neurologicaIllnessl;
+	public boolean getNeurologicalIllness() {
+		return neurologicalIllness;
 	}
-	public String getNeurologicaIllnesslSince() {
-		return neurologicaIllnesslSince;
+	public String getNeurologicalIllnessSince() {
+		return neurologicalIllnessSince;
 	}
-	public String getNeurologicaIllnesslTreatment() {
-		return neurologicaIllnesslTreatment;
+	public String getNeurologicalIllnessTreatment() {
+		return neurologicalIllnessTreatment;
 	}
-	public boolean isCancer() {
+	public boolean getCancer() {
 		return cancer;
 	}
 	public String getCancerSince() {
@@ -194,7 +194,7 @@ public class TreatingDrQuestionnaire {
 	public String getCancerTreatment() {
 		return cancerTreatment;
 	}
-	public boolean isCkd() {
+	public boolean getCkd() {
 		return ckd;
 	}
 	public String getCkdSince() {
@@ -203,7 +203,7 @@ public class TreatingDrQuestionnaire {
 	public String getCkdTreatment() {
 		return ckdTreatment;
 	}
-	public boolean isArthritis() {
+	public boolean getArthritis() {
 		return arthritis;
 	}
 	public String getArthritisSince() {
@@ -212,7 +212,7 @@ public class TreatingDrQuestionnaire {
 	public String getArthritisTreatment() {
 		return arthritisTreatment;
 	}
-	public boolean isOtherdisease() {
+	public boolean getOtherdisease() {
 		return otherdisease;
 	}
 	public String getOtherdiseasesince() {
@@ -302,14 +302,14 @@ public class TreatingDrQuestionnaire {
 	public void setThyroidIllnessTreatment(String thyroidIllnessTreatment) {
 		this.thyroidIllnessTreatment = thyroidIllnessTreatment;
 	}
-	public void setNeurologicaIllnessl(boolean neurologicaIllnessl) {
-		this.neurologicaIllnessl = neurologicaIllnessl;
+	public void setNeurologicalIllness(boolean neurologicalIllness) {
+		this.neurologicalIllness = neurologicalIllness;
 	}
-	public void setNeurologicaIllnesslSince(String neurologicaIllnesslSince) {
-		this.neurologicaIllnesslSince = neurologicaIllnesslSince;
+	public void setNeurologicalIllnessSince(String neurologicalIllnessSince) {
+		this.neurologicalIllnessSince = neurologicalIllnessSince;
 	}
-	public void setNeurologicaIllnesslTreatment(String neurologicaIllnesslTreatment) {
-		this.neurologicaIllnesslTreatment = neurologicaIllnesslTreatment;
+	public void setNeurologicalIllnessTreatment(String neurologicalIllnessTreatment) {
+		this.neurologicalIllnessTreatment = neurologicalIllnessTreatment;
 	}
 	public void setCancer(boolean cancer) {
 		this.cancer = cancer;
@@ -382,7 +382,7 @@ public class TreatingDrQuestionnaire {
 			String diabetesSince, String diabetesTreatment, boolean heartDisease, String heartDiseaseSince,
 			String heartDiseaseTreatment, boolean respiratoryIllness, String riSince, String riTreatment,
 			boolean thyroidIllness, String thyroidIllnessSince, String thyroidIllnessTreatment,
-			boolean neurologicaIllnessl, String neurologicaIllnesslSince, String neurologicaIllnesslTreatment,
+			boolean neurologicalIllness, String neurologicalIllnessSince, String neurologicalIllnessTreatment,
 			boolean cancer, String cancerSince, String cancerTreatment, boolean ckd, String ckdSince,
 			String ckdTreatment, boolean arthritis, String arthritisSince, String arthritisTreatment,
 			boolean otherdisease, String otherdiseasesince, String otherdiseasetreatment, String admissionDate,
@@ -407,9 +407,9 @@ public class TreatingDrQuestionnaire {
 		this.thyroidIllness = thyroidIllness;
 		this.thyroidIllnessSince = thyroidIllnessSince;
 		this.thyroidIllnessTreatment = thyroidIllnessTreatment;
-		this.neurologicaIllnessl = neurologicaIllnessl;
-		this.neurologicaIllnesslSince = neurologicaIllnesslSince;
-		this.neurologicaIllnesslTreatment = neurologicaIllnesslTreatment;
+		this.neurologicalIllness = neurologicalIllness;
+		this.neurologicalIllnessSince = neurologicalIllnessSince;
+		this.neurologicalIllnessTreatment = neurologicalIllnessTreatment;
 		this.cancer = cancer;
 		this.cancerSince = cancerSince;
 		this.cancerTreatment = cancerTreatment;
@@ -447,8 +447,8 @@ public class TreatingDrQuestionnaire {
 				+ heartDiseaseTreatment + ", respiratoryIllness=" + respiratoryIllness + ", riSince=" + riSince
 				+ ", riTreatment=" + riTreatment + ", thyroidIllness=" + thyroidIllness + ", thyroidIllnessSince="
 				+ thyroidIllnessSince + ", thyroidIllnessTreatment=" + thyroidIllnessTreatment
-				+ ", neurologicaIllnessl=" + neurologicaIllnessl + ", neurologicaIllnesslSince="
-				+ neurologicaIllnesslSince + ", neurologicaIllnesslTreatment=" + neurologicaIllnesslTreatment
+				+ ", neurologicalIllness=" + neurologicalIllness + ", neurologicalIllnessSince="
+				+ neurologicalIllnessSince + ", neurologicalIllnessTreatment=" + neurologicalIllnessTreatment
 				+ ", cancer=" + cancer + ", cancerSince=" + cancerSince + ", cancerTreatment=" + cancerTreatment
 				+ ", ckd=" + ckd + ", ckdSince=" + ckdSince + ", ckdTreatment=" + ckdTreatment + ", arthritis="
 				+ arthritis + ", arthritisSince=" + arthritisSince + ", arthritisTreatment=" + arthritisTreatment
